@@ -47,3 +47,16 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
+
+# macOS system files
+.DS_Store
+
+# Windows system files
+Thumbs.db
+
+# Quarto files
+/.quarto/
+/_site/
+
+# Jupyter Notebook
+.ipynb_checkpoints
