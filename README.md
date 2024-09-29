@@ -8,6 +8,6 @@ Introduction to research methods with dedicated exercises for MGT4018 and MGT409
 
 This repository is licensed under two different licenses for different types of content:
 
-1. **Code (MIT License)**: All R scripts, code snippets, and technical components of the course are licensed under the MIT License. You are free to use, copy, modify, merge, publish, distribute, sublicense, or sell copies of the code, as long as attribution is provided. See the [LICENSE](LICENSE) file for details.
+1. **Code (MIT License)**: All R scripts, code snippets, and technical components of the course are licensed under the MIT License. You are free to use, copy, modify, merge, publish, distribute, sublicense, or sell copies of the code, as long as attribution is provided. See the [LICENSE-CODE](LICENSE-CODE) file for details.
 
 2. **Course Materials (CC BY 4.0)**: All written content, lessons, quizzes, and educational materials in this repository are licensed under the Creative Commons Attribution 4.0 International License. You are free to share and adapt the materials, even for commercial purposes, as long as attribution is provided. See the [LICENSE-CONTENT](LICENSE-CONTENT) file for details.
