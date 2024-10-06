@@ -3,6 +3,8 @@ title: "0. Getting Started"
 author: "Bernd Wurth"
 format: 
   html:
+    theme: cosmo
+    css: ../styles.css
     toc: true
     toc-depth: 2
     number-sections: true
