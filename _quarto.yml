@@ -4,6 +4,9 @@ project:
 
 website:
   title: "Research Methods in R"
+  site-url: "https://bwurth.github.io/research-methods/"
+  repo-url: https://github.com/bwurth/research-methods
+  repo-actions: [edit, issue]
   navbar:
     left:
       - href: index.qmd
