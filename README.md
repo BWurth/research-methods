@@ -6,9 +6,9 @@ Visit our [course website](https://bwurth.github.io/research-methods/) for a use
 
 ## Lessons
 
-0. Getting Started [ [html](00-getting-started/00-getting-started.html) | [pdf](00-getting-started/00-getting-started.pdf) ]
+0. Getting Started [ [html](docs/00-getting-started/00-getting-started.html) | [pdf](docs/00-getting-started/00-getting-started.pdf) ]
 
-1. Introduction [ [html](01-introduction/01-introduction.html) | [pdf](01-introduction/01-introduction.pdf) ]
+1. Introduction [ [html](docs/01-introduction/01-introduction.html) | [pdf](docs/01-introduction/01-introduction.pdf) ]
 
 ## MGT4018 and MGT4090 Tutorials
 
