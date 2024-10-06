@@ -4,19 +4,25 @@
 
 Visit our [course website](https://bwurth.github.io/research-methods/) for a user-friendly experience.
 
-## Lessons
+## Welcome
 
-0. Getting Started [ [html](docs/00-getting-started/00-getting-started.html) | [pdf](docs/00-getting-started/00-getting-started.pdf) ]
+This course serves as an introduction to research methods, providing students with a foundational understanding of how to conduct data analysis using the R programming language. Through hands-on practice, students will learn essential concepts such as data manipulation, statistical analysis, and visualisation, all of which are critical for conducting independent research. By the end of the course, students will be equipped with the skills needed to effectively apply quantitative methods in their dissertations, enabling them to analyse real-world data and draw meaningful insights for research in business and entrepreneurship and social sciences more broadly.
 
-1. Introduction [ [html](docs/01-introduction/01-introduction.html) | [pdf](docs/01-introduction/01-introduction.pdf) ]
+## Course Outline
 
-## MGT4018 and MGT4090 Tutorials
+Click on the links below to access the lesson materials. Each lesson includes theory, examples, and practical exercises. We recommend that you work through the lessons in the given order and use the HTML versions, but the PDF files contain the same information.
 
-These tutorials cover the same exercises than the SPSS tutorials for University of Glasgow MGT4018 and MGT4090.
+0. **Getting Started** [ [html](docs/00-getting-started/00-getting-started.html) | [pdf](docs/00-getting-started/00-getting-started.pdf) ]
+
+1. **Introduction** [ [html](docs/01-introduction/01-introduction.html) | [pdf](docs/01-introduction/01-introduction.pdf) ]
+
+## University of Glasgow MGT4018 and MGT4090
+
+This course covers all required materials and more for the University of Glasgow's third year courses MGT4018 and MGT4090 that prepare students for their dissertations. In addition to the general lessons and exercises above, the following tutorials cover the same exercises than the SPSS tutorials.
 
 ## Acknowledgements
 
-Thank you.
+This course and its materials are the culmination of many years of work and delivering a variety of classes around research methods and data science at the University of Strathclyde and the University of Glasgow. Some of the content in the earlier lessons is inspired by and adapted from teaching materials from Kate Pyper ([LinkedIn](https://www.linkedin.com/in/kate-pyper-86a50350/)) and the organisation and structure of this course have benefited from Grant McDermott's ([GitHub](https://github.com/grantmcdermott)) [EC 607 Data Science for Economists](https://github.com/uo-ec607/lectures) at the University of Oregon.
 
 ## License
 
