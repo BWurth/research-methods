@@ -209,3 +209,4 @@ plot(x, y, main = "Square Function", xlab = "x", ylab = "y")
 lines(x, y, col = "red")
 ```
 
+We will explore more advanced plotting with the `ggplot` package later.
