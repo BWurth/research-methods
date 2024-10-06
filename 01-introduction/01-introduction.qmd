@@ -1,0 +1,209 @@
+---
+title: "1. Practical Introduction to R"
+author: "Bernd Wurth"
+format: 
+  html:
+    toc: true
+    toc-depth: 2
+    number-sections: true
+  pdf:
+    documentclass: article
+    papersize: a4
+    geometry: "left=2cm,right=2cm,top=2cm,bottom=2cm"
+    toc: true    # (Optional) Include a table of contents
+    toc-depth: 2 # (Optional) Control the depth of the TOC in PDF
+    number-sections: true
+---
+
+# Introduction
+
+This introduction covers the basics of R programming. As you progress, you'll discover more advanced features and packages that extend R's capabilities even further. Remember to use the help function (`?function_name`) to learn more about specific functions and their usage.
+
+# Basic R Syntax
+
+R is case-sensitive and uses the `<-` operator for assignment (though `=` can also be used). Comments start with `#`.
+
+```r
+# This is a comment
+x <- 5  # Assign the value 5 to x
+y = 10  # This also works, but <- is more common in R
+```
+
+# Objects and Variable Assignment
+
+In R, you can assign values to variables using the assignment operator `<-`:
+
+```r
+my_variable <- 42
+my_name <- "Alice"
+```
+
+You can view the contents of a variable by typing its name:
+
+```r
+my_variable
+my_name
+```
+
+# Data Types in R
+
+R has several basic data types:
+
+1. Numeric (real numbers)
+2. Integer
+3. Character (string)
+4. Logical (boolean)
+5. Complex
+
+```r
+num_var <- 3.14
+int_var <- 42L  # The 'L' suffix creates an integer
+char_var <- "Hello, R!"
+log_var <- TRUE
+comp_var <- 3 + 2i
+```
+
+You can check the type of a variable using the `class()` function:
+
+```r
+class(num_var)
+class(char_var)
+```
+
+# Operators in R
+
+R supports various types of operators:
+
+1. Arithmetic: `+`, `-`, `*`, `/`, `^` (exponent), `%%` (modulus)
+2. Relational: `<`, `>`, `<=`, `>=`, `==`, `!=`
+3. Logical: `&` (and), `|` (or), `!` (not)
+
+```r
+x <- 10
+y <- 3
+
+x + y
+x > y
+(x > 5) & (y < 5)
+```
+
+# Basic Data Structures
+
+R has several important data structures:
+
+1. Vectors: One-dimensional arrays that can hold data of the same type
+2. Lists: Can hold elements of different types
+3. Matrices: Two-dimensional arrays with data of the same type
+4. Data Frames: Two-dimensional arrays that can hold different types of data
+
+```r
+# Vector
+vec <- c(1, 2, 3, 4, 5)
+
+# List
+my_list <- list(name = "Alice", age = 30, scores = c(95, 87, 91))
+
+# Matrix
+mat <- matrix(1:9, nrow = 3, ncol = 3)
+
+# Data Frame
+df <- data.frame(
+  name = c("Alice", "Bob", "Charlie"),
+  age = c(25, 30, 35),
+  city = c("New York", "London", "Paris")
+)
+```
+
+# Functions in R
+
+R has many built-in functions, and you can also create your own:
+
+```r
+# Using a built-in function
+mean(c(1, 2, 3, 4, 5))
+
+# Creating a custom function
+square <- function(x) {
+  return(x^2)
+}
+
+square(4)
+```
+
+# Control Structures
+
+R supports common control structures like if-else statements and loops:
+
+```r
+# If-else statement
+x <- 10
+if (x > 5) {
+  print("x is greater than 5")
+} else {
+  print("x is not greater than 5")
+}
+
+# For loop
+for (i in 1:5) {
+  print(i^2)
+}
+
+# While loop
+i <- 1
+while (i <= 5) {
+  print(i^2)
+  i <- i + 1
+}
+```
+
+# Reading and Writing Data
+
+R can read data from various file formats. Here's an example with CSV:
+
+```r
+# Reading a CSV file
+# Assuming you have a file named "data.csv" in your working directory
+data <- read.csv("data.csv")
+
+# Writing a CSV file
+write.csv(df, "output.csv", row.names = FALSE)
+```
+
+For this example, you'll need to create a "data.csv" file in your working directory or adjust the file path accordingly.
+
+# Basic Data Manipulation
+
+R provides many functions for manipulating data:
+
+```r
+# Assuming we're using the 'df' data frame from earlier
+
+# Selecting a column
+df$name
+
+# Filtering rows
+df[df$age > 25, ]
+
+# Adding a new column
+df$is_adult <- df$age >= 18
+
+# Summarizing data
+summary(df)
+```
+
+# Introduction to Basic Plotting
+
+R has powerful plotting capabilities. Here's a simple example:
+
+```r
+# Create some data
+x <- 1:10
+y <- x^2
+
+# Create a scatter plot
+plot(x, y, main = "Square Function", xlab = "x", ylab = "y")
+
+# Add a line
+lines(x, y, col = "red")
+```
+

@@ -1,12 +1,30 @@
-# Research Methods in R
-[![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
-[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+---
+title: "Research Methods in R"
+format: 
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+---
 
-## Lessons
+## Welcome to the Research Methods Course
+
+This course is designed to prepare third-year undergraduate students for their dissertations in their fourth and final year.
+
+This course is part of the undergraduate program at [Your University Name]. For more information, visit our [GitHub repository](https://github.com/YOUR_GITHUB_USERNAME/research-methods-course).
+
+**How to Use This Course**
+
+1. Click on the links above to access the lesson materials.
+2. Each lesson includes theory, examples, and practical exercises.
+3. For interactive coding, use the Binder link provided in our GitHub repository.
+
+
+## Course Outline
 
 0. Getting Started [[html](00-getting-started/00-getting-started.html)|[pdf](00-getting-started/00-getting-started.pdf)]
 
-1. Introduction [.html|.pdf|.qmd]
+1. Introduction [[html](00-getting-started/01-introduction.html)|[pdf](00-getting-started/01-introduction.pdf)]
 
 ## MGT4018 and MGT4090 Tutorials
 
