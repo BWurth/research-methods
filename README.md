@@ -2,6 +2,8 @@
 [![License: CC BY 4.0](https://img.shields.io/badge/License-CC%20BY%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by/4.0/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+Visit our [course website](https://bwurth.github.io/research-methods/) for a user-friendly experience.
+
 ## Lessons
 
 0. Getting Started [[html](00-getting-started/00-getting-started.html)|[pdf](00-getting-started/00-getting-started.pdf)]

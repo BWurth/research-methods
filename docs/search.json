@@ -1,0 +1,240 @@
+[
+  {
+    "objectID": "LICENSE-CODE.html",
+    "href": "LICENSE-CODE.html",
+    "title": "Research Methods Course",
+    "section": "",
+    "text": "MIT License\nCopyright (c) 2024 Bernd Wurth\nPermission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the “Software”), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:\nThe above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.\nTHE SOFTWARE IS PROVIDED “AS IS”, WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE."
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Research Methods in R",
+    "section": "",
+    "text": "This course is designed to prepare third-year undergraduate students for their dissertations in their fourth and final year.\nThis course is part of the undergraduate program at [Your University Name]. For more information, visit our GitHub repository.\nHow to Use This Course\n\nClick on the links above to access the lesson materials.\nEach lesson includes theory, examples, and practical exercises.\nFor interactive coding, use the Binder link provided in our GitHub repository."
+  },
+  {
+    "objectID": "index.html#welcome-to-the-research-methods-course",
+    "href": "index.html#welcome-to-the-research-methods-course",
+    "title": "Research Methods in R",
+    "section": "",
+    "text": "This course is designed to prepare third-year undergraduate students for their dissertations in their fourth and final year.\nThis course is part of the undergraduate program at [Your University Name]. For more information, visit our GitHub repository.\nHow to Use This Course\n\nClick on the links above to access the lesson materials.\nEach lesson includes theory, examples, and practical exercises.\nFor interactive coding, use the Binder link provided in our GitHub repository."
+  },
+  {
+    "objectID": "index.html#course-outline",
+    "href": "index.html#course-outline",
+    "title": "Research Methods in R",
+    "section": "Course Outline",
+    "text": "Course Outline\n\nGetting Started [html|pdf]\nIntroduction [html|pdf]"
+  },
+  {
+    "objectID": "index.html#mgt4018-and-mgt4090-tutorials",
+    "href": "index.html#mgt4018-and-mgt4090-tutorials",
+    "title": "Research Methods in R",
+    "section": "MGT4018 and MGT4090 Tutorials",
+    "text": "MGT4018 and MGT4090 Tutorials\nThese tutorials cover the same exercises than the SPSS tutorials for University of Glasgow MGT4018 and MGT4090."
+  },
+  {
+    "objectID": "index.html#acknowledgements",
+    "href": "index.html#acknowledgements",
+    "title": "Research Methods in R",
+    "section": "Acknowledgements",
+    "text": "Acknowledgements\nThank you."
+  },
+  {
+    "objectID": "index.html#license",
+    "href": "index.html#license",
+    "title": "Research Methods in R",
+    "section": "License",
+    "text": "License\nThis repository is licensed under two different licenses for different types of content:\n\nCode (MIT License): All R scripts, code snippets, and technical components of the course are licensed under the MIT License. You are free to use, copy, modify, merge, publish, distribute, sublicense, or sell copies of the code, as long as attribution is provided. See the LICENSE-CODE file for details.\nCourse Materials (CC BY 4.0): All written content, lessons, quizzes, and educational materials in this repository are licensed under the Creative Commons Attribution 4.0 International License. You are free to share and adapt the materials, even for commercial purposes, as long as attribution is provided. See the LICENSE-CONTENT file for details."
+  },
+  {
+    "objectID": "LICENSE-CONTENT.html",
+    "href": "LICENSE-CONTENT.html",
+    "title": "Research Methods Course",
+    "section": "",
+    "text": "Creative Commons Attribution 4.0 International (CC BY 4.0)\nCopyright (c) 2024 Bernd Wurth\nYou are free to: - Share — copy and redistribute the material in any medium or format - Adapt — remix, transform, and build upon the material for any purpose, even commercially.\nUnder the following terms: - Attribution — You must give appropriate credit, provide a link to the license, and indicate if changes were made. You may do so in any reasonable manner, but not in any way that suggests the licensor endorses you or your use.\nNo additional restrictions — You may not apply legal terms or technological measures that legally restrict others from doing anything the license permits.\nFull legal text: https://creativecommons.org/licenses/by/4.0/legalcode"
+  },
+  {
+    "objectID": "01-introduction/01-introduction.html",
+    "href": "01-introduction/01-introduction.html",
+    "title": "1. Practical Introduction to R",
+    "section": "",
+    "text": "1 Introduction\nThis introduction covers the basics of R programming. As you progress, you’ll discover more advanced features and packages that extend R’s capabilities even further. Remember to use the help function (?function_name) to learn more about specific functions and their usage.\n\n\n2 Basic R Syntax\nR is case-sensitive and uses the &lt;- operator for assignment (though = can also be used). Comments start with #.\n# This is a comment\nx &lt;- 5  # Assign the value 5 to x\ny = 10  # This also works, but &lt;- is more common in R\n\n\n3 Objects and Variable Assignment\nIn R, you can assign values to variables using the assignment operator &lt;-:\nmy_variable &lt;- 42\nmy_name &lt;- \"Alice\"\nYou can view the contents of a variable by typing its name:\nmy_variable\nmy_name\n\n\n4 Data Types in R\nR has several basic data types:\n\nNumeric (real numbers)\nInteger\nCharacter (string)\nLogical (boolean)\nComplex\n\nnum_var &lt;- 3.14\nint_var &lt;- 42L  # The 'L' suffix creates an integer\nchar_var &lt;- \"Hello, R!\"\nlog_var &lt;- TRUE\ncomp_var &lt;- 3 + 2i\nYou can check the type of a variable using the class() function:\nclass(num_var)\nclass(char_var)\n\n\n5 Operators in R\nR supports various types of operators:\n\nArithmetic: +, -, *, /, ^ (exponent), %% (modulus)\nRelational: &lt;, &gt;, &lt;=, &gt;=, ==, !=\nLogical: & (and), | (or), ! (not)\n\nx &lt;- 10\ny &lt;- 3\n\nx + y\nx &gt; y\n(x &gt; 5) & (y &lt; 5)\n\n\n6 Basic Data Structures\nR has several important data structures:\n\nVectors: One-dimensional arrays that can hold data of the same type\nLists: Can hold elements of different types\nMatrices: Two-dimensional arrays with data of the same type\nData Frames: Two-dimensional arrays that can hold different types of data\n\n# Vector\nvec &lt;- c(1, 2, 3, 4, 5)\n\n# List\nmy_list &lt;- list(name = \"Alice\", age = 30, scores = c(95, 87, 91))\n\n# Matrix\nmat &lt;- matrix(1:9, nrow = 3, ncol = 3)\n\n# Data Frame\ndf &lt;- data.frame(\n  name = c(\"Alice\", \"Bob\", \"Charlie\"),\n  age = c(25, 30, 35),\n  city = c(\"New York\", \"London\", \"Paris\")\n)\n\n\n7 Functions in R\nR has many built-in functions, and you can also create your own:\n# Using a built-in function\nmean(c(1, 2, 3, 4, 5))\n\n# Creating a custom function\nsquare &lt;- function(x) {\n  return(x^2)\n}\n\nsquare(4)\n\n\n8 Control Structures\nR supports common control structures like if-else statements and loops:\n# If-else statement\nx &lt;- 10\nif (x &gt; 5) {\n  print(\"x is greater than 5\")\n} else {\n  print(\"x is not greater than 5\")\n}\n\n# For loop\nfor (i in 1:5) {\n  print(i^2)\n}\n\n# While loop\ni &lt;- 1\nwhile (i &lt;= 5) {\n  print(i^2)\n  i &lt;- i + 1\n}\n\n\n9 Reading and Writing Data\nR can read data from various file formats. Here’s an example with CSV:\n# Reading a CSV file\n# Assuming you have a file named \"data.csv\" in your working directory\ndata &lt;- read.csv(\"data.csv\")\n\n# Writing a CSV file\nwrite.csv(df, \"output.csv\", row.names = FALSE)\nFor this example, you’ll need to create a “data.csv” file in your working directory or adjust the file path accordingly.\n\n\n10 Basic Data Manipulation\nR provides many functions for manipulating data:\n# Assuming we're using the 'df' data frame from earlier\n\n# Selecting a column\ndf$name\n\n# Filtering rows\ndf[df$age &gt; 25, ]\n\n# Adding a new column\ndf$is_adult &lt;- df$age &gt;= 18\n\n# Summarizing data\nsummary(df)\n\n\n11 Introduction to Basic Plotting\nR has powerful plotting capabilities. Here’s a simple example:\n# Create some data\nx &lt;- 1:10\ny &lt;- x^2\n\n# Create a scatter plot\nplot(x, y, main = \"Square Function\", xlab = \"x\", ylab = \"y\")\n\n# Add a line\nlines(x, y, col = \"red\")"
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html",
+    "href": "00-getting started/00-getting-started.html",
+    "title": "0. Getting Started",
+    "section": "",
+    "text": "R is a powerful, open-source programming language and software environment for statistical computing, data analysis, and graphical visualisation. It provides a wide variety of statistical and graphical techniques, including linear and nonlinear modeling, time-series analysis, classification, clustering, and more.\n\n\n\nR was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, and is currently developed by the R Development Core Team. The project was conceived in 1992, with an initial version released in 1995 and a stable beta version in 2000. R is named partly after its creators (shared first letter of the authors, Ross and Robert) and partly as a play on the name of the S language, which it was designed to emulate. While S was a commercial software, R was created as a free alternative, gaining wide adoption due to its open-source nature and flexibility.\n\n\n\nR has become increasingly popular in academic fields such as social sciences, economics, entrepreneurship, and business/management as well as in corporate environments. Its appeal stems from being an open-source, free platform, making it globally accessible to researchers and students. R’s extensive ecosystem of user-contributed packages significantly expands its functionality, while its scripting capability ensures reproducibility of analyses. Researchers and analysts leverage R’s comprehensive statistical and machine learning techniques to explore data trends, build predictive models, and create publication-quality visualizations that inform decision-making. The language is further bolstered by a large, active community that continuously contributes to its development and provides abundant learning resources, making R an invaluable tool for data exploration, analysis, and presentation across various disciplines.\n\n\n\nR’s versatility makes it an excellent tool for various aspects of research:\n\nData wrangling: R excels at cleaning, transforming, and restructuring data. Packages like dplyr and tidyr provide intuitive ways to manipulate data.\nStatistical analysis: From basic descriptive statistics to advanced modeling techniques, R covers a wide range of statistical methods. It’s particularly strong in areas like regression analysis, ANOVA, time series analysis, and machine learning.\nData visualisation: The ggplot2 package, part of the tidyverse, allows for the creation of complex, publication-quality visualisations with a consistent and intuitive syntax.\nLarge dataset handling: R can efficiently work with large datasets, especially when using packages optimized for big data, such as data.table or spark.\nReproducible research: R Markdown and Quarto (like this document) allow for the integration of code, results, and narrative, facilitating reproducible research practices.\nExtensibility: R’s package system allows users to easily extend its functionality, making it adaptable to specific research needs.\nCommunity support: R has a vibrant community that provides help and feedback and continuously develops and shares packages.\n\n\n\n\nR can integrate with various other tools and technologies, allowing for flexible workflows across different technologies. Example include:\n\nPython: The reticulate package allows R to interface with Python, combining the strengths of both languages.\nDatabases: R can connect to various databases (e.g., SQL, MongoDB) for data retrieval and storage.\nWeb technologies: Packages like shiny allow for the creation of interactive web applications using R.\nVersion control: R projects can be managed with Git and GitHub, facilitating collaboration and version control."
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#what-is-r",
+    "href": "00-getting started/00-getting-started.html#what-is-r",
+    "title": "0. Getting Started",
+    "section": "",
+    "text": "R is a powerful, open-source programming language and software environment for statistical computing, data analysis, and graphical visualisation. It provides a wide variety of statistical and graphical techniques, including linear and nonlinear modeling, time-series analysis, classification, clustering, and more."
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#brief-history-of-r",
+    "href": "00-getting started/00-getting-started.html#brief-history-of-r",
+    "title": "0. Getting Started",
+    "section": "",
+    "text": "R was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, and is currently developed by the R Development Core Team. The project was conceived in 1992, with an initial version released in 1995 and a stable beta version in 2000. R is named partly after its creators (shared first letter of the authors, Ross and Robert) and partly as a play on the name of the S language, which it was designed to emulate. While S was a commercial software, R was created as a free alternative, gaining wide adoption due to its open-source nature and flexibility."
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#used-of-r-in-research-and-data-analysis",
+    "href": "00-getting started/00-getting-started.html#used-of-r-in-research-and-data-analysis",
+    "title": "0. Getting Started",
+    "section": "",
+    "text": "R has become increasingly popular in academic fields such as social sciences, economics, entrepreneurship, and business/management as well as in corporate environments. Its appeal stems from being an open-source, free platform, making it globally accessible to researchers and students. R’s extensive ecosystem of user-contributed packages significantly expands its functionality, while its scripting capability ensures reproducibility of analyses. Researchers and analysts leverage R’s comprehensive statistical and machine learning techniques to explore data trends, build predictive models, and create publication-quality visualizations that inform decision-making. The language is further bolstered by a large, active community that continuously contributes to its development and provides abundant learning resources, making R an invaluable tool for data exploration, analysis, and presentation across various disciplines."
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#key-features-and-advantages-of-r",
+    "href": "00-getting started/00-getting-started.html#key-features-and-advantages-of-r",
+    "title": "0. Getting Started",
+    "section": "",
+    "text": "R’s versatility makes it an excellent tool for various aspects of research:\n\nData wrangling: R excels at cleaning, transforming, and restructuring data. Packages like dplyr and tidyr provide intuitive ways to manipulate data.\nStatistical analysis: From basic descriptive statistics to advanced modeling techniques, R covers a wide range of statistical methods. It’s particularly strong in areas like regression analysis, ANOVA, time series analysis, and machine learning.\nData visualisation: The ggplot2 package, part of the tidyverse, allows for the creation of complex, publication-quality visualisations with a consistent and intuitive syntax.\nLarge dataset handling: R can efficiently work with large datasets, especially when using packages optimized for big data, such as data.table or spark.\nReproducible research: R Markdown and Quarto (like this document) allow for the integration of code, results, and narrative, facilitating reproducible research practices.\nExtensibility: R’s package system allows users to easily extend its functionality, making it adaptable to specific research needs.\nCommunity support: R has a vibrant community that provides help and feedback and continuously develops and shares packages."
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#rs-interface-with-other-tools",
+    "href": "00-getting started/00-getting-started.html#rs-interface-with-other-tools",
+    "title": "0. Getting Started",
+    "section": "",
+    "text": "R can integrate with various other tools and technologies, allowing for flexible workflows across different technologies. Example include:\n\nPython: The reticulate package allows R to interface with Python, combining the strengths of both languages.\nDatabases: R can connect to various databases (e.g., SQL, MongoDB) for data retrieval and storage.\nWeb technologies: Packages like shiny allow for the creation of interactive web applications using R.\nVersion control: R projects can be managed with Git and GitHub, facilitating collaboration and version control."
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#what-is-rstudio",
+    "href": "00-getting started/00-getting-started.html#what-is-rstudio",
+    "title": "0. Getting Started",
+    "section": "2.1 What is RStudio?",
+    "text": "2.1 What is RStudio?\nRStudio is an integrated development environment (IDE) specifically designed for R. It provides a user-friendly interface that makes working with R more accessible and efficient, especially for beginners."
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#how-rstudio-enhances-the-r-programming-experience",
+    "href": "00-getting started/00-getting-started.html#how-rstudio-enhances-the-r-programming-experience",
+    "title": "0. Getting Started",
+    "section": "2.2 How RStudio enhances the R programming experience",
+    "text": "2.2 How RStudio enhances the R programming experience\nRStudio improves R programming productivity by offering a unified platform that integrates all aspects of the R workflow. Within a single window, users can write, edit, and execute R code, visualize results, and manage files efficiently. The IDE features a sophisticated code editor with syntax highlighting and auto-completion, streamlining the coding process. It provides seamless access to R documentation and help files, facilitating quick reference and learning. RStudio’s integrated plot and data viewers allow for immediate visualisation and inspection of results. The platform also includes robust project management tools to organize work effectively. Furthermore, RStudio’s built-in support for version control systems like Git enables smooth collaboration and code versioning, making it an all-encompassing solution for R programmers of all levels."
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#key-features-of-rstudio",
+    "href": "00-getting started/00-getting-started.html#key-features-of-rstudio",
+    "title": "0. Getting Started",
+    "section": "2.3 Key features of RStudio",
+    "text": "2.3 Key features of RStudio\nRStudio’s interface is divided into four main panes:\n\nSource Editor: Write and save R scripts for easy reproducibility.\nConsole: Interact with R directly for quick calculations or testing code snippets.\nEnvironment/History: Displays your current workspace objects and command history and allows t.\nFiles/Plots/Packages/Help: A multi-purpose pane for file management, viewing plots, managing packages, and accessing help documentation."
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#rstudio-cloud-option",
+    "href": "00-getting started/00-getting-started.html#rstudio-cloud-option",
+    "title": "0. Getting Started",
+    "section": "2.4 RStudio Cloud Option",
+    "text": "2.4 RStudio Cloud Option\nFor students who prefer not to install R locally, RStudio Cloud (https://rstudio.cloud/) offers a browser-based alternative. With a free account, you can create projects and run R code in your browser without the need for installation. To set up a free RStudio Cloud account:\n\nVisit https://rstudio.cloud/\nClick “Get Started for Free”\nSign up using your email or Google account\nOnce logged in, you can create new projects and start using R immediately in your browser\n\nRStudio Cloud provides a consistent environment across different computers and operating systems, which can be particularly useful for collaborative work or when working on multiple devices."
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#system-requirements-for-r-and-rstudio",
+    "href": "00-getting started/00-getting-started.html#system-requirements-for-r-and-rstudio",
+    "title": "0. Getting Started",
+    "section": "3.1 System requirements for R and RStudio",
+    "text": "3.1 System requirements for R and RStudio\nBefore installing R and RStudio, ensure your system meets these requirements:\n\nFor Windows:\n\nWindows 7 or later\n32-bit or 64-bit operating system\n\nFor Mac:\n\nmacOS 10.13 (High Sierra) or later\n64-bit operating system\n\n\nBoth R and RStudio are relatively lightweight programs and should run on most modern computers."
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#step-by-step-installation-process-for-windows",
+    "href": "00-getting started/00-getting-started.html#step-by-step-installation-process-for-windows",
+    "title": "0. Getting Started",
+    "section": "3.2 Step-by-step installation process for Windows",
+    "text": "3.2 Step-by-step installation process for Windows\n\nDownload R:\n\nGo to https://cran.r-project.org/\nClick on “Download R for Windows”\nClick on “base”\nClick on the download link for the latest version\n\nInstall R:\n\nRun the downloaded .exe file\nFollow the installation wizard, accepting the default options\n\nDownload RStudio:\n\nGo to https://www.rstudio.com/products/rstudio/download/\nScroll down to “RStudio Desktop”\nClick on “Download RStudio for Windows”\n\nInstall RStudio:\n\nRun the downloaded .exe file\nFollow the installation wizard, accepting the default options\n\n\n[Note: Insert screenshot of R download page for Windows here] [Note: Insert screenshot of RStudio download page here]"
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#step-by-step-installation-process-for-mac",
+    "href": "00-getting started/00-getting-started.html#step-by-step-installation-process-for-mac",
+    "title": "0. Getting Started",
+    "section": "3.3 Step-by-step installation process for Mac",
+    "text": "3.3 Step-by-step installation process for Mac\n\nDownload R:\n\nGo to https://cran.r-project.org/\nClick on “Download R for macOS”\nClick on the .pkg file appropriate for your macOS version\n\nInstall R:\n\nOpen the downloaded .pkg file\nFollow the installation wizard, accepting the default options\n\nDownload RStudio:\n\nGo to https://www.rstudio.com/products/rstudio/download/\nScroll down to “RStudio Desktop”\nClick on “Download RStudio for macOS”\n\nInstall RStudio:\n\nOpen the downloaded .dmg file\nDrag the RStudio icon to your Applications folder\n\n\n[Note: Insert screenshot of R download page for macOS here] [Note: Insert screenshot of RStudio download page here]"
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#verifying-successful-installation",
+    "href": "00-getting started/00-getting-started.html#verifying-successful-installation",
+    "title": "0. Getting Started",
+    "section": "3.4 Verifying successful installation",
+    "text": "3.4 Verifying successful installation\nAfter installation, open RStudio. You should see the console and other features of RStudio. In the Console pane (usually bottom-left), you should see information about the R version. Type 1 + 1 in the Console and press Enter. If you get the result 2, both R and RStudio are working correctly."
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#r-and-rstudio-updates",
+    "href": "00-getting started/00-getting-started.html#r-and-rstudio-updates",
+    "title": "0. Getting Started",
+    "section": "3.5 R and RStudio Updates",
+    "text": "3.5 R and RStudio Updates\nKeeping R and RStudio up to date is important for accessing the latest features and bug fixes:\n\nTo check for R updates:\n\nOpen RStudio\nGo to Tools &gt; Check for Updates\nIf an update is available, it will prompt you to install it\n\nTo check for RStudio updates:\n\nOpen RStudio\nGo to Help &gt; Check for Updates\nIf an update is available, it will prompt you to install it\n\n\nIt’s generally a good practice to update both R and RStudio every few months or when starting a new project."
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#what-are-r-packages",
+    "href": "00-getting started/00-getting-started.html#what-are-r-packages",
+    "title": "0. Getting Started",
+    "section": "4.1 What are R packages?",
+    "text": "4.1 What are R packages?\nR packages are collections of R functions, data, and documentation that extend the capabilities of base R. They are the fundamental units of reproducible R code, allowing users to easily share and reuse code."
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#the-importance-of-packages-in-extending-rs-functionality",
+    "href": "00-getting started/00-getting-started.html#the-importance-of-packages-in-extending-rs-functionality",
+    "title": "0. Getting Started",
+    "section": "4.2 The importance of packages in extending R’s functionality",
+    "text": "4.2 The importance of packages in extending R’s functionality\nR packages provide users with access to specialised, pre-written functions, eliminating the need to code complex operations from scratch. These packages typically undergo rigorous testing and maintenance, ensuring code consistency and reliability. By offering a standardised method for sharing code and methodologies, packages facilitate collaboration among researchers and developers. Moreover, they significantly expand R’s capabilities, extending its reach into specific domains, ranging from advanced statistical techniques to interfaces with other software systems. This extensibility through packages makes R a versatile and powerful tool adaptable to a wide array of analytical challenges across various fields."
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#brief-introduction-to-cran",
+    "href": "00-getting started/00-getting-started.html#brief-introduction-to-cran",
+    "title": "0. Getting Started",
+    "section": "4.3 Brief introduction to CRAN",
+    "text": "4.3 Brief introduction to CRAN\nThe Comprehensive R Archive Network (CRAN) serves as the official repository for R packages, hosting thousands of user-contributed extensions to the R language. CRAN ensures the quality and consistency of its offerings through a rigorous review process for all submitted packages. Users can easily install these packages directly within R using the install.packages() function, streamlining the process of extending R’s capabilities. Furthermore, CRAN provides comprehensive documentation and vignettes for each package, offering users detailed information on functionality, usage, and implementation. This centralized, curated repository plays a crucial role in maintaining R’s ecosystem, facilitating easy access to a vast array of tools and functions for R users worldwide. To explore CRAN, visit https://cran.r-project.org/."
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#setting-up-a-working-directory",
+    "href": "00-getting started/00-getting-started.html#setting-up-a-working-directory",
+    "title": "0. Getting Started",
+    "section": "5.1 Setting up a working directory",
+    "text": "5.1 Setting up a working directory\nSetting up a proper working directory is crucial for organizing your R projects:\n\nUse RStudio’s project feature:\n\nGo to File &gt; New Project\nChoose a new or existing directory\nThis creates an .Rproj file and sets the working directory automatically\n\nAlternatively, set the working directory manually:\n\nUse setwd(\"/path/to/your/directory\") in your R script\nOr use Session &gt; Set Working Directory &gt; Choose Directory in RStudio"
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#how-to-organize-project-files-for-research",
+    "href": "00-getting started/00-getting-started.html#how-to-organize-project-files-for-research",
+    "title": "0. Getting Started",
+    "section": "5.2 How to organize project files for research",
+    "text": "5.2 How to organize project files for research\nA well-organized project structure might look like this:\nproject/\n├── data/\n│   ├── raw/\n│   └── processed/\n├── scripts/\n├── output/\n│   ├── figures/\n│   └── tables/\n├── docs/\n└── project.Rproj\n\ndata/: Store your data files\nscripts/: Keep your R scripts\noutput/: Save generated figures and tables\ndocs/: Store documentation and reports"
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#importance-of-commenting-and-code-organization",
+    "href": "00-getting started/00-getting-started.html#importance-of-commenting-and-code-organization",
+    "title": "0. Getting Started",
+    "section": "5.3 Importance of commenting and code organization",
+    "text": "5.3 Importance of commenting and code organization\nGood coding practices improve readability and reproducibility:\n\nUse clear and concise comments to explain your code\nOrganize your code into logical sections\nUse meaningful variable and function names\nKeep your code DRY (Don’t Repeat Yourself)\n\nExample of well-commented code:\n# Load necessary libraries\nlibrary(tidyverse)\n\n# Read in the data\ndata &lt;- read_csv(\"data/raw/survey_results.csv\")\n\n# Clean the data\nclean_data &lt;- data %&gt;%\n  filter(!is.na(age)) %&gt;%  # Remove rows with missing age\n  mutate(income = as.numeric(income))  # Convert income to numeric\n\n# Calculate summary statistics\nsummary_stats &lt;- clean_data %&gt;%\n  group_by(education) %&gt;%\n  summarize(\n    mean_income = mean(income, na.rm = TRUE),\n    median_age = median(age, na.rm = TRUE)\n  )\n\n# Print results\nprint(summary_stats)"
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#version-control-basics",
+    "href": "00-getting started/00-getting-started.html#version-control-basics",
+    "title": "0. Getting Started",
+    "section": "5.4 Version control basics",
+    "text": "5.4 Version control basics\nVersion control is essential for tracking changes in your code and collaborating with others. Git is a popular version control system, and GitHub is a platform for hosting Git repositories.\nBasic Git concepts:\n\nRepository: A project’s folder containing all files and version history\nCommit: A snapshot of your project at a specific point in time\nBranch: A parallel version of your repository\nPull request: A method to propose changes to a repository\n\nWhile we won’t go into detail here, learning Git can greatly enhance your research workflow."
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#official-r-documentation",
+    "href": "00-getting started/00-getting-started.html#official-r-documentation",
+    "title": "0. Getting Started",
+    "section": "6.1 Official R Documentation",
+    "text": "6.1 Official R Documentation\nThe official R documentation is a valuable resource for learning about the functions and packages available in R.\n\nThe R Project: https://www.r-project.org/\nR Documentation: https://www.rdocumentation.org/\n\nIn addition, the R Journal, a peer-reviewed open-access publication, serves as an invaluable resource for R users, offering in-depth articles on new packages, statistical methods, and applications of R in various fields, thereby providing both support for current users and insights into the evolving capabilities of the R ecosystem."
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#recommended-books-and-online-materials",
+    "href": "00-getting started/00-getting-started.html#recommended-books-and-online-materials",
+    "title": "0. Getting Started",
+    "section": "6.2 Recommended Books and Online Materials",
+    "text": "6.2 Recommended Books and Online Materials\nBooks\n\n“R for Data Science (2e)” by Hadley Wickham, Mine Cetinkaya-Rundel, and Garrett Grolemund [book|website|GitHub]\n“The Art of R Programming” by Norman Matloff [book]\n“Advanced R (2e)” by Hadley Wickham [book|website|GitHub]\n“ggplot2: Elegant Graphics for Data Analysis (3e)” by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen [website|GitHub]\n“R Graphics Cookbook (2e)” by Winston Chang [book|website]\n“Text Mining with R: A Tidy Approach” by Julia Silge and David Robinson [book|website|GitHub]\n\nCheatsheets\nCheatsheets provide a handy reference guide for various aspects of working with R and RStudio, including RStudio, data tidying with tidyr, data transformation with dplyr, and data visualisation with ggplot2, among others (see others here).\nPosit Recipes\nPosit recipes (previously Posit primers) represent a collection of R code snippets and instructions featuring up-to-date best practices for coding in R: https://posit.cloud/learn/recipes.\nGitHub Repositories and Online Course Materials\n\nUniversity of Oregon (EC 607) by Grant McDermott [GitHub]"
+  },
+  {
+    "objectID": "00-getting started/00-getting-started.html#community-forums-and-support-channels",
+    "href": "00-getting started/00-getting-started.html#community-forums-and-support-channels",
+    "title": "0. Getting Started",
+    "section": "6.3 Community forums and support channels",
+    "text": "6.3 Community forums and support channels\nThere are a variety of other in-person and online resources available, including:\n\nStack Overflow (R tag): https://stackoverflow.com/questions/tagged/r\nRStudio community: https://community.rstudio.com/\nR-Ladies (an organization to promote gender diversity in the R community): https://rladies.org\nR-bloggers: https://www.r-bloggers.com/\n#rstats on X (formerly Twitter)\n\nRemember, the R community is known for being helpful and welcoming to newcomers. Don’t hesitate to ask questions and engage with other R users as you begin your journey!"
+  }
+]

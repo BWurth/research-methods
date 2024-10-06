@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.5.57">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="author" content="Bernd Wurth">
+
+<title>0. Getting Started – Research Methods Course</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/quarto-nav/headroom.min.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<script src="../site_libs/quarto-html/quarto.js"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+
+
+<link rel="stylesheet" href="../styles.css">
+</head>
+
+<body class="nav-fixed">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Research Methods Course</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <span class="nav-link">
+<span class="menu-text">about.qmd</span>
+    </span>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">On this page</h2>
+   
+  <ul class="collapse">
+  <li><a href="#introduction-to-r" id="toc-introduction-to-r" class="nav-link active" data-scroll-target="#introduction-to-r"><span class="header-section-number">1</span> Introduction to R</a>
+  <ul class="collapse">
+  <li><a href="#what-is-r" id="toc-what-is-r" class="nav-link" data-scroll-target="#what-is-r"><span class="header-section-number">1.1</span> What is R?</a></li>
+  <li><a href="#brief-history-of-r" id="toc-brief-history-of-r" class="nav-link" data-scroll-target="#brief-history-of-r"><span class="header-section-number">1.2</span> Brief History of R</a></li>
+  <li><a href="#used-of-r-in-research-and-data-analysis" id="toc-used-of-r-in-research-and-data-analysis" class="nav-link" data-scroll-target="#used-of-r-in-research-and-data-analysis"><span class="header-section-number">1.3</span> Used of R in Research and Data Analysis</a></li>
+  <li><a href="#key-features-and-advantages-of-r" id="toc-key-features-and-advantages-of-r" class="nav-link" data-scroll-target="#key-features-and-advantages-of-r"><span class="header-section-number">1.4</span> Key Features and Advantages of R</a></li>
+  <li><a href="#rs-interface-with-other-tools" id="toc-rs-interface-with-other-tools" class="nav-link" data-scroll-target="#rs-interface-with-other-tools"><span class="header-section-number">1.5</span> R’s interface with other tools</a></li>
+  </ul></li>
+  <li><a href="#introduction-to-rstudio" id="toc-introduction-to-rstudio" class="nav-link" data-scroll-target="#introduction-to-rstudio"><span class="header-section-number">2</span> Introduction to RStudio</a>
+  <ul class="collapse">
+  <li><a href="#what-is-rstudio" id="toc-what-is-rstudio" class="nav-link" data-scroll-target="#what-is-rstudio"><span class="header-section-number">2.1</span> What is RStudio?</a></li>
+  <li><a href="#how-rstudio-enhances-the-r-programming-experience" id="toc-how-rstudio-enhances-the-r-programming-experience" class="nav-link" data-scroll-target="#how-rstudio-enhances-the-r-programming-experience"><span class="header-section-number">2.2</span> How RStudio enhances the R programming experience</a></li>
+  <li><a href="#key-features-of-rstudio" id="toc-key-features-of-rstudio" class="nav-link" data-scroll-target="#key-features-of-rstudio"><span class="header-section-number">2.3</span> Key features of RStudio</a></li>
+  <li><a href="#rstudio-cloud-option" id="toc-rstudio-cloud-option" class="nav-link" data-scroll-target="#rstudio-cloud-option"><span class="header-section-number">2.4</span> RStudio Cloud Option</a></li>
+  </ul></li>
+  <li><a href="#installation-guide" id="toc-installation-guide" class="nav-link" data-scroll-target="#installation-guide"><span class="header-section-number">3</span> Installation Guide</a>
+  <ul class="collapse">
+  <li><a href="#system-requirements-for-r-and-rstudio" id="toc-system-requirements-for-r-and-rstudio" class="nav-link" data-scroll-target="#system-requirements-for-r-and-rstudio"><span class="header-section-number">3.1</span> System requirements for R and RStudio</a></li>
+  <li><a href="#step-by-step-installation-process-for-windows" id="toc-step-by-step-installation-process-for-windows" class="nav-link" data-scroll-target="#step-by-step-installation-process-for-windows"><span class="header-section-number">3.2</span> Step-by-step installation process for Windows</a></li>
+  <li><a href="#step-by-step-installation-process-for-mac" id="toc-step-by-step-installation-process-for-mac" class="nav-link" data-scroll-target="#step-by-step-installation-process-for-mac"><span class="header-section-number">3.3</span> Step-by-step installation process for Mac</a></li>
+  <li><a href="#verifying-successful-installation" id="toc-verifying-successful-installation" class="nav-link" data-scroll-target="#verifying-successful-installation"><span class="header-section-number">3.4</span> Verifying successful installation</a></li>
+  <li><a href="#r-and-rstudio-updates" id="toc-r-and-rstudio-updates" class="nav-link" data-scroll-target="#r-and-rstudio-updates"><span class="header-section-number">3.5</span> R and RStudio Updates</a></li>
+  </ul></li>
+  <li><a href="#r-packages-an-overview" id="toc-r-packages-an-overview" class="nav-link" data-scroll-target="#r-packages-an-overview"><span class="header-section-number">4</span> R Packages: An Overview</a>
+  <ul class="collapse">
+  <li><a href="#what-are-r-packages" id="toc-what-are-r-packages" class="nav-link" data-scroll-target="#what-are-r-packages"><span class="header-section-number">4.1</span> What are R packages?</a></li>
+  <li><a href="#the-importance-of-packages-in-extending-rs-functionality" id="toc-the-importance-of-packages-in-extending-rs-functionality" class="nav-link" data-scroll-target="#the-importance-of-packages-in-extending-rs-functionality"><span class="header-section-number">4.2</span> The importance of packages in extending R’s functionality</a></li>
+  <li><a href="#brief-introduction-to-cran" id="toc-brief-introduction-to-cran" class="nav-link" data-scroll-target="#brief-introduction-to-cran"><span class="header-section-number">4.3</span> Brief introduction to CRAN</a></li>
+  </ul></li>
+  <li><a href="#best-practices-for-getting-started" id="toc-best-practices-for-getting-started" class="nav-link" data-scroll-target="#best-practices-for-getting-started"><span class="header-section-number">5</span> Best Practices for Getting Started</a>
+  <ul class="collapse">
+  <li><a href="#setting-up-a-working-directory" id="toc-setting-up-a-working-directory" class="nav-link" data-scroll-target="#setting-up-a-working-directory"><span class="header-section-number">5.1</span> Setting up a working directory</a></li>
+  <li><a href="#how-to-organize-project-files-for-research" id="toc-how-to-organize-project-files-for-research" class="nav-link" data-scroll-target="#how-to-organize-project-files-for-research"><span class="header-section-number">5.2</span> How to organize project files for research</a></li>
+  <li><a href="#importance-of-commenting-and-code-organization" id="toc-importance-of-commenting-and-code-organization" class="nav-link" data-scroll-target="#importance-of-commenting-and-code-organization"><span class="header-section-number">5.3</span> Importance of commenting and code organization</a></li>
+  <li><a href="#version-control-basics" id="toc-version-control-basics" class="nav-link" data-scroll-target="#version-control-basics"><span class="header-section-number">5.4</span> Version control basics</a></li>
+  </ul></li>
+  <li><a href="#additional-resources" id="toc-additional-resources" class="nav-link" data-scroll-target="#additional-resources"><span class="header-section-number">6</span> Additional Resources</a>
+  <ul class="collapse">
+  <li><a href="#official-r-documentation" id="toc-official-r-documentation" class="nav-link" data-scroll-target="#official-r-documentation"><span class="header-section-number">6.1</span> Official R Documentation</a></li>
+  <li><a href="#recommended-books-and-online-materials" id="toc-recommended-books-and-online-materials" class="nav-link" data-scroll-target="#recommended-books-and-online-materials"><span class="header-section-number">6.2</span> Recommended Books and Online Materials</a></li>
+  <li><a href="#community-forums-and-support-channels" id="toc-community-forums-and-support-channels" class="nav-link" data-scroll-target="#community-forums-and-support-channels"><span class="header-section-number">6.3</span> Community forums and support channels</a></li>
+  </ul></li>
+  </ul>
+<div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="00-getting-started.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">0. Getting Started</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    <div>
+    <div class="quarto-title-meta-heading">Author</div>
+    <div class="quarto-title-meta-contents">
+             <p>Bernd Wurth </p>
+          </div>
+  </div>
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<section id="introduction-to-r" class="level1" data-number="1">
+<h1 data-number="1"><span class="header-section-number">1</span> Introduction to R</h1>
+<section id="what-is-r" class="level2" data-number="1.1">
+<h2 data-number="1.1" class="anchored" data-anchor-id="what-is-r"><span class="header-section-number">1.1</span> What is R?</h2>
+<p>R is a powerful, open-source programming language and software environment for statistical computing, data analysis, and graphical visualisation. It provides a wide variety of statistical and graphical techniques, including linear and nonlinear modeling, time-series analysis, classification, clustering, and more.</p>
+</section>
+<section id="brief-history-of-r" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="brief-history-of-r"><span class="header-section-number">1.2</span> Brief History of R</h2>
+<p>R was created by Ross Ihaka and Robert Gentleman at the University of Auckland, New Zealand, and is currently developed by the R Development Core Team. The project was conceived in 1992, with an initial version released in 1995 and a stable beta version in 2000. R is named partly after its creators (shared first letter of the authors, Ross and Robert) and partly as a play on the name of the S language, which it was designed to emulate. While S was a commercial software, R was created as a free alternative, gaining wide adoption due to its open-source nature and flexibility.</p>
+</section>
+<section id="used-of-r-in-research-and-data-analysis" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="used-of-r-in-research-and-data-analysis"><span class="header-section-number">1.3</span> Used of R in Research and Data Analysis</h2>
+<p>R has become increasingly popular in academic fields such as social sciences, economics, entrepreneurship, and business/management as well as in corporate environments. Its appeal stems from being an open-source, free platform, making it globally accessible to researchers and students. R’s extensive ecosystem of user-contributed packages significantly expands its functionality, while its scripting capability ensures reproducibility of analyses. Researchers and analysts leverage R’s comprehensive statistical and machine learning techniques to explore data trends, build predictive models, and create publication-quality visualizations that inform decision-making. The language is further bolstered by a large, active community that continuously contributes to its development and provides abundant learning resources, making R an invaluable tool for data exploration, analysis, and presentation across various disciplines.</p>
+</section>
+<section id="key-features-and-advantages-of-r" class="level2" data-number="1.4">
+<h2 data-number="1.4" class="anchored" data-anchor-id="key-features-and-advantages-of-r"><span class="header-section-number">1.4</span> Key Features and Advantages of R</h2>
+<p>R’s versatility makes it an excellent tool for various aspects of research:</p>
+<ol type="1">
+<li><p><strong>Data wrangling</strong>: R excels at cleaning, transforming, and restructuring data. Packages like <code>dplyr</code> and <code>tidyr</code> provide intuitive ways to manipulate data.</p></li>
+<li><p><strong>Statistical analysis</strong>: From basic descriptive statistics to advanced modeling techniques, R covers a wide range of statistical methods. It’s particularly strong in areas like regression analysis, ANOVA, time series analysis, and machine learning.</p></li>
+<li><p><strong>Data visualisation</strong>: The <code>ggplot2</code> package, part of the tidyverse, allows for the creation of complex, publication-quality visualisations with a consistent and intuitive syntax.</p></li>
+<li><p><strong>Large dataset handling</strong>: R can efficiently work with large datasets, especially when using packages optimized for big data, such as <code>data.table</code> or <code>spark</code>.</p></li>
+<li><p><strong>Reproducible research</strong>: R Markdown and Quarto (like this document) allow for the integration of code, results, and narrative, facilitating reproducible research practices.</p></li>
+<li><p><strong>Extensibility</strong>: R’s package system allows users to easily extend its functionality, making it adaptable to specific research needs.</p></li>
+<li><p><strong>Community support</strong>: R has a vibrant community that provides help and feedback and continuously develops and shares packages.</p></li>
+</ol>
+</section>
+<section id="rs-interface-with-other-tools" class="level2" data-number="1.5">
+<h2 data-number="1.5" class="anchored" data-anchor-id="rs-interface-with-other-tools"><span class="header-section-number">1.5</span> R’s interface with other tools</h2>
+<p>R can integrate with various other tools and technologies, allowing for flexible workflows across different technologies. Example include:</p>
+<ul>
+<li>Python: The <code>reticulate</code> package allows R to interface with Python, combining the strengths of both languages.</li>
+<li>Databases: R can connect to various databases (e.g., SQL, MongoDB) for data retrieval and storage.</li>
+<li>Web technologies: Packages like <code>shiny</code> allow for the creation of interactive web applications using R.</li>
+<li>Version control: R projects can be managed with Git and GitHub, facilitating collaboration and version control.</li>
+</ul>
+</section>
+</section>
+<section id="introduction-to-rstudio" class="level1" data-number="2">
+<h1 data-number="2"><span class="header-section-number">2</span> Introduction to RStudio</h1>
+<section id="what-is-rstudio" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="what-is-rstudio"><span class="header-section-number">2.1</span> What is RStudio?</h2>
+<p>RStudio is an integrated development environment (IDE) specifically designed for R. It provides a user-friendly interface that makes working with R more accessible and efficient, especially for beginners.</p>
+</section>
+<section id="how-rstudio-enhances-the-r-programming-experience" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="how-rstudio-enhances-the-r-programming-experience"><span class="header-section-number">2.2</span> How RStudio enhances the R programming experience</h2>
+<p>RStudio improves R programming productivity by offering a unified platform that integrates all aspects of the R workflow. Within a single window, users can write, edit, and execute R code, visualize results, and manage files efficiently. The IDE features a sophisticated code editor with syntax highlighting and auto-completion, streamlining the coding process. It provides seamless access to R documentation and help files, facilitating quick reference and learning. RStudio’s integrated plot and data viewers allow for immediate visualisation and inspection of results. The platform also includes robust project management tools to organize work effectively. Furthermore, RStudio’s built-in support for version control systems like Git enables smooth collaboration and code versioning, making it an all-encompassing solution for R programmers of all levels.</p>
+</section>
+<section id="key-features-of-rstudio" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="key-features-of-rstudio"><span class="header-section-number">2.3</span> Key features of RStudio</h2>
+<p>RStudio’s interface is divided into four main panes:</p>
+<ol type="1">
+<li><strong>Source Editor</strong>: Write and save R scripts for easy reproducibility.</li>
+<li><strong>Console</strong>: Interact with R directly for quick calculations or testing code snippets.</li>
+<li><strong>Environment/History</strong>: Displays your current workspace objects and command history and allows t.</li>
+<li><strong>Files/Plots/Packages/Help</strong>: A multi-purpose pane for file management, viewing plots, managing packages, and accessing help documentation.</li>
+</ol>
+</section>
+<section id="rstudio-cloud-option" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="rstudio-cloud-option"><span class="header-section-number">2.4</span> RStudio Cloud Option</h2>
+<p>For students who prefer not to install R locally, RStudio Cloud (https://rstudio.cloud/) offers a browser-based alternative. With a free account, you can create projects and run R code in your browser without the need for installation. To set up a free RStudio Cloud account:</p>
+<ol type="1">
+<li>Visit https://rstudio.cloud/</li>
+<li>Click “Get Started for Free”</li>
+<li>Sign up using your email or Google account</li>
+<li>Once logged in, you can create new projects and start using R immediately in your browser</li>
+</ol>
+<p>RStudio Cloud provides a consistent environment across different computers and operating systems, which can be particularly useful for collaborative work or when working on multiple devices.</p>
+</section>
+</section>
+<section id="installation-guide" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Installation Guide</h1>
+<section id="system-requirements-for-r-and-rstudio" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="system-requirements-for-r-and-rstudio"><span class="header-section-number">3.1</span> System requirements for R and RStudio</h2>
+<p>Before installing R and RStudio, ensure your system meets these requirements:</p>
+<ul>
+<li>For Windows:
+<ul>
+<li>Windows 7 or later</li>
+<li>32-bit or 64-bit operating system</li>
+</ul></li>
+<li>For Mac:
+<ul>
+<li>macOS 10.13 (High Sierra) or later</li>
+<li>64-bit operating system</li>
+</ul></li>
+</ul>
+<p>Both R and RStudio are relatively lightweight programs and should run on most modern computers.</p>
+</section>
+<section id="step-by-step-installation-process-for-windows" class="level2" data-number="3.2">
+<h2 data-number="3.2" class="anchored" data-anchor-id="step-by-step-installation-process-for-windows"><span class="header-section-number">3.2</span> Step-by-step installation process for Windows</h2>
+<ol type="1">
+<li>Download R:
+<ul>
+<li>Go to https://cran.r-project.org/</li>
+<li>Click on “Download R for Windows”</li>
+<li>Click on “base”</li>
+<li>Click on the download link for the latest version</li>
+</ul></li>
+<li>Install R:
+<ul>
+<li>Run the downloaded .exe file</li>
+<li>Follow the installation wizard, accepting the default options</li>
+</ul></li>
+<li>Download RStudio:
+<ul>
+<li>Go to https://www.rstudio.com/products/rstudio/download/</li>
+<li>Scroll down to “RStudio Desktop”</li>
+<li>Click on “Download RStudio for Windows”</li>
+</ul></li>
+<li>Install RStudio:
+<ul>
+<li>Run the downloaded .exe file</li>
+<li>Follow the installation wizard, accepting the default options</li>
+</ul></li>
+</ol>
+<p>[Note: Insert screenshot of R download page for Windows here] [Note: Insert screenshot of RStudio download page here]</p>
+</section>
+<section id="step-by-step-installation-process-for-mac" class="level2" data-number="3.3">
+<h2 data-number="3.3" class="anchored" data-anchor-id="step-by-step-installation-process-for-mac"><span class="header-section-number">3.3</span> Step-by-step installation process for Mac</h2>
+<ol type="1">
+<li>Download R:
+<ul>
+<li>Go to https://cran.r-project.org/</li>
+<li>Click on “Download R for macOS”</li>
+<li>Click on the .pkg file appropriate for your macOS version</li>
+</ul></li>
+<li>Install R:
+<ul>
+<li>Open the downloaded .pkg file</li>
+<li>Follow the installation wizard, accepting the default options</li>
+</ul></li>
+<li>Download RStudio:
+<ul>
+<li>Go to https://www.rstudio.com/products/rstudio/download/</li>
+<li>Scroll down to “RStudio Desktop”</li>
+<li>Click on “Download RStudio for macOS”</li>
+</ul></li>
+<li>Install RStudio:
+<ul>
+<li>Open the downloaded .dmg file</li>
+<li>Drag the RStudio icon to your Applications folder</li>
+</ul></li>
+</ol>
+<p>[Note: Insert screenshot of R download page for macOS here] [Note: Insert screenshot of RStudio download page here]</p>
+</section>
+<section id="verifying-successful-installation" class="level2" data-number="3.4">
+<h2 data-number="3.4" class="anchored" data-anchor-id="verifying-successful-installation"><span class="header-section-number">3.4</span> Verifying successful installation</h2>
+<p>After installation, open RStudio. You should see the console and other features of RStudio. In the Console pane (usually bottom-left), you should see information about the R version. Type <code>1 + 1</code> in the Console and press Enter. If you get the result <code>2</code>, both R and RStudio are working correctly.</p>
+</section>
+<section id="r-and-rstudio-updates" class="level2" data-number="3.5">
+<h2 data-number="3.5" class="anchored" data-anchor-id="r-and-rstudio-updates"><span class="header-section-number">3.5</span> R and RStudio Updates</h2>
+<p>Keeping R and RStudio up to date is important for accessing the latest features and bug fixes:</p>
+<ul>
+<li>To check for R updates:
+<ol type="1">
+<li>Open RStudio</li>
+<li>Go to Tools &gt; Check for Updates</li>
+<li>If an update is available, it will prompt you to install it</li>
+</ol></li>
+<li>To check for RStudio updates:
+<ol type="1">
+<li>Open RStudio</li>
+<li>Go to Help &gt; Check for Updates</li>
+<li>If an update is available, it will prompt you to install it</li>
+</ol></li>
+</ul>
+<p>It’s generally a good practice to update both R and RStudio every few months or when starting a new project.</p>
+</section>
+</section>
+<section id="r-packages-an-overview" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> R Packages: An Overview</h1>
+<section id="what-are-r-packages" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="what-are-r-packages"><span class="header-section-number">4.1</span> What are R packages?</h2>
+<p>R packages are collections of R functions, data, and documentation that extend the capabilities of base R. They are the fundamental units of reproducible R code, allowing users to easily share and reuse code.</p>
+</section>
+<section id="the-importance-of-packages-in-extending-rs-functionality" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="the-importance-of-packages-in-extending-rs-functionality"><span class="header-section-number">4.2</span> The importance of packages in extending R’s functionality</h2>
+<p>R packages provide users with access to specialised, pre-written functions, eliminating the need to code complex operations from scratch. These packages typically undergo rigorous testing and maintenance, ensuring code consistency and reliability. By offering a standardised method for sharing code and methodologies, packages facilitate collaboration among researchers and developers. Moreover, they significantly expand R’s capabilities, extending its reach into specific domains, ranging from advanced statistical techniques to interfaces with other software systems. This extensibility through packages makes R a versatile and powerful tool adaptable to a wide array of analytical challenges across various fields.</p>
+</section>
+<section id="brief-introduction-to-cran" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="brief-introduction-to-cran"><span class="header-section-number">4.3</span> Brief introduction to CRAN</h2>
+<p>The Comprehensive R Archive Network (CRAN) serves as the official repository for R packages, hosting thousands of user-contributed extensions to the R language. CRAN ensures the quality and consistency of its offerings through a rigorous review process for all submitted packages. Users can easily install these packages directly within R using the install.packages() function, streamlining the process of extending R’s capabilities. Furthermore, CRAN provides comprehensive documentation and vignettes for each package, offering users detailed information on functionality, usage, and implementation. This centralized, curated repository plays a crucial role in maintaining R’s ecosystem, facilitating easy access to a vast array of tools and functions for R users worldwide. To explore CRAN, visit <a href="https://cran.r-project.org/">https://cran.r-project.org/</a>.</p>
+</section>
+</section>
+<section id="best-practices-for-getting-started" class="level1" data-number="5">
+<h1 data-number="5"><span class="header-section-number">5</span> Best Practices for Getting Started</h1>
+<section id="setting-up-a-working-directory" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="setting-up-a-working-directory"><span class="header-section-number">5.1</span> Setting up a working directory</h2>
+<p>Setting up a proper working directory is crucial for organizing your R projects:</p>
+<ol type="1">
+<li>Use RStudio’s project feature:
+<ul>
+<li>Go to File &gt; New Project</li>
+<li>Choose a new or existing directory</li>
+<li>This creates an .Rproj file and sets the working directory automatically</li>
+</ul></li>
+<li>Alternatively, set the working directory manually:
+<ul>
+<li>Use <code>setwd("/path/to/your/directory")</code> in your R script</li>
+<li>Or use Session &gt; Set Working Directory &gt; Choose Directory in RStudio</li>
+</ul></li>
+</ol>
+</section>
+<section id="how-to-organize-project-files-for-research" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="how-to-organize-project-files-for-research"><span class="header-section-number">5.2</span> How to organize project files for research</h2>
+<p>A well-organized project structure might look like this:</p>
+<pre><code>project/
+├── data/
+│   ├── raw/
+│   └── processed/
+├── scripts/
+├── output/
+│   ├── figures/
+│   └── tables/
+├── docs/
+└── project.Rproj</code></pre>
+<ul>
+<li><code>data/</code>: Store your data files</li>
+<li><code>scripts/</code>: Keep your R scripts</li>
+<li><code>output/</code>: Save generated figures and tables</li>
+<li><code>docs/</code>: Store documentation and reports</li>
+</ul>
+</section>
+<section id="importance-of-commenting-and-code-organization" class="level2" data-number="5.3">
+<h2 data-number="5.3" class="anchored" data-anchor-id="importance-of-commenting-and-code-organization"><span class="header-section-number">5.3</span> Importance of commenting and code organization</h2>
+<p>Good coding practices improve readability and reproducibility:</p>
+<ol type="1">
+<li>Use clear and concise comments to explain your code</li>
+<li>Organize your code into logical sections</li>
+<li>Use meaningful variable and function names</li>
+<li>Keep your code DRY (Don’t Repeat Yourself)</li>
+</ol>
+<p>Example of well-commented code:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load necessary libraries</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the data</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/raw/survey_results.csv"</span>)</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean the data</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(age)) <span class="sc">%&gt;%</span>  <span class="co"># Remove rows with missing age</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">income =</span> <span class="fu">as.numeric</span>(income))  <span class="co"># Convert income to numeric</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate summary statistics</span></span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>summary_stats <span class="ot">&lt;-</span> clean_data <span class="sc">%&gt;%</span></span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(education) <span class="sc">%&gt;%</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_income =</span> <span class="fu">mean</span>(income, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_age =</span> <span class="fu">median</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(summary_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</section>
+<section id="version-control-basics" class="level2" data-number="5.4">
+<h2 data-number="5.4" class="anchored" data-anchor-id="version-control-basics"><span class="header-section-number">5.4</span> Version control basics</h2>
+<p>Version control is essential for tracking changes in your code and collaborating with others. Git is a popular version control system, and GitHub is a platform for hosting Git repositories.</p>
+<p>Basic Git concepts:</p>
+<ul>
+<li>Repository: A project’s folder containing all files and version history</li>
+<li>Commit: A snapshot of your project at a specific point in time</li>
+<li>Branch: A parallel version of your repository</li>
+<li>Pull request: A method to propose changes to a repository</li>
+</ul>
+<p>While we won’t go into detail here, learning Git can greatly enhance your research workflow.</p>
+</section>
+</section>
+<section id="additional-resources" class="level1" data-number="6">
+<h1 data-number="6"><span class="header-section-number">6</span> Additional Resources</h1>
+<section id="official-r-documentation" class="level2" data-number="6.1">
+<h2 data-number="6.1" class="anchored" data-anchor-id="official-r-documentation"><span class="header-section-number">6.1</span> Official R Documentation</h2>
+<p>The official R documentation is a valuable resource for learning about the functions and packages available in R.</p>
+<ul>
+<li>The R Project: <a href="https://www.r-project.org/">https://www.r-project.org/</a></li>
+<li>R Documentation: <a href="https://www.r-project.org/">https://www.rdocumentation.org/</a></li>
+</ul>
+<p>In addition, the <a href="https://journal.r-project.org">R Journal</a>, a peer-reviewed open-access publication, serves as an invaluable resource for R users, offering in-depth articles on new packages, statistical methods, and applications of R in various fields, thereby providing both support for current users and insights into the evolving capabilities of the R ecosystem.</p>
+</section>
+<section id="recommended-books-and-online-materials" class="level2" data-number="6.2">
+<h2 data-number="6.2" class="anchored" data-anchor-id="recommended-books-and-online-materials"><span class="header-section-number">6.2</span> Recommended Books and Online Materials</h2>
+<p><strong>Books</strong></p>
+<ul>
+<li>“R for Data Science (2e)” by Hadley Wickham, Mine Cetinkaya-Rundel, and Garrett Grolemund [<a href="https://www.oreilly.com/library/view/r-for-data/9781492097396/">book</a>|<a href="https://r4ds.hadley.nz">website</a>|<a href="https://github.com/hadley/r4ds">GitHub</a>]</li>
+<li>“The Art of R Programming” by Norman Matloff [<a href="https://www.amazon.co.uk/Art-Programming-Statistical-Software-Design/dp/1593273843/ref=sr_1_1?crid=1UJJO2HUG57F4&amp;dib=eyJ2IjoiMSJ9.lMHfaRa3X-W8SMe2h4qiWaH_3GPvcy38cuClT6rIbW_GjHj071QN20LucGBJIEps.E8XUEMQB5mqDwXptGa7gCFxs_wSA3maJcJjiuGOklMQ&amp;dib_tag=se&amp;keywords=The+Art+of+R+Programming%3A+A+Tour+of+Statistical+Software+Design&amp;qid=1728056547&amp;s=books&amp;sprefix=the+art+of+r+programming+a+tour+of+statistical+software+design%2Cstripbooks%2C47&amp;sr=1-1">book</a>]</li>
+<li>“Advanced R (2e)” by Hadley Wickham [<a href="https://www.routledge.com/Advanced-R-Second-Edition/Wickham/p/book/9780815384571?srsltid=AfmBOorwKk5VNcPwwZGq06vPQKCVGVOGRtEbmtBV93gc0bd6tiQ6bcJN">book</a>|<a href="https://adv-r.hadley.nz">website</a>|<a href="https://github.com/hadley/ggplot2-book">GitHub</a>]</li>
+<li>“ggplot2: Elegant Graphics for Data Analysis (3e)” by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen [<a href="https://ggplot2-book.org">website</a>|<a href="https://github.com/hadley/adv-r">GitHub</a>]</li>
+<li>“R Graphics Cookbook (2e)” by Winston Chang [<a href="https://www.amazon.com/dp/1491978600">book</a>|<a href="https://r-graphics.org">website</a>]</li>
+<li>“Text Mining with R: A Tidy Approach” by Julia Silge and David Robinson [<a href="https://www.oreilly.com/library/view/text-mining-with/9781491981641/">book</a>|<a href="https://www.tidytextmining.com">website</a>|<a href="https://github.com/dgrtwo/tidy-text-mining">GitHub</a>]</li>
+</ul>
+<p><strong>Cheatsheets</strong></p>
+<p>Cheatsheets provide a handy reference guide for various aspects of working with R and RStudio, including <a href="https://rstudio.github.io/cheatsheets/rstudio-ide.pdf">RStudio</a>, data tidying with <a href="https://rstudio.github.io/cheatsheets/tidyr.pdf">tidyr</a>, data transformation with <a href="https://rstudio.github.io/cheatsheets/data-transformation.pdf">dplyr</a>, and data visualisation with <a href="https://rstudio.github.io/cheatsheets/data-visualization.pdf">ggplot2</a>, among others (see others <a href="https://posit.co/resources/cheatsheets/">here</a>).</p>
+<p><strong>Posit Recipes</strong></p>
+<p>Posit recipes (previously Posit primers) represent a collection of R code snippets and instructions featuring up-to-date best practices for coding in R: <a href="https://posit.cloud/learn/recipes">https://posit.cloud/learn/recipes</a>.</p>
+<p><strong>GitHub Repositories and Online Course Materials</strong></p>
+<ul>
+<li>University of Oregon (EC 607) by Grant McDermott [<a href="https://github.com/uo-ec607/lectures">GitHub</a>]</li>
+</ul>
+</section>
+<section id="community-forums-and-support-channels" class="level2" data-number="6.3">
+<h2 data-number="6.3" class="anchored" data-anchor-id="community-forums-and-support-channels"><span class="header-section-number">6.3</span> Community forums and support channels</h2>
+<p>There are a variety of other in-person and online resources available, including:</p>
+<ul>
+<li>Stack Overflow (R tag): <a href="https://stackoverflow.com/questions/tagged/r">https://stackoverflow.com/questions/tagged/r</a></li>
+<li>RStudio community: <a href="https://community.rstudio.com/">https://community.rstudio.com/</a></li>
+<li>R-Ladies (an organization to promote gender diversity in the R community): <a href="https://rladies.org">https://rladies.org</a></li>
+<li>R-bloggers: <a href="https://www.r-bloggers.com/">https://www.r-bloggers.com/</a></li>
+<li>#rstats on X (formerly Twitter)</li>
+</ul>
+<p>Remember, the R community is known for being helpful and welcoming to newcomers. Don’t hesitate to ask questions and engage with other R users as you begin your journey!</p>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
