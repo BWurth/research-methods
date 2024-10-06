@@ -11,7 +11,7 @@
     "href": "index.html",
     "title": "Research Methods in R",
     "section": "",
-    "text": "This course is designed to prepare third-year undergraduate students for their dissertations in their fourth and final year.\nThis course is part of the undergraduate program at [Your University Name]. For more information, visit our GitHub repository.\nHow to Use This Course\n\nClick on the links above to access the lesson materials.\nEach lesson includes theory, examples, and practical exercises.\nFor interactive coding, use the Binder link provided in our GitHub repository."
+    "text": "This course serves as an introduction to research methods, providing students with a foundational understanding of how to conduct data analysis using the R programming language. Through hands-on practice, students will learn essential concepts such as data manipulation, statistical analysis, and visualisation, all of which are critical for conducting independent research. By the end of the course, students will be equipped with the skills needed to effectively apply quantitative methods in their dissertations, enabling them to analyse real-world data and draw meaningful insights for research in business and entrepreneurship and social sciences more broadly.\nFor more information, visit our public GitHub repository."
   },
   {
     "objectID": "index.html#welcome-to-the-research-methods-course",
@@ -25,7 +25,7 @@
     "href": "index.html#course-outline",
     "title": "Research Methods in R",
     "section": "Course Outline",
-    "text": "Course Outline\n\nGetting Started [ html | pdf ]\nIntroduction [ html | pdf ]"
+    "text": "Course Outline\nClick on the links below to access the lesson materials. Each lesson includes theory, examples, and practical exercises. We recommend that you work through the lessons in the given order and use the HTML versions, but the PDF files contain the same information.\n\nGetting Started [ html | pdf ]\nIntroduction [ html | pdf ]"
   },
   {
     "objectID": "index.html#mgt4018-and-mgt4090-tutorials",
@@ -39,7 +39,7 @@
     "href": "index.html#acknowledgements",
     "title": "Research Methods in R",
     "section": "Acknowledgements",
-    "text": "Acknowledgements\nThank you."
+    "text": "Acknowledgements\nThis course and its materials are the culmination of many years of work and delivering a variety of classes around research methods and data science at the University of Strathclyde and the University of Glasgow. Some of the content in the earlier lessons is inspired by and adapted from teaching materials from Kate Pyper (LinkedIn) and the organisation and structure of this course have benefited from Grant McDermott’s (GitHub) EC 607 Data Science for Economists at the University of Oregon."
   },
   {
     "objectID": "index.html#license",
@@ -411,5 +411,19 @@
     "title": "0. Getting Started",
     "section": "6.3 Community forums and support channels",
     "text": "6.3 Community forums and support channels\nThere are a variety of other in-person and online resources available, including:\n\nStack Overflow (R tag): https://stackoverflow.com/questions/tagged/r\nRStudio community: https://community.rstudio.com/\nR-Ladies (an organization to promote gender diversity in the R community): https://rladies.org\nR-bloggers: https://www.r-bloggers.com/\n#rstats on X (formerly Twitter)\n\nRemember, the R community is known for being helpful and welcoming to newcomers. Don’t hesitate to ask questions and engage with other R users as you begin your journey!"
+  },
+  {
+    "objectID": "index.html#welcome",
+    "href": "index.html#welcome",
+    "title": "Research Methods in R",
+    "section": "",
+    "text": "This course serves as an introduction to research methods, providing students with a foundational understanding of how to conduct data analysis using the R programming language. Through hands-on practice, students will learn essential concepts such as data manipulation, statistical analysis, and visualisation, all of which are critical for conducting independent research. By the end of the course, students will be equipped with the skills needed to effectively apply quantitative methods in their dissertations, enabling them to analyse real-world data and draw meaningful insights for research in business and entrepreneurship and social sciences more broadly.\nFor more information, visit our public GitHub repository."
+  },
+  {
+    "objectID": "index.html#university-of-glasgow-mgt4018-and-mgt4090",
+    "href": "index.html#university-of-glasgow-mgt4018-and-mgt4090",
+    "title": "Research Methods in R",
+    "section": "University of Glasgow MGT4018 and MGT4090",
+    "text": "University of Glasgow MGT4018 and MGT4090\nThis course covers all required materials and more for the University of Glasgow’s third year courses MGT4018 and MGT4090 that prepare students for their dissertations. In addition to the general lessons and exercises above, the following tutorials cover the same exercises than the SPSS tutorials."
   }
 ]
