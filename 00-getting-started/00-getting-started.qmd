@@ -4,7 +4,7 @@ author: "Bernd Wurth"
 format: 
   html:
     theme: cosmo
-    css: ../styles.css
+    css: docs/styles.css
     toc: true
     toc-depth: 2
     number-sections: true
@@ -17,7 +17,7 @@ format:
     number-sections: true
 ---
 
-# Introduction to R
+# Introduction
 
 ## What is R?
 
