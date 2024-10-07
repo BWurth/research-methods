@@ -12,9 +12,9 @@ This course serves as an introduction to research methods, providing students wi
 
 Click on the links below to access the lesson materials. Each lesson includes theory, examples, and practical exercises. We recommend that you work through the lessons in the given order and use the HTML versions, but the PDF files contain the same information.
 
-0. **Getting Started** [ [html](docs/00-getting-started/00-getting-started.html) | [pdf](docs/00-getting-started/00-getting-started.pdf) ]
+0. **Getting Started** [ [html](00-getting-started/00-getting-started.html) | [pdf](00-getting-started/00-getting-started.pdf) ]
 
-1. **Introduction** [ [html](docs/01-introduction/01-introduction.html) | [pdf](docs/01-introduction/01-introduction.pdf) ]
+1. **Introduction** [ [html](01-introduction/01-introduction.html) | [pdf](01-introduction/01-introduction.pdf) ]
 
 ## University of Glasgow MGT4018 and MGT4090
 
