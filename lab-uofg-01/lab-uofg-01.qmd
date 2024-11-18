@@ -1,0 +1,68 @@
+---
+title: "UofG MGT4018/MGT4090 Lab 1"
+author: "Bernd Wurth"
+format: 
+  html:
+    theme: cosmo
+    css: ../../styles.css
+    toc: true
+    toc-depth: 2
+    number-sections: true
+  pdf:
+    documentclass: article
+    papersize: a4
+    geometry: "left=2cm,right=2cm,top=2cm,bottom=2cm"
+    toc: true    # (Optional) Include a table of contents
+    toc-depth: 2 # (Optional) Control the depth of the TOC in PDF
+    number-sections: true
+---
+
+# Introduction
+
+This lab is the same as the SPSS Lab 1. 
+
+# Exercise A: Creating and Exploring a Data Set in R
+
+This lab will guide you through creating a dataset, assigning labels, and conducting basic analyses using R. You’ll learn how to create variables, enter data, and generate summary tables similar to those you would in SPSS.
+
+## Step 1: Set Up Your Workspace
+
+1. Open RStudio and start a new script.
+2. Save your script with an appropriate name, e.g., `Lab_Exercise_A.R`.
+
+## Step 2: Creating Variables
+
+We'll create three variables: `ID`, `AgeBand`, and `Gender`. 
+
+```r
+# Create an empty data frame with the variables ID, AgeBand, and Gender
+data <- data.frame(ID = integer(), AgeBand = factor(), Gender = factor())
+```
+
+## Step 3: Assign Labels and Levels
+
+In R, we use **factors** to represent categorical data with defined levels.
+
+::: {.callout-note}
+In R, we use `factor()` to create categorical variables. This is similar to value labels in SPSS. The `levels` argument specifies the underlying codes, while `labels` provides the human-readable labels.
+:::
+
+## Step 4: Save the Dataset
+
+## Step 5: Entering Data
+
+## Step 6: Loading and Viewing Data
+
+## Step 7: Exploring Value Labels
+
+## Step 8: Basic Exploration with Summary Statistics
+
+## Step 9: Correcting Errors
+
+## Step 10: Descriptive Statistics
+
+## Step 11: Setting Variable Types
+
+## Step 12: Cross-tabulations
+
+## Optional Expansion: Plotting the Data
