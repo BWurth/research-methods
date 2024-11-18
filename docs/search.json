@@ -81,7 +81,7 @@
     "href": "00-getting-started/00-getting-started.html#key-features-of-rstudio",
     "title": "0. Getting Started",
     "section": "2.3 Key features of RStudio",
-    "text": "2.3 Key features of RStudio\nRStudio’s interface is divided into four main panes:\n\nSource Editor: Write and save R scripts for easy reproducibility.\nConsole: Interact with R directly for quick calculations or testing code snippets.\nEnvironment/History: Displays your current workspace objects and command history and allows t.\nFiles/Plots/Packages/Help: A multi-purpose pane for file management, viewing plots, managing packages, and accessing help documentation."
+    "text": "2.3 Key features of RStudio\nRStudio’s interface is divided into four main panes (Figure 1):\n\nSource Editor: Write and save R scripts for easy reproducibility.\nConsole: Interact with R directly for quick calculations or testing code snippets.\nEnvironment/History: Displays your current workspace objects and command history and allows t.\nFiles/Plots/Packages/Help: A multi-purpose pane for file management, viewing plots, managing packages, and accessing help documentation.\n\n\n\n\n\n\n\nFigure 1: Overview of the RStudio user interface"
   },
   {
     "objectID": "00-getting-started/00-getting-started.html#rstudio-cloud-option",
@@ -102,14 +102,14 @@
     "href": "00-getting-started/00-getting-started.html#step-by-step-installation-process-for-windows",
     "title": "0. Getting Started",
     "section": "3.2 Step-by-step installation process for Windows",
-    "text": "3.2 Step-by-step installation process for Windows\n\nDownload R:\n\nGo to https://cran.r-project.org/\nClick on “Download R for Windows”\nClick on “base”\nClick on the download link for the latest version\n\nInstall R:\n\nRun the downloaded .exe file\nFollow the installation wizard, accepting the default options\n\nDownload RStudio:\n\nGo to https://www.rstudio.com/products/rstudio/download/\nScroll down to “RStudio Desktop”\nClick on “Download RStudio for Windows”\n\nInstall RStudio:\n\nRun the downloaded .exe file\nFollow the installation wizard, accepting the default options\n\n\n[Note: Insert screenshot of R download page for Windows here] [Note: Insert screenshot of RStudio download page here]"
+    "text": "3.2 Step-by-step installation process for Windows\n1. Download R:\nGo to https://cran.r-project.org/\nClick on “Download R for Windows” (Figure 2)\n\n\n\n\n\n\nFigure 2: CRAN homepage (red arrow pointing to the link for downloading R for Windows)\n\n\n\nClick on “base” (Figure 3)\n\n\n\n\n\n\nFigure 3: CRAN download page with subdirectories for Windows (red arrow pointing to the link for first time installation of R)\n\n\n\nClick on the download link for the latest version (Figure 4)\n\n\n\n\n\n\nFigure 4: CRAN download page for base version for Windows (red arrow pointing to the download link)\n\n\n\n2. Install R:\nRun the downloaded .exe file\nFollow the installation wizard, accepting the default options\n3. Download RStudio:\nGo to https://www.rstudio.com/products/rstudio/download/\nScroll down to “RStudio Desktop”\nClick on “Download RStudio for Windows” (Figure 5)\n\n\n\n\n\n\nFigure 5: Posit page for RStudio (red arrow pointing to the download link for Windows)\n\n\n\n4. Install RStudio:\nRun the downloaded .exe file\nFollow the installation wizard, accepting the default options (Figure 6)\n\n\n\n\n\n\nFigure 6: RStudio installation wizard for Windows"
   },
   {
     "objectID": "00-getting-started/00-getting-started.html#step-by-step-installation-process-for-mac",
     "href": "00-getting-started/00-getting-started.html#step-by-step-installation-process-for-mac",
     "title": "0. Getting Started",
     "section": "3.3 Step-by-step installation process for Mac",
-    "text": "3.3 Step-by-step installation process for Mac\n\nDownload R:\n\nGo to https://cran.r-project.org/\nClick on “Download R for macOS”\nClick on the .pkg file appropriate for your macOS version\n\nInstall R:\n\nOpen the downloaded .pkg file\nFollow the installation wizard, accepting the default options\n\nDownload RStudio:\n\nGo to https://www.rstudio.com/products/rstudio/download/\nScroll down to “RStudio Desktop”\nClick on “Download RStudio for macOS”\n\nInstall RStudio:\n\nOpen the downloaded .dmg file\nDrag the RStudio icon to your Applications folder\n\n\n[Note: Insert screenshot of R download page for macOS here] [Note: Insert screenshot of RStudio download page here]"
+    "text": "3.3 Step-by-step installation process for Mac\n1. Download R:\nGo to https://cran.r-project.org/\nClick on “Download R for macOS” (Figure 7)\n\n\n\n\n\n\nFigure 7: CRAN homepage (red arrow pointing to the link for downloading R for Mac\n\n\n\nClick on the .pkg file appropriate for your macOS version (Figure 8)\n\n\n\n\n\n\nFigure 8: CRAN download page for Mac (red arrows pointing to the download link for respective Mac version, depending on whether you have a newer Apple Silicone Mac or an older Intel Mac)\n\n\n\n2. Install R:\nOpen the downloaded .pkg file\nFollow the installation wizard, accepting the default options (Figure 9)\n\n\n\n\n\n\nFigure 9: Instalation window for R (Mac)\n\n\n\n3. Download RStudio:\nGo to https://www.rstudio.com/products/rstudio/download/\nScroll down to “Install RStudio” and click on “Download RStudio Desktop for macOS” (Figure 10)\n\n\n\n\n\n\nFigure 10: Posit page for RStudio (red arrow pointing to the download link for Mac)\n\n\n\n4. Install RStudio:\nOpen the downloaded .dmg file\nDrag the RStudio icon to your Applications folder (Figure 11)\n\n\n\n\n\n\nFigure 11: Installation window for RStudio on Mac (drag-and-drop the RStudio icon to the Applications folder)"
   },
   {
     "objectID": "00-getting-started/00-getting-started.html#verifying-successful-installation",
@@ -186,7 +186,7 @@
     "href": "00-getting-started/00-getting-started.html#recommended-books-and-online-materials",
     "title": "0. Getting Started",
     "section": "6.2 Recommended Books and Online Materials",
-    "text": "6.2 Recommended Books and Online Materials\nBooks\n\n“R for Data Science (2e)” by Hadley Wickham, Mine Cetinkaya-Rundel, and Garrett Grolemund [book|website|GitHub]\n“The Art of R Programming” by Norman Matloff [book]\n“Advanced R (2e)” by Hadley Wickham [book|website|GitHub]\n“ggplot2: Elegant Graphics for Data Analysis (3e)” by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen [website|GitHub]\n“R Graphics Cookbook (2e)” by Winston Chang [book|website]\n“Text Mining with R: A Tidy Approach” by Julia Silge and David Robinson [book|website|GitHub]\n\nCheatsheets\nCheatsheets provide a handy reference guide for various aspects of working with R and RStudio, including RStudio, data tidying with tidyr, data transformation with dplyr, and data visualisation with ggplot2, among others (see others here).\nPosit Recipes\nPosit recipes (previously Posit primers) represent a collection of R code snippets and instructions featuring up-to-date best practices for coding in R: https://posit.cloud/learn/recipes.\nGitHub Repositories and Online Course Materials\n\nUniversity of Oregon (EC 607) by Grant McDermott [GitHub]"
+    "text": "6.2 Recommended Books and Online Materials\nBooks\n\n“R for Data Science (2e)” by Hadley Wickham, Mine Cetinkaya-Rundel, and Garrett Grolemund [ book | website | GitHub ]\n“The Art of R Programming” by Norman Matloff [ book ]\n“Advanced R (2e)” by Hadley Wickham [ book | website | GitHub ]\n“ggplot2: Elegant Graphics for Data Analysis (3e)” by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen [ website | GitHub ]\n“R Graphics Cookbook (2e)” by Winston Chang [ book | website ]\n“Text Mining with R: A Tidy Approach” by Julia Silge and David Robinson [ book | website | GitHub]\n\nCheatsheets\nCheatsheets provide a handy reference guide for various aspects of working with R and RStudio, including RStudio, data tidying with tidyr, data transformation with dplyr, and data visualisation with ggplot2, among others (see others here).\nPosit Recipes\nPosit recipes (previously Posit primers) represent a collection of R code snippets and instructions featuring up-to-date best practices for coding in R: https://posit.cloud/learn/recipes.\nGitHub Repositories and Online Course Materials\n\nUniversity of Oregon (EC 607) by Grant McDermott [GitHub]"
   },
   {
     "objectID": "00-getting-started/00-getting-started.html#community-forums-and-support-channels",
@@ -236,5 +236,110 @@
     "title": "Research Methods in R",
     "section": "License",
     "text": "License\nThis repository is licensed under two different licenses for different types of content:\n\nCode (MIT License): All R scripts, code snippets, and technical components of the course are licensed under the MIT License. You are free to use, copy, modify, merge, publish, distribute, sublicense, or sell copies of the code, as long as attribution is provided. See the LICENSE-CODE file for details.\nCourse Materials (CC BY 4.0): All written content, lessons, quizzes, and educational materials in this repository are licensed under the Creative Commons Attribution 4.0 International License. You are free to share and adapt the materials, even for commercial purposes, as long as attribution is provided. See the LICENSE-CONTENT file for details."
+  },
+  {
+    "objectID": "lab-uofg-01/lab-uofg-01.html",
+    "href": "lab-uofg-01/lab-uofg-01.html",
+    "title": "UofG MGT4018/MGT4090 Lab 1",
+    "section": "",
+    "text": "This lab is the same as the SPSS Lab 1."
+  },
+  {
+    "objectID": "lab-uofg-01/lab-uofg-01.html#step-1-set-up-your-workspace",
+    "href": "lab-uofg-01/lab-uofg-01.html#step-1-set-up-your-workspace",
+    "title": "UofG MGT4018/MGT4090 Lab 1",
+    "section": "2.1 Step 1: Set Up Your Workspace",
+    "text": "2.1 Step 1: Set Up Your Workspace\n\nOpen RStudio and start a new script.\nSave your script with an appropriate name, e.g., Lab_Exercise_A.R."
+  },
+  {
+    "objectID": "lab-uofg-01/lab-uofg-01.html#step-2-creating-variables",
+    "href": "lab-uofg-01/lab-uofg-01.html#step-2-creating-variables",
+    "title": "UofG MGT4018/MGT4090 Lab 1",
+    "section": "2.2 Step 2: Creating Variables",
+    "text": "2.2 Step 2: Creating Variables\nWe’ll create three variables: ID, AgeBand, and Gender.\n# Create an empty data frame with the variables ID, AgeBand, and Gender\ndata &lt;- data.frame(ID = integer(), AgeBand = factor(), Gender = factor())"
+  },
+  {
+    "objectID": "lab-uofg-01/lab-uofg-01.html#step-3-assign-labels-and-levels",
+    "href": "lab-uofg-01/lab-uofg-01.html#step-3-assign-labels-and-levels",
+    "title": "UofG MGT4018/MGT4090 Lab 1",
+    "section": "2.3 Step 3: Assign Labels and Levels",
+    "text": "2.3 Step 3: Assign Labels and Levels\nIn R, we use factors to represent categorical data with defined levels.\n\n\n\n\n\n\nNote\n\n\n\nIn R, we use factor() to create categorical variables. This is similar to value labels in SPSS. The levels argument specifies the underlying codes, while labels provides the human-readable labels."
+  },
+  {
+    "objectID": "lab-uofg-01/lab-uofg-01.html#step-4-save-the-dataset",
+    "href": "lab-uofg-01/lab-uofg-01.html#step-4-save-the-dataset",
+    "title": "UofG MGT4018/MGT4090 Lab 1",
+    "section": "2.4 Step 4: Save the Dataset",
+    "text": "2.4 Step 4: Save the Dataset"
+  },
+  {
+    "objectID": "lab-uofg-01/lab-uofg-01.html#step-5-entering-data",
+    "href": "lab-uofg-01/lab-uofg-01.html#step-5-entering-data",
+    "title": "UofG MGT4018/MGT4090 Lab 1",
+    "section": "2.5 Step 5: Entering Data",
+    "text": "2.5 Step 5: Entering Data"
+  },
+  {
+    "objectID": "lab-uofg-01/lab-uofg-01.html#step-6-loading-and-viewing-data",
+    "href": "lab-uofg-01/lab-uofg-01.html#step-6-loading-and-viewing-data",
+    "title": "UofG MGT4018/MGT4090 Lab 1",
+    "section": "2.6 Step 6: Loading and Viewing Data",
+    "text": "2.6 Step 6: Loading and Viewing Data"
+  },
+  {
+    "objectID": "lab-uofg-01/lab-uofg-01.html#step-7-exploring-value-labels",
+    "href": "lab-uofg-01/lab-uofg-01.html#step-7-exploring-value-labels",
+    "title": "UofG MGT4018/MGT4090 Lab 1",
+    "section": "2.7 Step 7: Exploring Value Labels",
+    "text": "2.7 Step 7: Exploring Value Labels"
+  },
+  {
+    "objectID": "lab-uofg-01/lab-uofg-01.html#step-8-basic-exploration-with-summary-statistics",
+    "href": "lab-uofg-01/lab-uofg-01.html#step-8-basic-exploration-with-summary-statistics",
+    "title": "UofG MGT4018/MGT4090 Lab 1",
+    "section": "2.8 Step 8: Basic Exploration with Summary Statistics",
+    "text": "2.8 Step 8: Basic Exploration with Summary Statistics"
+  },
+  {
+    "objectID": "lab-uofg-01/lab-uofg-01.html#step-9-correcting-errors",
+    "href": "lab-uofg-01/lab-uofg-01.html#step-9-correcting-errors",
+    "title": "UofG MGT4018/MGT4090 Lab 1",
+    "section": "2.9 Step 9: Correcting Errors",
+    "text": "2.9 Step 9: Correcting Errors"
+  },
+  {
+    "objectID": "lab-uofg-01/lab-uofg-01.html#step-10-descriptive-statistics",
+    "href": "lab-uofg-01/lab-uofg-01.html#step-10-descriptive-statistics",
+    "title": "UofG MGT4018/MGT4090 Lab 1",
+    "section": "2.10 Step 10: Descriptive Statistics",
+    "text": "2.10 Step 10: Descriptive Statistics"
+  },
+  {
+    "objectID": "lab-uofg-01/lab-uofg-01.html#step-11-setting-variable-types",
+    "href": "lab-uofg-01/lab-uofg-01.html#step-11-setting-variable-types",
+    "title": "UofG MGT4018/MGT4090 Lab 1",
+    "section": "2.11 Step 11: Setting Variable Types",
+    "text": "2.11 Step 11: Setting Variable Types"
+  },
+  {
+    "objectID": "lab-uofg-01/lab-uofg-01.html#step-12-cross-tabulations",
+    "href": "lab-uofg-01/lab-uofg-01.html#step-12-cross-tabulations",
+    "title": "UofG MGT4018/MGT4090 Lab 1",
+    "section": "2.12 Step 12: Cross-tabulations",
+    "text": "2.12 Step 12: Cross-tabulations"
+  },
+  {
+    "objectID": "lab-uofg-01/lab-uofg-01.html#optional-expansion-plotting-the-data",
+    "href": "lab-uofg-01/lab-uofg-01.html#optional-expansion-plotting-the-data",
+    "title": "UofG MGT4018/MGT4090 Lab 1",
+    "section": "2.13 Optional Expansion: Plotting the Data",
+    "text": "2.13 Optional Expansion: Plotting the Data"
+  },
+  {
+    "objectID": "00-getting-started/00-getting-started.html#projects-and-setting-up-a-working-directory",
+    "href": "00-getting-started/00-getting-started.html#projects-and-setting-up-a-working-directory",
+    "title": "0. Getting Started",
+    "section": "5.1 Projects and setting up a working directory",
+    "text": "5.1 Projects and setting up a working directory\n\n5.1.1 Why does this matter?\nWhen working in R, one of the key concepts you’ll encounter is managing your working directory. The working directory is the folder on your computer where R looks for files (e.g., data) to load and saves files you create. While there are different ways to set your working directory, this lesson will discuss the benefits and drawbacks of two common methods: using setwd() and RStudio Projects.\n\n\n5.1.2 What is setwd()?\nThe setwd() function in R sets the working directory to a specific folder. Below is the code example for setting your working directory. Alternatively, you can use Session &gt; Set Working Directory &gt; Choose Directory in RStudio.\nsetwd(\"C:/Users/YourName/Documents/MyProject\")\nBenefits of setwd()\n\nQuick setup: Useful for ad hoc or one-time analyses.\nSimple to understand: Easy to use for beginners doing small, standalone projects.\n\nDrawbacks of setwd()\n\nNot portable: If you share your code with someone else, it may not work because their folder paths are different.\nError-prone: Forgetting to set the correct working directory can cause errors when loading or saving files.\nBad practice for larger projects: As projects grow, managing file paths with setwd() becomes cumbersome and difficult to maintain.\n\n\n\n5.1.3 What Are RStudio Projects?\nRStudio Projects provide a structured way to manage your working directory. When you create a Project in RStudio, a special file (.Rproj) is created. Opening this file automatically sets the working directory to the folder containing the Project. You can create a Project in RStudio by following these steps:\n\nGo to File &gt; New Project\nChoose a new or existing directory\nThis creates an .Rproj file and sets the working directory automatically\n\nFurther information on how to set up Projects in RStudio can be found in the RStudio Projects Guide.\nBenefits of RStudio Projects\n\nPortability: Code and file references work seamlessly on any computer without modification.\nOrganization: Keeps all related files (data, scripts, output) in one folder.\nBest practice: Encourages better habits for managing larger or collaborative projects.\nIntegration: Works well with version control systems like Git, making collaboration easier.\n\nDrawbacks of RStudio Projects\n\nLearning curve: May feel complex for students doing very small, simple tasks.\nOverhead for small tasks: Setting up a Project for quick analyses might seem unnecessary.\n\n\n\n\n\n\n\nNote\n\n\n\nFor most work—-especially as your projects grow in size or complexity—-we recommend using RStudio Projects. While it may feel like extra work upfront, it fosters reproducibility and reduces errors, hereby saving time and frustration in the long run. Use setwd() sparingly and only for temporary tasks."
   }
 ]
