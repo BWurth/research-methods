@@ -175,7 +175,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </ul></li>
   <li><a href="#best-practices-for-getting-started" id="toc-best-practices-for-getting-started" class="nav-link" data-scroll-target="#best-practices-for-getting-started"><span class="header-section-number">5</span> Best Practices for Getting Started</a>
   <ul class="collapse">
-  <li><a href="#setting-up-a-working-directory" id="toc-setting-up-a-working-directory" class="nav-link" data-scroll-target="#setting-up-a-working-directory"><span class="header-section-number">5.1</span> Setting up a working directory</a></li>
+  <li><a href="#projects-and-setting-up-a-working-directory" id="toc-projects-and-setting-up-a-working-directory" class="nav-link" data-scroll-target="#projects-and-setting-up-a-working-directory"><span class="header-section-number">5.1</span> Projects and setting up a working directory</a></li>
   <li><a href="#how-to-organize-project-files-for-research" id="toc-how-to-organize-project-files-for-research" class="nav-link" data-scroll-target="#how-to-organize-project-files-for-research"><span class="header-section-number">5.2</span> How to organize project files for research</a></li>
   <li><a href="#importance-of-commenting-and-code-organization" id="toc-importance-of-commenting-and-code-organization" class="nav-link" data-scroll-target="#importance-of-commenting-and-code-organization"><span class="header-section-number">5.3</span> Importance of commenting and code organization</a></li>
   <li><a href="#version-control-basics" id="toc-version-control-basics" class="nav-link" data-scroll-target="#version-control-basics"><span class="header-section-number">5.4</span> Version control basics</a></li>
@@ -267,13 +267,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="key-features-of-rstudio" class="level2" data-number="2.3">
 <h2 data-number="2.3" class="anchored" data-anchor-id="key-features-of-rstudio"><span class="header-section-number">2.3</span> Key features of RStudio</h2>
-<p>RStudio’s interface is divided into four main panes:</p>
+<p>RStudio’s interface is divided into four main panes (<a href="#fig-rstudio-ui" class="quarto-xref">Figure&nbsp;1</a>):</p>
 <ol type="1">
 <li><strong>Source Editor</strong>: Write and save R scripts for easy reproducibility.</li>
 <li><strong>Console</strong>: Interact with R directly for quick calculations or testing code snippets.</li>
 <li><strong>Environment/History</strong>: Displays your current workspace objects and command history and allows t.</li>
 <li><strong>Files/Plots/Packages/Help</strong>: A multi-purpose pane for file management, viewing plots, managing packages, and accessing help documentation.</li>
 </ol>
+<div id="fig-rstudio-ui" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-rstudio-ui-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/screenshot-rstudio-edit.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-rstudio-ui-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Overview of the RStudio user interface
+</figcaption>
+</figure>
+</div>
 </section>
 <section id="rstudio-cloud-option" class="level2" data-number="2.4">
 <h2 data-number="2.4" class="anchored" data-anchor-id="rstudio-cloud-option"><span class="header-section-number">2.4</span> RStudio Cloud Option</h2>
@@ -308,60 +318,137 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="step-by-step-installation-process-for-windows" class="level2" data-number="3.2">
 <h2 data-number="3.2" class="anchored" data-anchor-id="step-by-step-installation-process-for-windows"><span class="header-section-number">3.2</span> Step-by-step installation process for Windows</h2>
-<ol type="1">
-<li>Download R:
-<ul>
-<li>Go to https://cran.r-project.org/</li>
-<li>Click on “Download R for Windows”</li>
-<li>Click on “base”</li>
-<li>Click on the download link for the latest version</li>
-</ul></li>
-<li>Install R:
-<ul>
-<li>Run the downloaded .exe file</li>
-<li>Follow the installation wizard, accepting the default options</li>
-</ul></li>
-<li>Download RStudio:
-<ul>
-<li>Go to https://www.rstudio.com/products/rstudio/download/</li>
-<li>Scroll down to “RStudio Desktop”</li>
-<li>Click on “Download RStudio for Windows”</li>
-</ul></li>
-<li>Install RStudio:
-<ul>
-<li>Run the downloaded .exe file</li>
-<li>Follow the installation wizard, accepting the default options</li>
-</ul></li>
-</ol>
-<p>[Note: Insert screenshot of R download page for Windows here] [Note: Insert screenshot of RStudio download page here]</p>
+<p><strong>1. Download R:</strong></p>
+<p>Go to <a href="https://cran.r-project.org/">https://cran.r-project.org/</a></p>
+<p>Click on “Download R for Windows” (<a href="#fig-win-cran-1" class="quarto-xref">Figure&nbsp;2</a>)</p>
+<div id="fig-win-cran-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-win-cran-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/screenshot-win-cran-1-edit.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-win-cran-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: CRAN homepage (red arrow pointing to the link for downloading R for Windows)
+</figcaption>
+</figure>
+</div>
+<p>Click on “base” (<a href="#fig-win-cran-2" class="quarto-xref">Figure&nbsp;3</a>)</p>
+<div id="fig-win-cran-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-win-cran-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/screenshot-win-cran-2-edit.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-win-cran-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: CRAN download page with subdirectories for Windows (red arrow pointing to the link for first time installation of R)
+</figcaption>
+</figure>
+</div>
+<p>Click on the download link for the latest version (<a href="#fig-win-cran-3" class="quarto-xref">Figure&nbsp;4</a>)</p>
+<div id="fig-win-cran-3" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-win-cran-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/screenshot-win-cran-3-edit.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-win-cran-3-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: CRAN download page for base version for Windows (red arrow pointing to the download link)
+</figcaption>
+</figure>
+</div>
+<p><strong>2. Install R:</strong></p>
+<p>Run the downloaded .exe file</p>
+<p>Follow the installation wizard, accepting the default options</p>
+<p><strong>3. Download RStudio:</strong></p>
+<p>Go to <a href="https://www.rstudio.com/products/rstudio/download/">https://www.rstudio.com/products/rstudio/download/</a></p>
+<p>Scroll down to “RStudio Desktop”</p>
+<p>Click on “Download RStudio for Windows” (<a href="#fig-win-rstudio-download" class="quarto-xref">Figure&nbsp;5</a>)</p>
+<div id="fig-win-rstudio-download" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-win-rstudio-download-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/screenshot-win-rstudio-download-edit.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-win-rstudio-download-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Posit page for RStudio (red arrow pointing to the download link for Windows)
+</figcaption>
+</figure>
+</div>
+<p><strong>4. Install RStudio:</strong></p>
+<p>Run the downloaded .exe file</p>
+<p>Follow the installation wizard, accepting the default options (<a href="#fig-win-rstudio-install" class="quarto-xref">Figure&nbsp;6</a>)</p>
+<div id="fig-win-rstudio-install" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-win-rstudio-install-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/screenshot-win-rstudio-install.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-win-rstudio-install-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: RStudio installation wizard for Windows
+</figcaption>
+</figure>
+</div>
 </section>
 <section id="step-by-step-installation-process-for-mac" class="level2" data-number="3.3">
 <h2 data-number="3.3" class="anchored" data-anchor-id="step-by-step-installation-process-for-mac"><span class="header-section-number">3.3</span> Step-by-step installation process for Mac</h2>
-<ol type="1">
-<li>Download R:
-<ul>
-<li>Go to https://cran.r-project.org/</li>
-<li>Click on “Download R for macOS”</li>
-<li>Click on the .pkg file appropriate for your macOS version</li>
-</ul></li>
-<li>Install R:
-<ul>
-<li>Open the downloaded .pkg file</li>
-<li>Follow the installation wizard, accepting the default options</li>
-</ul></li>
-<li>Download RStudio:
-<ul>
-<li>Go to https://www.rstudio.com/products/rstudio/download/</li>
-<li>Scroll down to “RStudio Desktop”</li>
-<li>Click on “Download RStudio for macOS”</li>
-</ul></li>
-<li>Install RStudio:
-<ul>
-<li>Open the downloaded .dmg file</li>
-<li>Drag the RStudio icon to your Applications folder</li>
-</ul></li>
-</ol>
-<p>[Note: Insert screenshot of R download page for macOS here] [Note: Insert screenshot of RStudio download page here]</p>
+<p><strong>1. Download R:</strong></p>
+<p>Go to <a href="https://cran.r-project.org/">https://cran.r-project.org/</a></p>
+<p>Click on “Download R for macOS” (<a href="#fig-mac-cran-1" class="quarto-xref">Figure&nbsp;7</a>)</p>
+<div id="fig-mac-cran-1" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mac-cran-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/screenshot-mac-cran-1-edit.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mac-cran-1-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: CRAN homepage (red arrow pointing to the link for downloading R for Mac
+</figcaption>
+</figure>
+</div>
+<p>Click on the .pkg file appropriate for your macOS version (<a href="#fig-mac-cran-2" class="quarto-xref">Figure&nbsp;8</a>)</p>
+<div id="fig-mac-cran-2" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mac-cran-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/screenshot-mac-cran-2-edit.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mac-cran-2-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: CRAN download page for Mac (red arrows pointing to the download link for respective Mac version, depending on whether you have a newer Apple Silicone Mac or an older Intel Mac)
+</figcaption>
+</figure>
+</div>
+<p><strong>2. Install R:</strong></p>
+<p>Open the downloaded .pkg file</p>
+<p>Follow the installation wizard, accepting the default options (<a href="#fig-mac-install-r" class="quarto-xref">Figure&nbsp;9</a>)</p>
+<div id="fig-mac-install-r" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mac-install-r-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/screenshot-mac-install-r.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mac-install-r-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Instalation window for R (Mac)
+</figcaption>
+</figure>
+</div>
+<p><strong>3. Download RStudio:</strong></p>
+<p>Go to <a href="https://www.rstudio.com/products/rstudio/download/">https://www.rstudio.com/products/rstudio/download/</a></p>
+<p>Scroll down to “Install RStudio” and click on “Download RStudio Desktop for macOS” (<a href="#fig-mac-rstudio-download" class="quarto-xref">Figure&nbsp;10</a>)</p>
+<div id="fig-mac-rstudio-download" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mac-rstudio-download-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/screenshot-mac-rstudio-download-edit.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mac-rstudio-download-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Posit page for RStudio (red arrow pointing to the download link for Mac)
+</figcaption>
+</figure>
+</div>
+<p><strong>4. Install RStudio:</strong></p>
+<p>Open the downloaded .dmg file</p>
+<p>Drag the RStudio icon to your Applications folder (<a href="#fig-mac-rstudio-install" class="quarto-xref">Figure&nbsp;11</a>)</p>
+<div id="fig-mac-rstudio-install" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-mac-rstudio-install-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/screenshot-mac-rstudio-install-edit.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:50.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-mac-rstudio-install-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;11: Installation window for RStudio on Mac (drag-and-drop the RStudio icon to the Applications folder)
+</figcaption>
+</figure>
+</div>
 </section>
 <section id="verifying-successful-installation" class="level2" data-number="3.4">
 <h2 data-number="3.4" class="anchored" data-anchor-id="verifying-successful-installation"><span class="header-section-number">3.4</span> Verifying successful installation</h2>
@@ -404,22 +491,63 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </section>
 <section id="best-practices-for-getting-started" class="level1" data-number="5">
 <h1 data-number="5"><span class="header-section-number">5</span> Best Practices for Getting Started</h1>
-<section id="setting-up-a-working-directory" class="level2" data-number="5.1">
-<h2 data-number="5.1" class="anchored" data-anchor-id="setting-up-a-working-directory"><span class="header-section-number">5.1</span> Setting up a working directory</h2>
-<p>Setting up a proper working directory is crucial for organizing your R projects:</p>
-<ol type="1">
-<li>Use RStudio’s project feature:
+<section id="projects-and-setting-up-a-working-directory" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="projects-and-setting-up-a-working-directory"><span class="header-section-number">5.1</span> Projects and setting up a working directory</h2>
+<section id="why-does-this-matter" class="level3" data-number="5.1.1">
+<h3 data-number="5.1.1" class="anchored" data-anchor-id="why-does-this-matter"><span class="header-section-number">5.1.1</span> Why does this matter?</h3>
+<p>When working in R, one of the key concepts you’ll encounter is managing your <strong>working directory</strong>. The working directory is the folder on your computer where R looks for files (e.g., data) to load and saves files you create. While there are different ways to set your working directory, this lesson will discuss the benefits and drawbacks of two common methods: using <code>setwd()</code> and RStudio <strong>Projects</strong>.</p>
+</section>
+<section id="what-is-setwd" class="level3" data-number="5.1.2">
+<h3 data-number="5.1.2" class="anchored" data-anchor-id="what-is-setwd"><span class="header-section-number">5.1.2</span> What is <code>setwd()</code>?</h3>
+<p>The <code>setwd()</code> function in R sets the working directory to a specific folder. Below is the code example for setting your working directory. Alternatively, you can use Session &gt; Set Working Directory &gt; Choose Directory in RStudio.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"C:/Users/YourName/Documents/MyProject"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Benefits of <code>setwd()</code></strong></p>
 <ul>
+<li>Quick setup: Useful for ad hoc or one-time analyses.</li>
+<li>Simple to understand: Easy to use for beginners doing small, standalone projects.</li>
+</ul>
+<p><strong>Drawbacks of <code>setwd()</code></strong></p>
+<ul>
+<li>Not portable: If you share your code with someone else, it may not work because their folder paths are different.</li>
+<li>Error-prone: Forgetting to set the correct working directory can cause errors when loading or saving files.</li>
+<li>Bad practice for larger projects: As projects grow, managing file paths with <code>setwd()</code> becomes cumbersome and difficult to maintain.</li>
+</ul>
+</section>
+<section id="what-are-rstudio-projects" class="level3" data-number="5.1.3">
+<h3 data-number="5.1.3" class="anchored" data-anchor-id="what-are-rstudio-projects"><span class="header-section-number">5.1.3</span> What Are RStudio Projects?</h3>
+<p>RStudio Projects provide a structured way to manage your working directory. When you create a Project in RStudio, a special file (<code>.Rproj</code>) is created. Opening this file automatically sets the working directory to the folder containing the Project. You can create a Project in RStudio by following these steps:</p>
+<ol type="1">
 <li>Go to File &gt; New Project</li>
 <li>Choose a new or existing directory</li>
 <li>This creates an .Rproj file and sets the working directory automatically</li>
-</ul></li>
-<li>Alternatively, set the working directory manually:
-<ul>
-<li>Use <code>setwd("/path/to/your/directory")</code> in your R script</li>
-<li>Or use Session &gt; Set Working Directory &gt; Choose Directory in RStudio</li>
-</ul></li>
 </ol>
+<p>Further information on how to set up Projects in RStudio can be found in the <a href="https://docs.posit.co/ide/user/ide/guide/code/projects.html">RStudio Projects Guide</a>.</p>
+<p><strong>Benefits of RStudio Projects</strong></p>
+<ul>
+<li>Portability: Code and file references work seamlessly on any computer without modification.</li>
+<li>Organization: Keeps all related files (data, scripts, output) in one folder.</li>
+<li>Best practice: Encourages better habits for managing larger or collaborative projects.</li>
+<li>Integration: Works well with version control systems like Git, making collaboration easier.</li>
+</ul>
+<p><strong>Drawbacks of RStudio Projects</strong></p>
+<ul>
+<li>Learning curve: May feel complex for students doing very small, simple tasks.</li>
+<li>Overhead for small tasks: Setting up a Project for quick analyses might seem unnecessary.</li>
+</ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>For most work—-especially as your projects grow in size or complexity—-we recommend using <strong>RStudio Projects</strong>. While it may feel like extra work upfront, it fosters reproducibility and reduces errors, hereby saving time and frustration in the long run. Use <code>setwd()</code> sparingly and only for temporary tasks.</p>
+</div>
+</div>
+</section>
 </section>
 <section id="how-to-organize-project-files-for-research" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="how-to-organize-project-files-for-research"><span class="header-section-number">5.2</span> How to organize project files for research</h2>
@@ -451,27 +579,27 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <li>Keep your code DRY (Don’t Repeat Yourself)</li>
 </ol>
 <p>Example of well-commented code:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load necessary libraries</span></span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the data</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/raw/survey_results.csv"</span>)</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean the data</span></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(age)) <span class="sc">%&gt;%</span>  <span class="co"># Remove rows with missing age</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">income =</span> <span class="fu">as.numeric</span>(income))  <span class="co"># Convert income to numeric</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate summary statistics</span></span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>summary_stats <span class="ot">&lt;-</span> clean_data <span class="sc">%&gt;%</span></span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(education) <span class="sc">%&gt;%</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_income =</span> <span class="fu">mean</span>(income, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_age =</span> <span class="fu">median</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(summary_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Load necessary libraries</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Read in the data</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="st">"data/raw/survey_results.csv"</span>)</span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Clean the data</span></span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> data <span class="sc">%&gt;%</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(age)) <span class="sc">%&gt;%</span>  <span class="co"># Remove rows with missing age</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">income =</span> <span class="fu">as.numeric</span>(income))  <span class="co"># Convert income to numeric</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate summary statistics</span></span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>summary_stats <span class="ot">&lt;-</span> clean_data <span class="sc">%&gt;%</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(education) <span class="sc">%&gt;%</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarize</span>(</span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_income =</span> <span class="fu">mean</span>(income, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">median_age =</span> <span class="fu">median</span>(age, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Print results</span></span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(summary_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
 <section id="version-control-basics" class="level2" data-number="5.4">
 <h2 data-number="5.4" class="anchored" data-anchor-id="version-control-basics"><span class="header-section-number">5.4</span> Version control basics</h2>
@@ -501,12 +629,12 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <h2 data-number="6.2" class="anchored" data-anchor-id="recommended-books-and-online-materials"><span class="header-section-number">6.2</span> Recommended Books and Online Materials</h2>
 <p><strong>Books</strong></p>
 <ul>
-<li>“R for Data Science (2e)” by Hadley Wickham, Mine Cetinkaya-Rundel, and Garrett Grolemund [<a href="https://www.oreilly.com/library/view/r-for-data/9781492097396/">book</a>|<a href="https://r4ds.hadley.nz">website</a>|<a href="https://github.com/hadley/r4ds">GitHub</a>]</li>
-<li>“The Art of R Programming” by Norman Matloff [<a href="https://www.amazon.co.uk/Art-Programming-Statistical-Software-Design/dp/1593273843/ref=sr_1_1?crid=1UJJO2HUG57F4&amp;dib=eyJ2IjoiMSJ9.lMHfaRa3X-W8SMe2h4qiWaH_3GPvcy38cuClT6rIbW_GjHj071QN20LucGBJIEps.E8XUEMQB5mqDwXptGa7gCFxs_wSA3maJcJjiuGOklMQ&amp;dib_tag=se&amp;keywords=The+Art+of+R+Programming%3A+A+Tour+of+Statistical+Software+Design&amp;qid=1728056547&amp;s=books&amp;sprefix=the+art+of+r+programming+a+tour+of+statistical+software+design%2Cstripbooks%2C47&amp;sr=1-1">book</a>]</li>
-<li>“Advanced R (2e)” by Hadley Wickham [<a href="https://www.routledge.com/Advanced-R-Second-Edition/Wickham/p/book/9780815384571?srsltid=AfmBOorwKk5VNcPwwZGq06vPQKCVGVOGRtEbmtBV93gc0bd6tiQ6bcJN">book</a>|<a href="https://adv-r.hadley.nz">website</a>|<a href="https://github.com/hadley/ggplot2-book">GitHub</a>]</li>
-<li>“ggplot2: Elegant Graphics for Data Analysis (3e)” by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen [<a href="https://ggplot2-book.org">website</a>|<a href="https://github.com/hadley/adv-r">GitHub</a>]</li>
-<li>“R Graphics Cookbook (2e)” by Winston Chang [<a href="https://www.amazon.com/dp/1491978600">book</a>|<a href="https://r-graphics.org">website</a>]</li>
-<li>“Text Mining with R: A Tidy Approach” by Julia Silge and David Robinson [<a href="https://www.oreilly.com/library/view/text-mining-with/9781491981641/">book</a>|<a href="https://www.tidytextmining.com">website</a>|<a href="https://github.com/dgrtwo/tidy-text-mining">GitHub</a>]</li>
+<li>“R for Data Science (2e)” by Hadley Wickham, Mine Cetinkaya-Rundel, and Garrett Grolemund [ <a href="https://www.oreilly.com/library/view/r-for-data/9781492097396/">book</a> | <a href="https://r4ds.hadley.nz">website</a> | <a href="https://github.com/hadley/r4ds">GitHub</a> ]</li>
+<li>“The Art of R Programming” by Norman Matloff [ <a href="https://www.amazon.co.uk/Art-Programming-Statistical-Software-Design/dp/1593273843/ref=sr_1_1?crid=1UJJO2HUG57F4&amp;dib=eyJ2IjoiMSJ9.lMHfaRa3X-W8SMe2h4qiWaH_3GPvcy38cuClT6rIbW_GjHj071QN20LucGBJIEps.E8XUEMQB5mqDwXptGa7gCFxs_wSA3maJcJjiuGOklMQ&amp;dib_tag=se&amp;keywords=The+Art+of+R+Programming%3A+A+Tour+of+Statistical+Software+Design&amp;qid=1728056547&amp;s=books&amp;sprefix=the+art+of+r+programming+a+tour+of+statistical+software+design%2Cstripbooks%2C47&amp;sr=1-1">book</a> ]</li>
+<li>“Advanced R (2e)” by Hadley Wickham [ <a href="https://www.routledge.com/Advanced-R-Second-Edition/Wickham/p/book/9780815384571?srsltid=AfmBOorwKk5VNcPwwZGq06vPQKCVGVOGRtEbmtBV93gc0bd6tiQ6bcJN">book</a> | <a href="https://adv-r.hadley.nz">website</a> | <a href="https://github.com/hadley/ggplot2-book">GitHub</a> ]</li>
+<li>“ggplot2: Elegant Graphics for Data Analysis (3e)” by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen [ <a href="https://ggplot2-book.org">website</a> | <a href="https://github.com/hadley/adv-r">GitHub</a> ]</li>
+<li>“R Graphics Cookbook (2e)” by Winston Chang [ <a href="https://www.amazon.com/dp/1491978600">book</a> | <a href="https://r-graphics.org">website</a> ]</li>
+<li>“Text Mining with R: A Tidy Approach” by Julia Silge and David Robinson [ <a href="https://www.oreilly.com/library/view/text-mining-with/9781491981641/">book</a> | <a href="https://www.tidytextmining.com">website</a> | <a href="https://github.com/dgrtwo/tidy-text-mining">GitHub</a>]</li>
 </ul>
 <p><strong>Cheatsheets</strong></p>
 <p>Cheatsheets provide a handy reference guide for various aspects of working with R and RStudio, including <a href="https://rstudio.github.io/cheatsheets/rstudio-ide.pdf">RStudio</a>, data tidying with <a href="https://rstudio.github.io/cheatsheets/tidyr.pdf">tidyr</a>, data transformation with <a href="https://rstudio.github.io/cheatsheets/data-transformation.pdf">dplyr</a>, and data visualisation with <a href="https://rstudio.github.io/cheatsheets/data-visualization.pdf">ggplot2</a>, among others (see others <a href="https://posit.co/resources/cheatsheets/">here</a>).</p>
