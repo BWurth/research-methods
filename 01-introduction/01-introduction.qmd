@@ -21,6 +21,89 @@ format:
 
 This introduction covers the basics of R programming. As you progress, you'll discover more advanced features and packages that extend R's capabilities even further. Remember to use the help function (`?function_name`) to learn more about specific functions and their usage.
 
+# Executing R Scripts: Full vs. Partial Execution
+
+## Full Execution of an R Script
+
+Running a script from top to bottom is useful when you want to execute all the code at once. This is typically done after you've written and verified the entire script.
+
+**Steps:**
+
+1. Save your script with a `.R` extension, such as `my_script.R`.
+2. Use the `source()` function in R to execute the entire script:
+
+```r
+source("my_script.R")
+```
+
+3. Alternatively, in RStudio:
+    -   Click the Source button at the top of the script editor.
+    -   Use the shortcut `Ctrl + Shift + S` (Windows) or `Cmd + Shift + S` (Mac).
+
+Example script:
+```r
+# Define a function
+add_numbers <- function(x, y) {
+  return(x + y)
+}
+
+# Perform calculations
+result <- add_numbers(5, 3)
+print(result)
+
+# Generate a sequence
+seq_data <- seq(1, 10, by = 2)
+print(seq_data)
+```
+
+## Partial Execution of an R Script
+
+Running parts of your script manually is useful during the development and debugging process. This allows you to test specific sections without executing the entire script.
+
+**Steps in RStudio:**
+
+1. Highlight the portion of the script you want to run.
+2. Press `Ctrl + Enter` (Windows) or `Cmd + Enter` (Mac) to run the selected lines.
+3. If you want to run only the current line, place the cursor on that line and press the same shortcut.
+
+```r
+# Define a function
+add_numbers <- function(x, y) {
+  return(x + y)
+}
+
+# Highlight and run the following line:
+# result <- add_numbers(5, 3)
+
+# Debugging this line separately:
+print(result)
+
+# Highlight and run this block to test sequences:
+seq_data <- seq(1, 10, by = 2)
+print(seq_data)
+```
+
+## Best Practices for Script Organization
+
+**Divide your script into sections** using comments:
+
+```r
+# Section 1: Load libraries
+library(ggplot2)
+
+# Section 2: Load data
+data <- read.csv("data.csv")
+
+# Section 3: Analysis
+summary(data)
+```
+
+**Use descriptive variable and function names** to make scripts easier to understand.
+
+**Keep your script modular**—write functions for reusable code blocks.
+
+**Include comments** to explain complex logic or calculations.
+
 # Basic R Syntax
 
 R is case-sensitive and uses the `<-` operator for assignment (though `=` can also be used). Comments start with `#`.
