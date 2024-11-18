@@ -70,12 +70,14 @@ RStudio improves R programming productivity by offering a unified platform that 
 
 ## Key features of RStudio
 
-RStudio's interface is divided into four main panes:
+RStudio's interface is divided into four main panes (@fig-rstudio-ui):
 
 1.  **Source Editor**: Write and save R scripts for easy reproducibility.
 2.  **Console**: Interact with R directly for quick calculations or testing code snippets.
 3.  **Environment/History**: Displays your current workspace objects and command history and allows t.
 4.  **Files/Plots/Packages/Help**: A multi-purpose pane for file management, viewing plots, managing packages, and accessing help documentation.
+
+![Overview of the RStudio user interface](images/screenshot-rstudio-edit.png){#fig-rstudio-ui width="100%" fig-align="center" alt="Screenshot of the RStudio user interface, showing the four main panes."}
 
 ## RStudio Cloud Option
 
@@ -105,42 +107,83 @@ Both R and RStudio are relatively lightweight programs and should run on most mo
 
 ## Step-by-step installation process for Windows
 
-1.  Download R:
-    -   Go to https://cran.r-project.org/
-    -   Click on "Download R for Windows"
-    -   Click on "base"
-    -   Click on the download link for the latest version
-2.  Install R:
-    -   Run the downloaded .exe file
-    -   Follow the installation wizard, accepting the default options
-3.  Download RStudio:
-    -   Go to https://www.rstudio.com/products/rstudio/download/
-    -   Scroll down to "RStudio Desktop"
-    -   Click on "Download RStudio for Windows"
-4.  Install RStudio:
-    -   Run the downloaded .exe file
-    -   Follow the installation wizard, accepting the default options
+**1. Download R:**
 
-\[Note: Insert screenshot of R download page for Windows here\] \[Note: Insert screenshot of RStudio download page here\]
+Go to [https://cran.r-project.org/](https://cran.r-project.org/)
+
+Click on "Download R for Windows" (@fig-win-cran-1)
+
+![CRAN homepage (red arrow pointing to the link for downloading R for Windows)](images/screenshot-win-cran-1-edit.png){#fig-win-cran-1 width="80%" fig-align="center" alt="Screenshot of the CRAN homepage with a red arrow pointing to the link for downloading R for Windows."}
+
+Click on "base" (@fig-win-cran-2)
+
+![CRAN download page with subdirectories for Windows (red arrow pointing to the link for first time installation of R)](images/screenshot-win-cran-2-edit.png){#fig-win-cran-2 width="80%" fig-align="center" alt="Screenshot of the CRAN download page with subdirectories for Windows with red arrow pointing to the link for first time installation of R."}
+
+Click on the download link for the latest version (@fig-win-cran-3)
+
+![CRAN download page for base version for Windows (red arrow pointing to the download link)](images/screenshot-win-cran-3-edit.png){#fig-win-cran-3 width="80%" fig-align="center" alt="Screenshot of the CRAN download page for base version for Windows with the red arrow pointing to the download link."}
+
+**2. Install R:**
+
+Run the downloaded .exe file
+
+Follow the installation wizard, accepting the default options
+
+**3. Download RStudio:**
+
+Go to [https://www.rstudio.com/products/rstudio/download/](https://www.rstudio.com/products/rstudio/download/)
+
+Scroll down to "RStudio Desktop"
+
+Click on "Download RStudio for Windows" (@fig-win-rstudio-download)
+
+![Posit page for RStudio (red arrow pointing to the download link for Windows)](images/screenshot-win-rstudio-download-edit.png){#fig-win-rstudio-download width="80%" fig-align="center" alt="Screenshot of the Posit page for RStudio with the red arrow pointing to the download link for Windows."}
+
+**4. Install RStudio:**
+
+Run the downloaded .exe file
+
+Follow the installation wizard, accepting the default options (@fig-win-rstudio-install)
+
+![RStudio installation wizard for Windows](images/screenshot-win-rstudio-install.png){#fig-win-rstudio-install width="50%" fig-align="center" alt="Screenshot of the RStudio installation wizard for Windows."}
 
 ## Step-by-step installation process for Mac
 
-1.  Download R:
-    -   Go to https://cran.r-project.org/
-    -   Click on "Download R for macOS"
-    -   Click on the .pkg file appropriate for your macOS version
-2.  Install R:
-    -   Open the downloaded .pkg file
-    -   Follow the installation wizard, accepting the default options
-3.  Download RStudio:
-    -   Go to https://www.rstudio.com/products/rstudio/download/
-    -   Scroll down to "RStudio Desktop"
-    -   Click on "Download RStudio for macOS"
-4.  Install RStudio:
-    -   Open the downloaded .dmg file
-    -   Drag the RStudio icon to your Applications folder
+**1. Download R:**
 
-\[Note: Insert screenshot of R download page for macOS here\] \[Note: Insert screenshot of RStudio download page here\]
+Go to [https://cran.r-project.org/](https://cran.r-project.org/)
+
+Click on "Download R for macOS" (@fig-mac-cran-1)
+
+![CRAN homepage (red arrow pointing to the link for downloading R for Mac](images/screenshot-mac-cran-1-edit.png){#fig-mac-cran-1 width="80%" fig-align="center" alt="Screenshot of the CRAN homepage with a red arrow pointing to the link for downloading R for Mac."}
+  
+Click on the .pkg file appropriate for your macOS version (@fig-mac-cran-2)
+
+![CRAN download page for Mac (red arrows pointing to the download link for respective Mac version, depending on whether you have a newer Apple Silicone Mac or an older Intel Mac)](images/screenshot-mac-cran-2-edit.png){#fig-mac-cran-2 width="80%" fig-align="center" alt="Screenshot of the CRAN download page for Mac with red arrows pointing to the download link for respective Mac version, depending on whether you have a newer Apple Silicone Mac or an older Intel Mac."}
+
+**2. Install R:**
+
+Open the downloaded .pkg file
+
+Follow the installation wizard, accepting the default options (@fig-mac-install-r)
+    
+![Instalation window for R (Mac)](images/screenshot-mac-install-r.png){#fig-mac-install-r width="50%" fig-align="center" alt="Screenshot of the installation window for R on Mac."}
+
+**3. Download RStudio:**
+
+Go to [https://www.rstudio.com/products/rstudio/download/](https://www.rstudio.com/products/rstudio/download/)
+
+Scroll down to "Install RStudio" and click on "Download RStudio Desktop for macOS" (@fig-mac-rstudio-download)
+
+![Posit page for RStudio (red arrow pointing to the download link for Mac)](images/screenshot-mac-rstudio-download-edit.png){#fig-mac-rstudio-download width="80%" fig-align="center" alt="Screenshot of the Posit page for RStudio with the red arrow pointing to the download link for Mac."}
+
+**4. Install RStudio:**
+
+Open the downloaded .dmg file
+
+Drag the RStudio icon to your Applications folder (@fig-mac-rstudio-install)
+
+![Installation window for RStudio on Mac (drag-and-drop the RStudio icon to the Applications folder)](images/screenshot-mac-rstudio-install-edit.png){#fig-mac-rstudio-install width="50%" fig-align="center" alt="Screenshot of the installation window for RStudio on Mac, with a red dashed arrow illustrating how to drag-and-drop the RStudio icon to the Applications folder."}
 
 ## Verifying successful installation
 
@@ -177,17 +220,56 @@ The Comprehensive R Archive Network (CRAN) serves as the official repository for
 
 # Best Practices for Getting Started
 
-## Setting up a working directory
+## Projects and setting up a working directory
 
-Setting up a proper working directory is crucial for organizing your R projects:
+### Why does this matter?
 
-1.  Use RStudio's project feature:
-    -   Go to File \> New Project
-    -   Choose a new or existing directory
-    -   This creates an .Rproj file and sets the working directory automatically
-2.  Alternatively, set the working directory manually:
-    -   Use `setwd("/path/to/your/directory")` in your R script
-    -   Or use Session \> Set Working Directory \> Choose Directory in RStudio
+When working in R, one of the key concepts you'll encounter is managing your **working directory**. The working directory is the folder on your computer where R looks for files (e.g., data) to load and saves files you create. While there are different ways to set your working directory, this lesson will discuss the benefits and drawbacks of two common methods: using `setwd()` and RStudio **Projects**.
+
+### What is `setwd()`?
+
+The `setwd()` function in R sets the working directory to a specific folder. Below is the code example for setting your working directory. Alternatively, you can use Session \> Set Working Directory \> Choose Directory in RStudio.
+
+```r
+setwd("C:/Users/YourName/Documents/MyProject")
+```
+
+**Benefits of `setwd()`**
+
+-   Quick setup: Useful for ad hoc or one-time analyses.
+-   Simple to understand: Easy to use for beginners doing small, standalone projects.
+
+**Drawbacks of `setwd()`**
+
+-   Not portable: If you share your code with someone else, it may not work because their folder paths are different.
+-   Error-prone: Forgetting to set the correct working directory can cause errors when loading or saving files.
+-   Bad practice for larger projects: As projects grow, managing file paths with `setwd()` becomes cumbersome and difficult to maintain.
+
+### What Are RStudio Projects?
+
+RStudio Projects provide a structured way to manage your working directory. When you create a Project in RStudio, a special file (`.Rproj`) is created. Opening this file automatically sets the working directory to the folder containing the Project. You can create a Project in RStudio by following these steps:
+
+1.  Go to File \> New Project
+2.  Choose a new or existing directory
+3.  This creates an .Rproj file and sets the working directory automatically
+
+Further information on how to set up Projects in RStudio can be found in the [RStudio Projects Guide](https://docs.posit.co/ide/user/ide/guide/code/projects.html).
+
+**Benefits of RStudio Projects**
+
+-   Portability: Code and file references work seamlessly on any computer without modification.
+-   Organization: Keeps all related files (data, scripts, output) in one folder.
+-   Best practice: Encourages better habits for managing larger or collaborative projects.
+-   Integration: Works well with version control systems like Git, making collaboration easier.
+
+**Drawbacks of RStudio Projects**
+
+-   Learning curve: May feel complex for students doing very small, simple tasks.
+-   Overhead for small tasks: Setting up a Project for quick analyses might seem unnecessary.
+
+::: {.callout-note}
+For most work—-especially as your projects grow in size or complexity—-we recommend using **RStudio Projects**. While it may feel like extra work upfront, it fosters reproducibility and reduces errors, hereby saving time and frustration in the long run. Use `setwd()` sparingly and only for temporary tasks.
+:::
 
 ## How to organize project files for research
 
@@ -274,12 +356,12 @@ In addition, the [R Journal](https://journal.r-project.org), a peer-reviewed ope
 
 **Books** 
 
--   "R for Data Science (2e)" by Hadley Wickham, Mine Cetinkaya-Rundel, and Garrett Grolemund [[book](https://www.oreilly.com/library/view/r-for-data/9781492097396/)|[website](https://r4ds.hadley.nz)|[GitHub](https://github.com/hadley/r4ds)]
--   "The Art of R Programming" by Norman Matloff [[book](https://www.amazon.co.uk/Art-Programming-Statistical-Software-Design/dp/1593273843/ref=sr_1_1?crid=1UJJO2HUG57F4&dib=eyJ2IjoiMSJ9.lMHfaRa3X-W8SMe2h4qiWaH_3GPvcy38cuClT6rIbW_GjHj071QN20LucGBJIEps.E8XUEMQB5mqDwXptGa7gCFxs_wSA3maJcJjiuGOklMQ&dib_tag=se&keywords=The+Art+of+R+Programming%3A+A+Tour+of+Statistical+Software+Design&qid=1728056547&s=books&sprefix=the+art+of+r+programming+a+tour+of+statistical+software+design%2Cstripbooks%2C47&sr=1-1)]
--   "Advanced R (2e)" by Hadley Wickham [[book](https://www.routledge.com/Advanced-R-Second-Edition/Wickham/p/book/9780815384571?srsltid=AfmBOorwKk5VNcPwwZGq06vPQKCVGVOGRtEbmtBV93gc0bd6tiQ6bcJN)|[website](https://adv-r.hadley.nz)|[GitHub](https://github.com/hadley/ggplot2-book)]
--   "ggplot2: Elegant Graphics for Data Analysis (3e)" by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen [[website](https://ggplot2-book.org)|[GitHub](https://github.com/hadley/adv-r)]
--   "R Graphics Cookbook (2e)" by Winston Chang [[book](https://www.amazon.com/dp/1491978600)|[website](https://r-graphics.org)]
--   "Text Mining with R: A Tidy Approach" by Julia Silge and David Robinson [[book](https://www.oreilly.com/library/view/text-mining-with/9781491981641/)|[website](https://www.tidytextmining.com)|[GitHub](https://github.com/dgrtwo/tidy-text-mining)]
+-   "R for Data Science (2e)" by Hadley Wickham, Mine Cetinkaya-Rundel, and Garrett Grolemund [ [book](https://www.oreilly.com/library/view/r-for-data/9781492097396/) | [website](https://r4ds.hadley.nz) | [GitHub](https://github.com/hadley/r4ds) ]
+-   "The Art of R Programming" by Norman Matloff [ [book](https://www.amazon.co.uk/Art-Programming-Statistical-Software-Design/dp/1593273843/ref=sr_1_1?crid=1UJJO2HUG57F4&dib=eyJ2IjoiMSJ9.lMHfaRa3X-W8SMe2h4qiWaH_3GPvcy38cuClT6rIbW_GjHj071QN20LucGBJIEps.E8XUEMQB5mqDwXptGa7gCFxs_wSA3maJcJjiuGOklMQ&dib_tag=se&keywords=The+Art+of+R+Programming%3A+A+Tour+of+Statistical+Software+Design&qid=1728056547&s=books&sprefix=the+art+of+r+programming+a+tour+of+statistical+software+design%2Cstripbooks%2C47&sr=1-1) ]
+-   "Advanced R (2e)" by Hadley Wickham [ [book](https://www.routledge.com/Advanced-R-Second-Edition/Wickham/p/book/9780815384571?srsltid=AfmBOorwKk5VNcPwwZGq06vPQKCVGVOGRtEbmtBV93gc0bd6tiQ6bcJN) | [website](https://adv-r.hadley.nz) | [GitHub](https://github.com/hadley/ggplot2-book) ]
+-   "ggplot2: Elegant Graphics for Data Analysis (3e)" by Hadley Wickham, Danielle Navarro, and Thomas Lin Pedersen [ [website](https://ggplot2-book.org) | [GitHub](https://github.com/hadley/adv-r) ]
+-   "R Graphics Cookbook (2e)" by Winston Chang [ [book](https://www.amazon.com/dp/1491978600) | [website](https://r-graphics.org) ]
+-   "Text Mining with R: A Tidy Approach" by Julia Silge and David Robinson [ [book](https://www.oreilly.com/library/view/text-mining-with/9781491981641/) | [website](https://www.tidytextmining.com) | [GitHub](https://github.com/dgrtwo/tidy-text-mining)]
 
 **Cheatsheets**
 
