@@ -17,7 +17,7 @@ format:
     number-sections: true
 ---
 
-# Introduction
+# Introduction {#introduction}
 
 ## What is R?
 
@@ -58,7 +58,7 @@ R can integrate with various other tools and technologies, allowing for flexible
 -  Web technologies: Packages like `shiny` allow for the creation of interactive web applications using R.
 -  Version control: R projects can be managed with Git and GitHub, facilitating collaboration and version control.
 
-# Introduction to RStudio
+# Introduction to RStudio {#intro-r-studio}
 
 ## What is RStudio?
 
@@ -90,7 +90,7 @@ For students who prefer not to install R locally, RStudio Cloud offers a browser
 
 RStudio Cloud provides a consistent environment across different computers and operating systems, which can be particularly useful for collaborative work or when working on multiple devices.
 
-# Installation Guide
+# Installation Guide {#install-guide}
 
 ## System requirements for R and RStudio
 
@@ -204,7 +204,7 @@ Keeping R and RStudio up to date is important for accessing the latest features 
 
 It's generally a good practice to update both R and RStudio every few months or when starting a new project.
 
-# R Packages: An Overview
+# R Packages: An Overview {#r-packages}
 
 ## What are R packages?
 
@@ -218,15 +218,15 @@ R packages provide users with access to specialised, pre-written functions, elim
 
 The Comprehensive R Archive Network (CRAN) serves as the official repository for R packages, hosting thousands of user-contributed extensions to the R language. CRAN ensures the quality and consistency of its offerings through a rigorous review process for all submitted packages. Users can easily install these packages directly within R using the install.packages() function, streamlining the process of extending R's capabilities. Furthermore, CRAN provides comprehensive documentation and vignettes for each package, offering users detailed information on functionality, usage, and implementation. This centralized, curated repository plays a crucial role in maintaining R's ecosystem, facilitating easy access to a vast array of tools and functions for R users worldwide. To explore CRAN, visit [https://cran.r-project.org/](https://cran.r-project.org/).
 
-# Best Practices for Getting Started
+# Best Practices for Getting Started {#best-practice}
 
-## Projects and setting up a working directory
+## Projects and setting up a working directory {#setup-projects-wd}
 
 ### Why does this matter?
 
 When working in R, one of the key concepts you'll encounter is managing your **working directory**. The working directory is the folder on your computer where R looks for files (e.g., data) to load and saves files you create. While there are different ways to set your working directory, this lesson will discuss the benefits and drawbacks of two common methods: using `setwd()` and RStudio **Projects**.
 
-### What is `setwd()`?
+### What is `setwd()`? {#setup-wd}
 
 The `setwd()` function in R sets the working directory to a specific folder. Below is the code example for setting your working directory. Alternatively, you can use Session \> Set Working Directory \> Choose Directory in RStudio.
 
@@ -245,7 +245,7 @@ setwd("C:/Users/YourName/Documents/MyProject")
 -   Error-prone: Forgetting to set the correct working directory can cause errors when loading or saving files.
 -   Bad practice for larger projects: As projects grow, managing file paths with `setwd()` becomes cumbersome and difficult to maintain.
 
-### What Are RStudio Projects?
+### What Are RStudio Projects? {#setup-projects}
 
 RStudio Projects provide a structured way to manage your working directory. When you create a Project in RStudio, a special file (`.Rproj`) is created. Opening this file automatically sets the working directory to the folder containing the Project. You can create a Project in RStudio by following these steps:
 
@@ -341,7 +341,7 @@ Basic Git concepts:
 
 While we won't go into detail here, learning Git can greatly enhance your research workflow.
 
-# Additional Resources
+# Additional Resources {#resources}
 
 ## Official R Documentation
 
