@@ -487,7 +487,7 @@
     "href": "lab-uofg-01/lab-uofg-01.html#step-a3-create-the-data-frame",
     "title": "MGT4018/MGT4090 Lab 1",
     "section": "2.3 Step A3: Create the Data Frame",
-    "text": "2.3 Step A3: Create the Data Frame\nWe now combine the variables that we created in the previous step into a data.frame.\n# Combine into a data frame\nsurvey_data &lt;- data.frame(\n  ID = id,\n  AgeBand = age_bands,\n  Gender = gender\n)\nYou can easily explore and check the basic structure of your data and get a summary:\n# View the first few rows using head()\nhead(survey_data)\n\n# Examine the structure\nstr(survey_data)\n\n# Get basic summary statistics\nsummary(survey_data)\nAlternatively, you can download the dataset Download the dataset"
+    "text": "2.3 Step A3: Create the Data Frame\nWe now combine the variables that we created in the previous step into a data.frame.\n# Combine into a data frame\nsurvey_data &lt;- data.frame(\n  ID = id,\n  AgeBand = age_bands,\n  Gender = gender\n)\nYou can easily explore and check the basic structure of your data and get a summary:\n# View the first few rows using head()\nhead(survey_data)\n\n# Examine the structure\nstr(survey_data)\n\n# Get basic summary statistics\nsummary(survey_data)\nAlternatively, you can download the dataset."
   },
   {
     "objectID": "lab-uofg-01/lab-uofg-01.html#step-a4-frequency-tables",

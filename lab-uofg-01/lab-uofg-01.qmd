@@ -129,7 +129,7 @@ str(survey_data)
 summary(survey_data)
 ```
 
-Alternatively, you can download the dataset [Download the dataset](../data/lab-uofg-01/lab1-exercise-a.csv)
+Alternatively, you can <a href="../data/lab-uofg-01/lab1-exercise-a.csv" download="lab1-exercise-a.csv">download the dataset</a>.
 
 ## Step A4: Frequency Tables
 
