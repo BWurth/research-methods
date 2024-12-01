@@ -25,10 +25,7 @@ This lab is the same as the SPSS Lab 1 for MGT4018 and MGT4090. We use base R fu
 ## Alternatives using R packages
 Alternatives for achieving the same outcomes using different R packages are provided in green boxes. If you want to explore these alternatives, we need to install and load the necessary R packages. Run this code once to install packages:
 
-```{r}
-#| eval: false
-#| code-fold: false
-
+```r
 install.packages(c(
   "tidyverse",  # for data manipulation and visualization
   "gt",         # for creating beautiful tables
@@ -39,10 +36,7 @@ install.packages(c(
 
 Now load the packages:
 
-```{r}
-#| message: false
-#| code-fold: false
-
+```r
 library(tidyverse)
 library(gt)
 library(gtsummary)
