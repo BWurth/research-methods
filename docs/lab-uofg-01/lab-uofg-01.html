@@ -8,7 +8,7 @@
 
 <meta name="author" content="Bernd Wurth">
 
-<title>UofG MGT4018/MGT4090 Lab 1 – Research Methods in R</title>
+<title>MGT4018/MGT4090 Lab 1 – Research Methods in R</title>
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -147,19 +147,23 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction"><span class="header-section-number">1</span> Introduction</a></li>
   <li><a href="#exercise-a-creating-and-exploring-a-data-set-in-r" id="toc-exercise-a-creating-and-exploring-a-data-set-in-r" class="nav-link" data-scroll-target="#exercise-a-creating-and-exploring-a-data-set-in-r"><span class="header-section-number">2</span> Exercise A: Creating and Exploring a Data Set in R</a>
   <ul class="collapse">
-  <li><a href="#step-1-set-up-your-workspace" id="toc-step-1-set-up-your-workspace" class="nav-link" data-scroll-target="#step-1-set-up-your-workspace"><span class="header-section-number">2.1</span> Step 1: Set Up Your Workspace</a></li>
-  <li><a href="#step-2-creating-variables" id="toc-step-2-creating-variables" class="nav-link" data-scroll-target="#step-2-creating-variables"><span class="header-section-number">2.2</span> Step 2: Creating Variables</a></li>
-  <li><a href="#step-3-assign-labels-and-levels" id="toc-step-3-assign-labels-and-levels" class="nav-link" data-scroll-target="#step-3-assign-labels-and-levels"><span class="header-section-number">2.3</span> Step 3: Assign Labels and Levels</a></li>
-  <li><a href="#step-4-save-the-dataset" id="toc-step-4-save-the-dataset" class="nav-link" data-scroll-target="#step-4-save-the-dataset"><span class="header-section-number">2.4</span> Step 4: Save the Dataset</a></li>
-  <li><a href="#step-5-entering-data" id="toc-step-5-entering-data" class="nav-link" data-scroll-target="#step-5-entering-data"><span class="header-section-number">2.5</span> Step 5: Entering Data</a></li>
-  <li><a href="#step-6-loading-and-viewing-data" id="toc-step-6-loading-and-viewing-data" class="nav-link" data-scroll-target="#step-6-loading-and-viewing-data"><span class="header-section-number">2.6</span> Step 6: Loading and Viewing Data</a></li>
-  <li><a href="#step-7-exploring-value-labels" id="toc-step-7-exploring-value-labels" class="nav-link" data-scroll-target="#step-7-exploring-value-labels"><span class="header-section-number">2.7</span> Step 7: Exploring Value Labels</a></li>
-  <li><a href="#step-8-basic-exploration-with-summary-statistics" id="toc-step-8-basic-exploration-with-summary-statistics" class="nav-link" data-scroll-target="#step-8-basic-exploration-with-summary-statistics"><span class="header-section-number">2.8</span> Step 8: Basic Exploration with Summary Statistics</a></li>
-  <li><a href="#step-9-correcting-errors" id="toc-step-9-correcting-errors" class="nav-link" data-scroll-target="#step-9-correcting-errors"><span class="header-section-number">2.9</span> Step 9: Correcting Errors</a></li>
-  <li><a href="#step-10-descriptive-statistics" id="toc-step-10-descriptive-statistics" class="nav-link" data-scroll-target="#step-10-descriptive-statistics"><span class="header-section-number">2.10</span> Step 10: Descriptive Statistics</a></li>
-  <li><a href="#step-11-setting-variable-types" id="toc-step-11-setting-variable-types" class="nav-link" data-scroll-target="#step-11-setting-variable-types"><span class="header-section-number">2.11</span> Step 11: Setting Variable Types</a></li>
-  <li><a href="#step-12-cross-tabulations" id="toc-step-12-cross-tabulations" class="nav-link" data-scroll-target="#step-12-cross-tabulations"><span class="header-section-number">2.12</span> Step 12: Cross-tabulations</a></li>
+  <li><a href="#step-a1-setup" id="toc-step-a1-setup" class="nav-link" data-scroll-target="#step-a1-setup"><span class="header-section-number">2.1</span> Step A1: Setup</a></li>
+  <li><a href="#step-a2-creating-variables" id="toc-step-a2-creating-variables" class="nav-link" data-scroll-target="#step-a2-creating-variables"><span class="header-section-number">2.2</span> Step A2: Creating Variables</a></li>
+  <li><a href="#step-a3-create-the-data-frame" id="toc-step-a3-create-the-data-frame" class="nav-link" data-scroll-target="#step-a3-create-the-data-frame"><span class="header-section-number">2.3</span> Step A3: Create the Data Frame</a></li>
+  <li><a href="#step-a4-frequency-tables" id="toc-step-a4-frequency-tables" class="nav-link" data-scroll-target="#step-a4-frequency-tables"><span class="header-section-number">2.4</span> Step A4: Frequency Tables</a></li>
+  <li><a href="#step-a5-cross-tabulation" id="toc-step-a5-cross-tabulation" class="nav-link" data-scroll-target="#step-a5-cross-tabulation"><span class="header-section-number">2.5</span> Step A5: Cross-Tabulation</a></li>
+  <li><a href="#step-a6-loading-and-viewing-data" id="toc-step-a6-loading-and-viewing-data" class="nav-link" data-scroll-target="#step-a6-loading-and-viewing-data"><span class="header-section-number">2.6</span> Step A6: Loading and Viewing Data</a></li>
+  <li><a href="#step-a7-exploring-value-labels" id="toc-step-a7-exploring-value-labels" class="nav-link" data-scroll-target="#step-a7-exploring-value-labels"><span class="header-section-number">2.7</span> Step A7: Exploring Value Labels</a></li>
+  <li><a href="#step-a8-basic-exploration-with-summary-statistics" id="toc-step-a8-basic-exploration-with-summary-statistics" class="nav-link" data-scroll-target="#step-a8-basic-exploration-with-summary-statistics"><span class="header-section-number">2.8</span> Step A8: Basic Exploration with Summary Statistics</a></li>
+  <li><a href="#step-a9-correcting-errors" id="toc-step-a9-correcting-errors" class="nav-link" data-scroll-target="#step-a9-correcting-errors"><span class="header-section-number">2.9</span> Step A9: Correcting Errors</a></li>
+  <li><a href="#step-a10-descriptive-statistics" id="toc-step-a10-descriptive-statistics" class="nav-link" data-scroll-target="#step-a10-descriptive-statistics"><span class="header-section-number">2.10</span> Step A10: Descriptive Statistics</a></li>
+  <li><a href="#step-a11-setting-variable-types" id="toc-step-a11-setting-variable-types" class="nav-link" data-scroll-target="#step-a11-setting-variable-types"><span class="header-section-number">2.11</span> Step A11: Setting Variable Types</a></li>
+  <li><a href="#step-a12-cross-tabulations" id="toc-step-a12-cross-tabulations" class="nav-link" data-scroll-target="#step-a12-cross-tabulations"><span class="header-section-number">2.12</span> Step A12: Cross-tabulations</a></li>
   <li><a href="#optional-expansion-plotting-the-data" id="toc-optional-expansion-plotting-the-data" class="nav-link" data-scroll-target="#optional-expansion-plotting-the-data"><span class="header-section-number">2.13</span> Optional Expansion: Plotting the Data</a></li>
+  </ul></li>
+  <li><a href="#exercise-b-reports-and-tables" id="toc-exercise-b-reports-and-tables" class="nav-link" data-scroll-target="#exercise-b-reports-and-tables"><span class="header-section-number">3</span> Exercise B: Reports and Tables</a>
+  <ul class="collapse">
+  <li><a href="#step-1" id="toc-step-1" class="nav-link" data-scroll-target="#step-1"><span class="header-section-number">3.1</span> Step 1:</a></li>
   </ul></li>
   </ul>
 <div class="toc-actions"><ul class="collapse"><li><a href="https://github.com/bwurth/research-methods/edit/main/lab-uofg-01/lab-uofg-01.qmd" class="toc-action"><i class="bi bi-github"></i>Edit this page</a></li><li><a href="https://github.com/bwurth/research-methods/issues/new" class="toc-action"><i class="bi empty"></i>Report an issue</a></li></ul></div><div class="quarto-alternate-formats"><h2>Other Formats</h2><ul><li><a href="lab-uofg-01.pdf"><i class="bi bi-file-pdf"></i>PDF</a></li></ul></div></nav>
@@ -169,7 +173,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">UofG MGT4018/MGT4090 Lab 1</h1>
+<h1 class="title">MGT4018/MGT4090 Lab 1</h1>
 </div>
 
 
@@ -194,27 +198,85 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 
 <section id="introduction" class="level1" data-number="1">
 <h1 data-number="1"><span class="header-section-number">1</span> Introduction</h1>
-<p>This lab is the same as the SPSS Lab 1.</p>
+<p>This lab is the same as the SPSS Lab 1 for MGT4018 and MGT4090. We use base R functions as the default. While there are many R packages available, understanding base R operations provides a strong foundation for data analysis.</p>
+<div class="callout callout-style-default callout-tip callout-titled">
+<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-1-contents" aria-controls="callout-1" aria-expanded="true" aria-label="Toggle callout">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Alternatives using R packages
+</div>
+<div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
+</div>
+<div id="callout-1" class="callout-1-contents callout-collapse collapse show">
+<div class="callout-body-container callout-body">
+<p>Alternatives for achieving the same outcomes using different R packages are provided in green boxes. If you want to explore these alternatives, we need to install and load the necessary R packages. Run this code once to install packages:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="fu">c</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">"tidyverse"</span>,  <span class="co"># for data manipulation and visualization</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gt"</span>,         <span class="co"># for creating beautiful tables</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"gtsummary"</span>,  <span class="co"># for summary statistics</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">"janitor"</span>     <span class="co"># for tabulation functions</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now load the packages:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gt)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtsummary)</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(janitor)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="exercise-a-creating-and-exploring-a-data-set-in-r" class="level1" data-number="2">
 <h1 data-number="2"><span class="header-section-number">2</span> Exercise A: Creating and Exploring a Data Set in R</h1>
-<p>This lab will guide you through creating a dataset, assigning labels, and conducting basic analyses using R. You’ll learn how to create variables, enter data, and generate summary tables similar to those you would in SPSS.</p>
-<section id="step-1-set-up-your-workspace" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="step-1-set-up-your-workspace"><span class="header-section-number">2.1</span> Step 1: Set Up Your Workspace</h2>
+<p>This lab will guide you through creating a dataset, assigning labels, and conducting basic analyses using R. You will learn how to create variables, enter data, and generate summary tables similar to those you would in SPSS.</p>
+<section id="step-a1-setup" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="step-a1-setup"><span class="header-section-number">2.1</span> Step A1: Setup</h2>
+<p>Before starting any work in R, it is important to organize your files. This ensures that your scripts, datasets, and outputs are easy to manage and reproducible. Projects are strongly recommended for better organization and reproducibility, but setting a working directory is an alternative if needed (see also the respective section in <code>0. Getting Started</code>).</p>
+<p>The best way to organize your work is to create an RStudio project. This keeps all related files in a single folder. Follow these steps:</p>
 <ol type="1">
-<li>Open RStudio and start a new script.</li>
-<li>Save your script with an appropriate name, e.g., <code>Lab_Exercise_A.R</code>.</li>
+<li>Open RStudio.</li>
+<li>Go to <strong>File &gt; New Project</strong>.</li>
+<li>Select <strong>New Directory</strong> and then <strong>New Project</strong>.</li>
+<li>Choose a location on your computer and give the project a name, e.g., <code>ResearchMethodsLab</code>. Avoid spaces in folder and file names.</li>
+<li>Click <strong>Create Project</strong>. RStudio will open a new session within the project folder.</li>
+<li>Create a new <strong>R script</strong>: Go to <strong>File &gt; New File &gt; R Script</strong>.</li>
+<li>Save the script in your project folder with an appropriate name, e.g., <code>Lab_Exercise_A.R</code>.</li>
 </ol>
+<p>If you are not using a project, you will need to set a working directory manually. The working directory is the folder where R looks for files and saves outputs.</p>
+<ol type="1">
+<li>In your Finder (Mac) or Explorer (Windows), create a new folder for the R Labs (e.g., <code>ResearchMethodsLab</code>). Avoid spaces in folder and file names.</li>
+<li>Open RStudio.</li>
+<li>Create a new <strong>R script</strong>: Go to <strong>File &gt; New File &gt; R Script</strong>.</li>
+<li>Save the script in the folder that you previously created with an appropriate name, e.g., <code>Lab_Exercise_A.R</code>.</li>
+<li>Set the working directory in your script using the <code>setwd()</code> function. Copy the following code into your script, change the path to the older that you created, and execute the script.</li>
+</ol>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">setwd</span>(<span class="st">"path/to/your/folder"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Now you are ready to begin your work in R!</p>
 </section>
-<section id="step-2-creating-variables" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="step-2-creating-variables"><span class="header-section-number">2.2</span> Step 2: Creating Variables</h2>
-<p>We’ll create three variables: <code>ID</code>, <code>AgeBand</code>, and <code>Gender</code>.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create an empty data frame with the variables ID, AgeBand, and Gender</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">ID =</span> <span class="fu">integer</span>(), <span class="at">AgeBand =</span> <span class="fu">factor</span>(), <span class="at">Gender =</span> <span class="fu">factor</span>())</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</section>
-<section id="step-3-assign-labels-and-levels" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="step-3-assign-labels-and-levels"><span class="header-section-number">2.3</span> Step 3: Assign Labels and Levels</h2>
-<p>In R, we use <strong>factors</strong> to represent categorical data with defined levels.</p>
+<section id="step-a2-creating-variables" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="step-a2-creating-variables"><span class="header-section-number">2.2</span> Step A2: Creating Variables</h2>
+<p>In base R, we will create our vectors and combine them into a data frame. Use the following code to create your variables:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create vectors for our data</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>id <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">30</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Create age bands with labels</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>age_bands <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">3</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">4</span>,<span class="dv">2</span>,<span class="dv">5</span>,<span class="dv">5</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">1</span>),</span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">5</span>,</span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"&lt;21"</span>, <span class="st">"21-30"</span>, <span class="st">"31-40"</span>, <span class="st">"41-50"</span>, <span class="st">"&gt;50"</span>)</span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Create gender categories with labels</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a>gender <span class="ot">&lt;-</span> <span class="fu">factor</span>(</span>
+<span id="cb4-13"><a href="#cb4-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">0</span>,<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">9</span>,<span class="dv">9</span>),</span>
+<span id="cb4-14"><a href="#cb4-14" aria-hidden="true" tabindex="-1"></a>  <span class="at">levels =</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">9</span>),</span>
+<span id="cb4-15"><a href="#cb4-15" aria-hidden="true" tabindex="-1"></a>  <span class="at">labels =</span> <span class="fu">c</span>(<span class="st">"Male"</span>, <span class="st">"Female"</span>, <span class="st">"Other"</span>, <span class="st">"Prefer not to say"</span>)</span>
+<span id="cb4-16"><a href="#cb4-16" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -229,35 +291,103 @@ Note
 </div>
 </div>
 </section>
-<section id="step-4-save-the-dataset" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="step-4-save-the-dataset"><span class="header-section-number">2.4</span> Step 4: Save the Dataset</h2>
+<section id="step-a3-create-the-data-frame" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="step-a3-create-the-data-frame"><span class="header-section-number">2.3</span> Step A3: Create the Data Frame</h2>
+<p>We now combine the variables that we created in the previous step into a <code>data.frame</code>.</p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine into a data frame</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>survey_data <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">ID =</span> id,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">AgeBand =</span> age_bands,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">Gender =</span> gender</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>You can easily explore and check the basic structure of your data and get a summary:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># View the first few rows using head()</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(survey_data)</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Examine the structure</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a><span class="fu">str</span>(survey_data)</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Get basic summary statistics</span></span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(survey_data)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p>Alternatively, you can download the dataset <a href="../data/lab-uofg-01/lab1-exercise-a.csv">Download the dataset</a></p>
 </section>
-<section id="step-5-entering-data" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="step-5-entering-data"><span class="header-section-number">2.5</span> Step 5: Entering Data</h2>
+<section id="step-a4-frequency-tables" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="step-a4-frequency-tables"><span class="header-section-number">2.4</span> Step A4: Frequency Tables</h2>
+<p>Create frequency tables using base R functions:</p>
+<div class="sourceCode" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Age Band frequencies</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>age_freq <span class="ot">&lt;-</span> <span class="fu">table</span>(survey_data<span class="sc">$</span>AgeBand)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>age_prop <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(age_freq) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine frequencies and percentages</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>age_summary <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Frequency =</span> age_freq,</span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Percentage =</span> <span class="fu">round</span>(age_prop, <span class="dv">1</span>)</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the results</span></span>
+<span id="cb7-12"><a href="#cb7-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Age Band Distribution:"</span>)</span>
+<span id="cb7-13"><a href="#cb7-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(age_summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Gender frequencies</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>gender_freq <span class="ot">&lt;-</span> <span class="fu">table</span>(survey_data<span class="sc">$</span>Gender)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>gender_prop <span class="ot">&lt;-</span> <span class="fu">prop.table</span>(gender_freq) <span class="sc">*</span> <span class="dv">100</span></span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Combine frequencies and percentages</span></span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>gender_summary <span class="ot">&lt;-</span> <span class="fu">cbind</span>(</span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">Frequency =</span> gender_freq,</span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">Percentage =</span> <span class="fu">round</span>(gender_prop, <span class="dv">1</span>)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the results</span></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Gender Distribution:"</span>)</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(gender_summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="step-6-loading-and-viewing-data" class="level2" data-number="2.6">
-<h2 data-number="2.6" class="anchored" data-anchor-id="step-6-loading-and-viewing-data"><span class="header-section-number">2.6</span> Step 6: Loading and Viewing Data</h2>
+<section id="step-a5-cross-tabulation" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="step-a5-cross-tabulation"><span class="header-section-number">2.5</span> Step A5: Cross-Tabulation</h2>
+<p>Create a cross-tabulation using base R:</p>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create cross-tabulation</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>cross_tab <span class="ot">&lt;-</span> <span class="fu">table</span>(survey_data<span class="sc">$</span>AgeBand, survey_data<span class="sc">$</span>Gender)</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Add row and column totals</span></span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>cross_tab_with_totals <span class="ot">&lt;-</span> <span class="fu">addmargins</span>(cross_tab)</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the results</span></span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"Age Band by Gender Cross-Tabulation:"</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(cross_tab_with_totals)</span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate percentages (optional)</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>prop_table <span class="ot">&lt;-</span> <span class="fu">round</span>(<span class="fu">prop.table</span>(cross_tab) <span class="sc">*</span> <span class="dv">100</span>, <span class="dv">1</span>)</span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="st">"</span><span class="sc">\n</span><span class="st">Percentage Distribution:"</span>)</span>
+<span id="cb9-14"><a href="#cb9-14" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(prop_table)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </section>
-<section id="step-7-exploring-value-labels" class="level2" data-number="2.7">
-<h2 data-number="2.7" class="anchored" data-anchor-id="step-7-exploring-value-labels"><span class="header-section-number">2.7</span> Step 7: Exploring Value Labels</h2>
+<section id="step-a6-loading-and-viewing-data" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="step-a6-loading-and-viewing-data"><span class="header-section-number">2.6</span> Step A6: Loading and Viewing Data</h2>
 </section>
-<section id="step-8-basic-exploration-with-summary-statistics" class="level2" data-number="2.8">
-<h2 data-number="2.8" class="anchored" data-anchor-id="step-8-basic-exploration-with-summary-statistics"><span class="header-section-number">2.8</span> Step 8: Basic Exploration with Summary Statistics</h2>
+<section id="step-a7-exploring-value-labels" class="level2" data-number="2.7">
+<h2 data-number="2.7" class="anchored" data-anchor-id="step-a7-exploring-value-labels"><span class="header-section-number">2.7</span> Step A7: Exploring Value Labels</h2>
 </section>
-<section id="step-9-correcting-errors" class="level2" data-number="2.9">
-<h2 data-number="2.9" class="anchored" data-anchor-id="step-9-correcting-errors"><span class="header-section-number">2.9</span> Step 9: Correcting Errors</h2>
+<section id="step-a8-basic-exploration-with-summary-statistics" class="level2" data-number="2.8">
+<h2 data-number="2.8" class="anchored" data-anchor-id="step-a8-basic-exploration-with-summary-statistics"><span class="header-section-number">2.8</span> Step A8: Basic Exploration with Summary Statistics</h2>
 </section>
-<section id="step-10-descriptive-statistics" class="level2" data-number="2.10">
-<h2 data-number="2.10" class="anchored" data-anchor-id="step-10-descriptive-statistics"><span class="header-section-number">2.10</span> Step 10: Descriptive Statistics</h2>
+<section id="step-a9-correcting-errors" class="level2" data-number="2.9">
+<h2 data-number="2.9" class="anchored" data-anchor-id="step-a9-correcting-errors"><span class="header-section-number">2.9</span> Step A9: Correcting Errors</h2>
 </section>
-<section id="step-11-setting-variable-types" class="level2" data-number="2.11">
-<h2 data-number="2.11" class="anchored" data-anchor-id="step-11-setting-variable-types"><span class="header-section-number">2.11</span> Step 11: Setting Variable Types</h2>
+<section id="step-a10-descriptive-statistics" class="level2" data-number="2.10">
+<h2 data-number="2.10" class="anchored" data-anchor-id="step-a10-descriptive-statistics"><span class="header-section-number">2.10</span> Step A10: Descriptive Statistics</h2>
 </section>
-<section id="step-12-cross-tabulations" class="level2" data-number="2.12">
-<h2 data-number="2.12" class="anchored" data-anchor-id="step-12-cross-tabulations"><span class="header-section-number">2.12</span> Step 12: Cross-tabulations</h2>
+<section id="step-a11-setting-variable-types" class="level2" data-number="2.11">
+<h2 data-number="2.11" class="anchored" data-anchor-id="step-a11-setting-variable-types"><span class="header-section-number">2.11</span> Step A11: Setting Variable Types</h2>
+</section>
+<section id="step-a12-cross-tabulations" class="level2" data-number="2.12">
+<h2 data-number="2.12" class="anchored" data-anchor-id="step-a12-cross-tabulations"><span class="header-section-number">2.12</span> Step A12: Cross-tabulations</h2>
 </section>
 <section id="optional-expansion-plotting-the-data" class="level2" data-number="2.13">
 <h2 data-number="2.13" class="anchored" data-anchor-id="optional-expansion-plotting-the-data"><span class="header-section-number">2.13</span> Optional Expansion: Plotting the Data</h2>
+</section>
+</section>
+<section id="exercise-b-reports-and-tables" class="level1" data-number="3">
+<h1 data-number="3"><span class="header-section-number">3</span> Exercise B: Reports and Tables</h1>
+<section id="step-1" class="level2" data-number="3.1">
+<h2 data-number="3.1" class="anchored" data-anchor-id="step-1"><span class="header-section-number">3.1</span> Step 1:</h2>
 
 
 </section>
