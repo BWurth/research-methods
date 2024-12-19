@@ -221,7 +221,7 @@
     "href": "index.html#university-of-glasgow-mgt4018-and-mgt4090",
     "title": "Research Methods in R",
     "section": "University of Glasgow MGT4018 and MGT4090",
-    "text": "University of Glasgow MGT4018 and MGT4090\nThis course covers all required materials and more for the University of Glasgow’s third year courses MGT4018 and MGT4090 that prepare students for their dissertations. In addition to the general lessons and exercises above, the following tutorials cover the same exercises than the SPSS tutorials.\nLab 1 [ html | pdf ]"
+    "text": "University of Glasgow MGT4018 and MGT4090\nThis course covers all required materials and more for the University of Glasgow’s third year courses MGT4018 and MGT4090 that prepare students for their dissertations. In addition to the general lessons and exercises above, the following tutorials cover the same exercises than the SPSS tutorials. If you have never used R before, please go through 00. Getting Started and 01. Introduction before starting with these labs.\nLab 1 [ html | pdf ]"
   },
   {
     "objectID": "index.html#acknowledgements",
@@ -473,7 +473,7 @@
     "href": "lab-uofg-01/lab-uofg-01.html#step-a1-setup",
     "title": "MGT4018/MGT4090 Lab 1",
     "section": "2.1 Step A1: Setup",
-    "text": "2.1 Step A1: Setup\nBefore starting any work in R, it is important to organize your files. This ensures that your scripts, datasets, and outputs are easy to manage and reproducible. Projects are strongly recommended for better organization and reproducibility, but setting a working directory is an alternative if needed (see also the respective section in 0. Getting Started).\nThe best way to organize your work is to create an RStudio project. This keeps all related files in a single folder. Follow these steps:\n\nOpen RStudio.\nGo to File &gt; New Project.\nSelect New Directory and then New Project.\nChoose a location on your computer and give the project a name, e.g., ResearchMethodsLab. Avoid spaces in folder and file names.\nClick Create Project. RStudio will open a new session within the project folder.\nCreate a new R script: Go to File &gt; New File &gt; R Script.\nSave the script in your project folder with an appropriate name, e.g., Lab_Exercise_A.R.\n\nIf you are not using a project, you will need to set a working directory manually. The working directory is the folder where R looks for files and saves outputs.\n\nIn your Finder (Mac) or Explorer (Windows), create a new folder for the R Labs (e.g., ResearchMethodsLab). Avoid spaces in folder and file names.\nOpen RStudio.\nCreate a new R script: Go to File &gt; New File &gt; R Script.\nSave the script in the folder that you previously created with an appropriate name, e.g., Lab_Exercise_A.R.\nSet the working directory in your script using the setwd() function. Copy the following code into your script, change the path to the older that you created, and execute the script.\n\nsetwd(\"path/to/your/folder\")\nNow you are ready to begin your work in R!"
+    "text": "2.1 Step A1: Setup\nBefore starting any work in R, it is important to organize your files. This ensures that your scripts, datasets, and outputs are easy to manage and reproducible. Projects are strongly recommended for better organization and reproducibility, but setting a working directory is an alternative if needed (see also the respective section in 0. Getting Started).\nThe best way to organize your work is to create an RStudio project. This keeps all related files in a single folder. Follow these steps:\n\nOpen RStudio.\nGo to File &gt; New Project.\nSelect New Directory and then New Project.\nChoose a location on your computer and give the project a name, e.g., ResearchMethodsLab. Avoid spaces in folder and file names.\nClick Create Project. RStudio will open a new session within the project folder.\nCreate a new R script: Go to File &gt; New File &gt; R Script.\nSave the script in your project folder with an appropriate name, e.g., Lab1_Exercise_A.R.\n\nIf you are not using a project, you will need to set a working directory manually. The working directory is the folder where R looks for files and saves outputs.\n\nIn your Finder (Mac) or Explorer (Windows), create a new folder for the R Labs (e.g., ResearchMethodsLab). Avoid spaces in folder and file names.\nOpen RStudio.\nCreate a new R script: Go to File &gt; New File &gt; R Script.\nSave the script in the folder that you previously created with an appropriate name, e.g., Lab_Exercise_A.R.\nSet the working directory in your script using the setwd() function. Copy the following code into your script, change the path to the older that you created, and execute the script.\n\nsetwd(\"path/to/your/folder\")\nNow you are ready to begin your work in R!"
   },
   {
     "objectID": "lab-uofg-01/lab-uofg-01.html#step-a2-creating-variables",
@@ -487,7 +487,7 @@
     "href": "lab-uofg-01/lab-uofg-01.html#step-a3-create-the-data-frame",
     "title": "MGT4018/MGT4090 Lab 1",
     "section": "2.3 Step A3: Create the Data Frame",
-    "text": "2.3 Step A3: Create the Data Frame\nWe now combine the variables that we created in the previous step into a data.frame.\n# Combine into a data frame\nsurvey_data &lt;- data.frame(\n  ID = id,\n  AgeBand = age_bands,\n  Gender = gender\n)\nYou can easily explore and check the basic structure of your data and get a summary:\n# View the first few rows using head()\nhead(survey_data)\n\n# Examine the structure\nstr(survey_data)\n\n# Get basic summary statistics\nsummary(survey_data)\nAlternatively, you can download the dataset."
+    "text": "2.3 Step A3: Create the Data Frame\nWe now combine the variables that we created in the previous step into a data.frame.\n# Combine into a data frame\nsurvey_data &lt;- data.frame(\n  ID = id,\n  AgeBand = age_bands,\n  Gender = gender\n)\nYou can easily explore and check the basic structure of your data and get a summary:\n# View the first few rows using head()\nhead(survey_data)\n\n# Examine the structure\nstr(survey_data)\n\n# Get basic summary statistics\nsummary(survey_data)\n\n2.3.1 Option 2: Load and Modify your Dataset\nAlternatively, you can download the dataset."
   },
   {
     "objectID": "lab-uofg-01/lab-uofg-01.html#step-a4-frequency-tables",
@@ -558,5 +558,47 @@
     "title": "MGT4018/MGT4090 Lab 1",
     "section": "3.1 Step 1:",
     "text": "3.1 Step 1:"
+  },
+  {
+    "objectID": "lab-uofg-01/lab-uofg-01.html#step-a2-creating-or-loading-the-dataset",
+    "href": "lab-uofg-01/lab-uofg-01.html#step-a2-creating-or-loading-the-dataset",
+    "title": "MGT4018/MGT4090 Lab 1",
+    "section": "2.2 Step A2: Creating or Loading the Dataset",
+    "text": "2.2 Step A2: Creating or Loading the Dataset\n\n2.2.1 Option 1: Create your Dataset\nIn base R, we will create our vectors and combine them into a data frame. Use the following code to create your variables:\n# Create vectors for our data\nid &lt;- 1:30\n\n# Create age bands with labels\nage_bands &lt;- factor(\n  c(1,3,2,4,2,5,5,2,3,1,4,1,3,2,4,2,5,5,2,3,1,4,2,4,2,5,5,2,3,1),\n  levels = 1:5,\n  labels = c(\"&lt;21\", \"21-30\", \"31-40\", \"41-50\", \"&gt;50\")\n)\n\n# Create gender categories with labels\ngender &lt;- factor(\n  c(0,1,1,0,0,0,1,1,1,0,9,0,2,1,0,0,1,1,0,0,1,0,0,0,1,1,1,0,9,9),\n  levels = c(0,1,2,9),\n  labels = c(\"Male\", \"Female\", \"Other\", \"Prefer not to say\")\n)\n\n\n\n\n\n\nNote\n\n\n\nIn R, we use factor() to create categorical variables. This is similar to value labels in SPSS. The levels argument specifies the underlying codes, while labels provides the human-readable labels."
+  },
+  {
+    "objectID": "lab-uofg-01/lab-uofg-01.html#step-a3-frequency-tables-basic-exploration-with-summary-statistics",
+    "href": "lab-uofg-01/lab-uofg-01.html#step-a3-frequency-tables-basic-exploration-with-summary-statistics",
+    "title": "MGT4018/MGT4090 Lab 1",
+    "section": "2.4 Step A3: Frequency Tables (Basic Exploration with Summary Statistics)",
+    "text": "2.4 Step A3: Frequency Tables (Basic Exploration with Summary Statistics)\nCreate frequency tables using base R functions:\n# Age Band frequencies\nage_freq &lt;- table(survey_data$AgeBand)\nage_prop &lt;- prop.table(age_freq) * 100\n\n# Combine frequencies and percentages\nage_summary &lt;- cbind(\n  Frequency = age_freq,\n  Percentage = round(age_prop, 1)\n)\n\n# Display the results\nprint(\"Age Band Distribution:\")\nprint(age_summary)\n# Gender frequencies\ngender_freq &lt;- table(survey_data$Gender)\ngender_prop &lt;- prop.table(gender_freq) * 100\n\n# Combine frequencies and percentages\ngender_summary &lt;- cbind(\n  Frequency = gender_freq,\n  Percentage = round(gender_prop, 1)\n)\n\n# Display the results\nprint(\"Gender Distribution:\")\nprint(gender_summary)"
+  },
+  {
+    "objectID": "lab-uofg-01/lab-uofg-01.html#step-a4-cross-tabulation",
+    "href": "lab-uofg-01/lab-uofg-01.html#step-a4-cross-tabulation",
+    "title": "MGT4018/MGT4090 Lab 1",
+    "section": "2.5 Step A4: Cross-Tabulation",
+    "text": "2.5 Step A4: Cross-Tabulation\nCreate a cross-tabulation using base R:\n# Create cross-tabulation\ncross_tab &lt;- table(survey_data$AgeBand, survey_data$Gender)\n\n# Add row and column totals\ncross_tab_with_totals &lt;- addmargins(cross_tab)\n\n# Display the results\nprint(\"Age Band by Gender Cross-Tabulation:\")\nprint(cross_tab_with_totals)\n\n# Calculate percentages (optional)\nprop_table &lt;- round(prop.table(cross_tab) * 100, 1)\nprint(\"\\nPercentage Distribution:\")\nprint(prop_table)"
+  },
+  {
+    "objectID": "lab-uofg-01/lab-uofg-01.html#step-a5-saving-your-work",
+    "href": "lab-uofg-01/lab-uofg-01.html#step-a5-saving-your-work",
+    "title": "MGT4018/MGT4090 Lab 1",
+    "section": "2.6 Step A5: Saving your Work",
+    "text": "2.6 Step A5: Saving your Work"
+  },
+  {
+    "objectID": "lab-uofg-01/lab-uofg-01.html#step-b1-setup",
+    "href": "lab-uofg-01/lab-uofg-01.html#step-b1-setup",
+    "title": "MGT4018/MGT4090 Lab 1",
+    "section": "3.1 Step B1: Setup",
+    "text": "3.1 Step B1: Setup\nYou can continue working with the same project or working directory (depending on which option you chose in Step A1). To get started with this exercise, please do the following:\n\nPlease download the datatset survey.csv and save it in your project folder or working directory.\nCreate a new R script: Go to File &gt; New File &gt; R Script.\nSave the script in your project folder or working directory with an appropriate name, e.g., Lab1_Exercise_B.R."
+  },
+  {
+    "objectID": "lab-uofg-01/lab-uofg-01.html#step-b2",
+    "href": "lab-uofg-01/lab-uofg-01.html#step-b2",
+    "title": "MGT4018/MGT4090 Lab 1",
+    "section": "3.2 Step B2:",
+    "text": "3.2 Step B2:"
   }
 ]
