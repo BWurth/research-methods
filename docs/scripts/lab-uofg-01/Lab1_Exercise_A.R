@@ -1,9 +1,9 @@
 ################################################################################
 #   R Code for Lab 1 Exercise A (MGT4018/MGT4090)
 #                       
-#   Name: Bernd Wurth (bernd.wurth@glasgow.ac.uk)
+#   Dr Bernd Wurth (bernd.wurth@glasgow.ac.uk)
 #
-#   Last modified: 08 April 2024
+#   Last modified: 22 December 2024
 ################################################################################
 
 #===============================================================================

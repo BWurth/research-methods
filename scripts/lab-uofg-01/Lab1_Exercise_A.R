@@ -1,9 +1,9 @@
 ################################################################################
 #   R Code for Lab 1 Exercise A (MGT4018/MGT4090)
 #                       
-#   Name: Bernd Wurth (bernd.wurth@glasgow.ac.uk)
+#   Dr Bernd Wurth (bernd.wurth@glasgow.ac.uk)
 #
-#   Last modified: 08 April 2024
+#   Last modified: 22 December 2024
 ################################################################################
 
 #===============================================================================
@@ -370,3 +370,118 @@ age_gender_prop <- prop.table(age_gender_table)
 # Convert to a data frame and save as CSV
 age_gender_prop_df <- as.data.frame(age_gender_prop)
 write.csv(age_gender_prop_df, "output/tables/age_gender_proportions.csv", row.names = FALSE)
+
+
+#===============================================================================
+# Alternatives Using R Packages
+#===============================================================================
+
+#-------------------------------------------------------------------------------
+# Beautiful, customizable tables with export options with `gt`
+#-------------------------------------------------------------------------------
+
+# Install package
+install.packages("gt")
+
+# Load janitor package
+library(gt)
+
+# Create a cross-tabulation
+age_gender_table <- table(survey_data$AgeBand, survey_data$Gender)
+
+# Convert the table to a data frame
+age_gender_df <- as.data.frame(age_gender_table)
+
+# Create a gt table
+gt_table <- gt(data = age_gender_df) %>%
+  tab_header(
+    title = "Cross-Tabulation of Age Band and Gender",
+    subtitle = "Frequency Distribution"
+  ) %>%
+  cols_label(
+    Var1 = "Age Band",
+    Var2 = "Gender",
+    Freq = "Count"
+  ) %>%
+  fmt_number(
+    columns = vars(Freq),
+    decimals = 0
+  ) %>%
+  tab_source_note(
+    source_note = "Data Source: Survey Data"
+  )
+
+# Save the table as an HTML file
+gtsave(gt_table, filename = "output/tables/age_gender_cross_tabulation.html")
+
+#-------------------------------------------------------------------------------
+# Cleaning and Tabulating Data with `janitor`
+#-------------------------------------------------------------------------------
+
+# Creating and Saving Frequency Tables -----------------------------------------
+
+# Install package
+install.packages("janitor")
+
+# Load janitor package
+library(janitor)
+
+# Frequency table for AgeBand
+age_band_freq <- survey_data %>%
+  tabyl(AgeBand)
+
+# Save as CSV
+write.csv(age_band_freq, "output/tables/age_band_frequency.csv", row.names = FALSE)
+
+# Creating and Saving Cross-Tabulation -----------------------------------------
+
+# Make sure that the package is installed and loaded
+
+# Cross-tabulation of AgeBand and Gender
+age_gender_table <- survey_data %>%
+  tabyl(AgeBand, Gender)
+
+# Save as CSV
+write.csv(age_gender_table, "output/tables/age_gender_cross_tabulation.csv", row.names = FALSE)
+
+#-------------------------------------------------------------------------------
+# Publication-Ready Tables with `gtsummary`
+#-------------------------------------------------------------------------------
+
+# Install package
+install.packages("gtsummary")
+
+# Load package
+library(gtsummary)
+
+# Create a cross-tabulation table
+age_gender_table <- survey_data %>%
+  tbl_cross(
+    row = AgeBand,
+    col = Gender
+  )
+
+# Save as a CSV or Word document
+as_gt(age_gender_table) %>%
+  gtsave("output/tables/age_gender_cross_tabulation.html")
+
+#-------------------------------------------------------------------------------
+# Customizable Table Formatting with `flextable`
+#-------------------------------------------------------------------------------
+
+# Install package
+install.packages("flextable")
+
+# Load package
+library(flextable)
+
+# Convert a cross-tabulation to a flextable
+age_gender_table <- table(survey_data$AgeBand, survey_data$Gender) %>%
+  as.data.frame()
+
+ft <- flextable(age_gender_table)
+
+# Save as Word document
+save_as_docx(ft, path = "output/tables/age_gender_cross_tabulation.docx")
+save_as_pptx(ft, path = "output/tables/age_gender_cross_tabulation.pptx")
+save_as_image(ft, path = "output/tables/age_gender_cross_tabulation.png")

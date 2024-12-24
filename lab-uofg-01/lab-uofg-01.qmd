@@ -23,25 +23,7 @@ This lab is the same as the SPSS Lab 1 for MGT4018 and MGT4090. We use base R fu
 
 ::: {.callout-tip collapse="false"}
 ## Alternatives using R packages
-Alternatives for achieving the same outcomes using different R packages are provided in green boxes. If you want to explore these alternatives, we need to install and load the necessary R packages. Run this code once to install packages:
-
-```r
-install.packages(c(
-  "tidyverse",  # for data manipulation and visualization
-  "gt",         # for creating beautiful tables
-  "gtsummary",  # for summary statistics
-  "janitor"     # for tabulation functions
-))
-```
-
-Now load the packages:
-
-```r
-library(tidyverse)
-library(gt)
-library(gtsummary)
-library(janitor)
-```
+Alternatives for achieving the same outcomes using different R packages are provided in green boxes. If you want to explore these alternatives, each box will introduce the respective package, how to install and use it, and the outputs it can produce.
 :::
 
 # Exercise A: Creating and Exploring a Dataset in R
@@ -569,7 +551,6 @@ Cross-tabulations are a versatile tool for analyzing the relationship between ca
 -  Include totals with `addmargins()` for a complete summary.
 -  Customize, export, or extend your analysis with statistical tests.
 
-
 ## Step A6: Saving Frequency Tables and Cross-Tabulations
 
 When analyzing data, frequency tables and cross-tabulations provide valuable insights into categorical variables and their relationships. To share or store these tables for reporting or further analysis, you can save them as **CSV files** or directly export them in a human-readable format. This guide demonstrates both methods, using `survey_data` for examples.
@@ -688,6 +669,156 @@ To save frequency tables and cross-tabulations for reporting or analysis:
 
 These techniques ensure your tables are accessible for external use, whether for sharing with colleagues, integrating into reports, or storing for reproducibility.
 
+::: {.callout-tip collapse="true"}
+## Beautiful, customizable tables with export options with `gt`
+The `gt` package is a powerful tool for creating beautiful, publication-quality tables directly in R. It provides an intuitive and flexible workflow for generating summary tables, including frequency tables and cross-tabulations, with advanced formatting options for customization. The `gt` package is particularly well-suited for reports, presentations, and dashboards.
+
+**Creating and Saving Cross-Tabulation**
+
+```r
+# Install package
+install.packages("gt")
+
+# Load janitor package
+library(gt)
+
+# Create a cross-tabulation
+age_gender_table <- table(survey_data$AgeBand, survey_data$Gender)
+
+# Convert the table to a data frame
+age_gender_df <- as.data.frame(age_gender_table)
+
+# Create a gt table
+gt_table <- gt(data = age_gender_df) %>%
+  tab_header(
+    title = "Cross-Tabulation of Age Band and Gender",
+    subtitle = "Frequency Distribution"
+  ) %>%
+  cols_label(
+    Var1 = "Age Band",
+    Var2 = "Gender",
+    Freq = "Count"
+  ) %>%
+  fmt_number(
+    columns = vars(Freq),
+    decimals = 0
+  ) %>%
+  tab_source_note(
+    source_note = "Data Source: Survey Data"
+  )
+
+# Save the table as an HTML file
+gtsave(gt_table, filename = "output/tables/age_gender_cross_tabulation.html")
+```
+
+**Advantages:**
+
+-  Generating publication-ready tables with advanced customization.
+-  Producing interactive HTML tables for dashboards or web-based reports.
+:::
+
+::: {.callout-tip collapse="true"}
+## Cleaning and Tabulating Data with `janitor`
+The `janitor` package offers functions like `tabyl()` for creating frequency tables and cross-tabulations, with options to directly save them as data frames for further analysis or export.
+
+**Creating and Saving Frequency Tables**
+
+```r
+# Install package
+install.packages("janitor")
+
+# Load janitor package
+library(janitor)
+
+# Frequency table for AgeBand
+age_band_freq <- survey_data %>%
+  tabyl(AgeBand)
+
+# Save as CSV
+write.csv(age_band_freq, "output/tables/age_band_frequency.csv", row.names = FALSE)
+```
+
+**Creating and Saving Cross-Tabulation**
+
+```r
+# Make sure that the package is installed and loaded
+
+# Cross-tabulation of AgeBand and Gender
+age_gender_table <- survey_data %>%
+  tabyl(AgeBand, Gender)
+
+# Save as CSV
+write.csv(age_gender_table, "output/tables/age_gender_cross_tabulation.csv", row.names = FALSE)
+```
+
+**Advantages:**
+
+-  Automatically includes proportions and percentages in the output.
+-  Provides a clean and readable tabular output.
+:::
+
+::: {.callout-tip collapse="true"}
+## Publication-Ready Tables with `gtsummary`
+The `gtsummary` package is great for creating cross-tabulations with enhanced formatting and export options.
+
+**Creating and Saving Cross-Tabulation**
+
+```r
+# Install package
+install.packages("gtsummary")
+
+# Load package
+library(gtsummary)
+
+# Create a cross-tabulation table
+age_gender_table <- survey_data %>%
+  tbl_cross(
+    row = AgeBand,
+    col = Gender
+  )
+
+# Save as a CSV or Word document
+as_gt(age_gender_table) %>%
+  gtsave("output/tables/age_gender_cross_tabulation.html")
+```
+
+**Advantages:**
+
+-  Produces beautifully formatted tables.
+-  Supports export to multiple formats (e.g., HTML, Word, PDF).
+:::
+
+::: {.callout-tip collapse="true"}
+## Customizable Table Formatting with `flextable`
+The `flextable` package is ideal for customizing tables for reports and presentations such as Word/PowerPoint outputs.
+
+**Formatting and Saving a Cross-Tabulation**
+
+```r
+# Install package
+install.packages("flextable")
+
+# Load package
+library(flextable)
+
+# Convert a cross-tabulation to a flextable
+age_gender_table <- table(survey_data$AgeBand, survey_data$Gender) %>%
+  as.data.frame()
+
+ft <- flextable(age_gender_table)
+
+# Save as Word document
+save_as_docx(ft, path = "output/tables/age_gender_cross_tabulation.docx")
+save_as_pptx(ft, path = "output/tables/age_gender_cross_tabulation.pptx")
+save_as_image(ft, path = "output/tables/age_gender_cross_tabulation.png")
+```
+
+**Advantages:**
+
+-  Highly customizable appearance.
+-  Export to Word, PowerPoint, or HTML formats.
+:::
+
 # Exercise B: Reports and Tables
 
 This exercise focuses on how to produce reports and tables from R using a larger data set. 
@@ -696,9 +827,1076 @@ This exercise focuses on how to produce reports and tables from R using a larger
 
 You can continue working with the same project or working directory (depending on which option you chose in Step A1). To get started with this exercise, please do the following:
 
-1. Please **download the datatset** survey.csv and save it in the `data` folder within your project folder or working directory .
+1. Please <a href="../data/lab-uofg-01/lab1-survey.csv" download="lab1-survey.csv">download the dataset</a> and save it in the `data` folder within your project folder or working directory .
 2. Create a new **R script**: Go to **File > New File > R Script**.
-3. Save the script in the `scripts` folder within your project folder or working directory with an appropriate name, e.g., `Lab1_Exercise_B.R`.
+3. Save the script in the `scripts` folder within your project folder or working directory with an appropriate name, e.g., `Lab1_Exercise_B_C.R`. (**Note:** For simplicity, we combine Exercises B and C into one script as they are based on the same data, but you can also create separate scripts for each exercise.)
 
-## Step B2:
+::: {.callout-note}
+You can either work through the following steps and copy/paste the respective code into the `Lab_Exercise_B_C.R` file that you created or <a href="../scripts/lab-uofg-01/Lab1_Exercise_B_C.R" download="Lab1_Exercise_B_C.R">download the R script for Exercises B and C</a>, save the downloaded file in the `scripts` folder, and run the respective code snippets according to the instructions below.
+:::
 
+## Step B2: Loading the Data
+
+Copy the code below into the `Lab_Exercise_B.R` script and run it:
+
+```r
+# Load the CSV file stored in the "data" folder
+survey_data_full <- read.csv("data/lab1-survey.csv")
+```
+
+You can easily explore and check the basic structure of your data and get a summary:
+
+```r
+# View the first few rows using head()
+head(survey_data_full)
+
+# Examine the structure
+str(survey_data_full)
+
+# Get basic summary statistics
+summary(survey_data_full)
+```
+
+Before moving on to the analysis, we want to take a look at **demographic variables**. Demographic variables are fundamental in empirical research as they capture key characteristics of individuals or populations, such as age, gender, marital status, education level, and socioeconomic background. These variables provide essential context for understanding behaviors, preferences, and outcomes, allowing researchers to analyze patterns, identify trends, and draw meaningful comparisons across groups. In business and social science research, demographic variables are often used to segment data, control for confounding factors, and explore relationships between characteristics and dependent variables. Their inclusion ensures a more comprehensive and nuanced understanding of research findings, enabling the development of targeted strategies and policies.
+
+We want to assign labels to the demographic variables in the `survey_data_full` data frame using **factors** with labeled levels. This method ensures the data remains categorical but with human-readable labels for easier interpretation and analysis.
+
+```r
+# Convert demographic variables to factors with labeled levels
+
+# Assign labels for "sex"
+survey_data_full$sex <- factor(
+  survey_data_full$sex,
+  levels = c(1, 2),
+  labels = c("Male", "Female")
+)
+
+# Assign labels for "marital"
+survey_data_full$marital <- factor(
+  survey_data_full$marital,
+  levels = c(1, 2, 3, 4, 5, 6, 7, 8),
+  labels = c(
+    "Single", "Steady relationship", "Living with partner",
+    "Married first time", "Remarried", "Separated",
+    "Divorced", "Widowed"
+  )
+)
+
+# Assign labels for "child"
+survey_data_full$child <- factor(
+  survey_data_full$child,
+  levels = c(1, 2),
+  labels = c("Yes", "No")
+)
+
+# Assign labels for "educ"
+survey_data_full$educ <- factor(
+  survey_data_full$educ,
+  levels = c(1, 2, 3, 4, 5, 6),
+  labels = c(
+    "Primary", "Some secondary", "Completed high school",
+    "Some additional training", "Completed undergraduate",
+    "Postgraduate completed"
+  )
+)
+
+# Assign labels for "source"
+survey_data_full$source <- factor(
+  survey_data_full$source,
+  levels = c(1, 2, 3, 4, 5, 6, 7, 8, 9),
+  labels = c(
+    "Work", "Spouse or partner", "Relationships", "Children",
+    "Family", "Health/illness", "Life in general",
+    "Money/finances", "Lack of time, too much to do"
+  )
+)
+
+# Assign labels for "smoke"
+survey_data_full$smoke <- factor(
+  survey_data_full$smoke,
+  levels = c(1, 2),
+  labels = c("Yes", "No")
+)
+```
+
+The `summary()` function can be used to confirm that the labels have been applied correctly to the variables.
+
+```r
+# Verify changes by printing a summary
+summary(survey_data_full)
+```
+
+## Step B3: Exploring your Data
+
+Exploring the frequencies of demographic variables is a fundamental step in descriptive analysis, offering a clear understanding of the sample composition. By combining `table()` and `prop.table()`, we can compute both raw counts and relative proportions, providing a detailed overview of variables like gender, marital status, and education. These insights form the foundation for deeper analyses, such as segmentation or hypothesis testing, ensuring a strong start to any empirical research.
+
+**Gender (`sex`)**
+
+The `sex` variable captures the gender distribution of the sample. To compute and display the frequency table:
+
+```r
+# Frequency table for Gender
+gender_freq <- table(survey_data_full$sex)
+print(gender_freq)
+
+# Proportions and percentages
+gender_prop <- prop.table(gender_freq)
+gender_percent <- round(gender_prop * 100, 2)
+print(gender_percent)
+```
+
+This output shows the count and percentage of participants who identify as `Male` or `Female`.
+
+**Marital Status (`marital`)**
+
+The `marital` variable indicates the participants' marital status. To compute and display the frequency table:
+
+```r
+# Frequency table for Marital Status
+marital_freq <- table(survey_data_full$marital)
+print(marital_freq)
+
+# Proportions and percentages
+marital_prop <- prop.table(marital_freq)
+marital_percent <- round(marital_prop * 100, 2)
+print(marital_percent)
+```
+
+This analysis highlights the most common marital statuses in the sample, such as `Single` or `Married first time`.
+
+**Parental Status (`child`)**
+
+The `child` variable records whether participants have children. Frequency analysis provides an overview of parental distribution:
+
+```r
+# Frequency table for Parental Status
+child_freq <- table(survey_data_full$child)
+print(child_freq)
+
+# Proportions and percentages
+child_prop <- prop.table(child_freq)
+child_percent <- round(child_prop * 100, 2)
+print(child_percent)
+```
+
+This reveals the proportion of participants who have children versus those who do not.
+
+**Education Level (`educ`)**
+
+The `educ` variable reflects participants' highest level of education. To understand the distribution:
+
+```r
+# Frequency table for Education Level
+educ_freq <- table(survey_data_full$educ)
+print(educ_freq)
+
+# Proportions and percentages
+educ_prop <- prop.table(educ_freq)
+educ_percent <- round(educ_prop * 100, 2)
+print(educ_percent)
+```
+
+This breakdown identifies the most common educational backgrounds, such as `Completed undergraduate` or `Postgraduate completed`.
+
+**Primary Source of Stress (`source`)**
+
+The `source` variable represents participants' reported primary source of stress. Analyse the distribution as follows:
+
+```r
+# Frequency table for Primary Source of Stress
+source_freq <- table(survey_data_full$source)
+print(source_freq)
+
+# Proportions and percentages
+source_prop <- prop.table(source_freq)
+source_percent <- round(source_prop * 100, 2)
+print(source_percent)
+```
+
+This provides insights into stress sources, such as `Work`, `Family`, or `Lack of time`.
+
+**Smoking Status (`smoke`)**
+
+The `smoke` variable indicates participants' smoking habits. Use the following code to analyze:
+
+```r
+# Frequency table for Smoking Status
+smoke_freq <- table(survey_data_full$smoke)
+print(smoke_freq)
+
+# Proportions and percentages
+smoke_prop <- prop.table(smoke_freq)
+smoke_percent <- round(smoke_prop * 100, 2)
+print(smoke_percent)
+```
+
+This reveals the proportion of participants who smoke versus those who do not.
+
+**Summarising Frequencies**
+
+To summarise all frequency tables and proportions in a single view, you can use a structured approach like the code below. This produces a consolidated view of the frequencies and percentages for all demographic variables, making it easier to compare distributions. (**Note:** This requires that you created the individual frequencies and percentages for all variables previously.)
+
+```r
+# Combine frequency tables into a list for easy viewing
+frequency_summary <- list(
+  Gender = list(Count = gender_freq, Percent = gender_percent),
+  MaritalStatus = list(Count = marital_freq, Percent = marital_percent),
+  ParentalStatus = list(Count = child_freq, Percent = child_percent),
+  EducationLevel = list(Count = educ_freq, Percent = educ_percent),
+  StressSource = list(Count = source_freq, Percent = source_percent),
+  SmokingStatus = list(Count = smoke_freq, Percent = smoke_percent)
+)
+
+# Print the summary
+print(frequency_summary)
+```
+
+## Step B4: Exploring Participants' Age
+
+Frequencies are a powerful tool for summarizing **categorical variables**, but they are less meaningful for continuous or numeric variables like `age`. In a dataset, age values can range widely, and each unique value may appear only once or a few times, leading to sparse and uninformative frequency tables. For example, a table showing the frequency of exact ages (e.g., `23`, `24`, `25`) provides limited insight into age distribution because it does not group participants into broader, interpretable categories. Instead, **grouping numeric variables into ranges (bands)** transforms continuous data into an ordinal variable, making frequencies more meaningful and enabling comparisons across age groups.
+
+To better analyze and summarize age-related data, we can create a new variable called `AgeBand` that groups ages into meaningful ranges. Here, we will define six age bands: 
+- `<21`, `21-30`, `31-40`, `41-50`, `51-60`, and `>60`.
+
+The new variable will be ordinal, meaning the age bands have a natural order, which is useful for analysis and visualization.
+
+```r
+# Creating an AgeBand variable
+survey_data_full$AgeBand <- cut(
+  survey_data_full$age, 
+  breaks = c(-Inf, 20, 30, 40, 50, 60, Inf), 
+  labels = c("<21", "21-30", "31-40", "41-50", "51-60", ">60"), 
+  right = TRUE
+)
+
+# Verify the new AgeBand variable
+
+# Frequency table for AgeBand
+AgeBand_freq <- table(survey_data_full$AgeBand)
+print(AgeBand_freq)
+
+# Percentages for AgeBand
+AgeBand_prop <- prop.table(AgeBand_freq)
+AgeBand_percent <- round(AgeBand_prop * 100, 2)
+print(AgeBand_percent)
+```
+
+The code above includes some new fucntions, which are explained below:
+
+-  `cut()`: Converts the numeric age variable into an ordinal factor.
+-  `breaks`: Specifies the boundaries for the age bands. -Inf and Inf ensure all ages are included.
+-  `labels`: Assigns descriptive names to each age band.
+
+## Step B5: Cross-Tabulations
+
+In this task, we first analyse the relationship between marital status (`marital`) and parental status (`child`). This provides insights into how having children is distributed across different marital statuses.
+
+```r
+# Create a cross-tabulation of Marital Status by Parental Status
+marital_child_table <- table(survey_data_full$marital, survey_data_full$child)
+
+# Print the cross-tabulation
+print(marital_child_table)
+```
+
+To further analyze the table, we calculate proportions and percentages. These help interpret the relative distribution of parental status within each marital status group or across the entire sample.
+
+```r
+# Proportions for the entire table
+marital_child_prop <- prop.table(marital_child_table)
+print(round(marital_child_prop * 100, 2))
+
+# Row-wise proportions (within marital status groups)
+marital_child_row_prop <- prop.table(marital_child_table, margin = 1)
+print(round(marital_child_row_prop * 100, 2))
+
+# Column-wise proportions (within parental status groups)
+marital_child_col_prop <- prop.table(marital_child_table, margin = 2)
+print(round(marital_child_col_prop * 100, 2))
+```
+
+We can also add **marginal totals**. Including row and column totals provides additional context for the distribution.
+
+```r
+# Add marginal totals to the table
+marital_child_with_totals <- addmargins(marital_child_table)
+print(marital_child_with_totals)
+```
+
+Cross-tabulating `marital` and `child` provides a detailed view of the relationship between marital status and parental status. By combining raw counts and proportions, we can identify meaningful patterns in the data, supporting deeper insights into family composition and relationships.
+
+**Over to you:** use the code above as a blue print and analyse the relationship between other variables.
+
+# Exercise C: Reports and Tables
+
+This exercise focuses on how to produce reports and tables from R using a larger data set. 
+
+## Step C1: Setup
+
+You can continue working in the same script that you created in Step B1 (the exemplary script that you can download also combined both exercises) or create a new scipt now. For the latter, review Step B1 and save new the script in the `scripts` folder within your project folder or working directory with an appropriate name, e.g., `Lab1_Exercise_C.R`.
+
+::: {.callout-tip collapse="false"}
+## Using ggplot2 for Data Visualization
+While base R plotting functions are straightforward and sufficient for creating simple visualizations, the `ggplot2` package offers a more powerful, flexible, and consistent approach to data visualization. Developed as part of the **tidyverse**, `ggplot2` is built on the **grammar of graphics**, enabling users to layer graphical components (e.g., data, aesthetics, and geoms) to create complex and customizable plots. Compared to base R, `ggplot2` excels in:
+
+- **Customization**: Allows fine-tuning of colors, themes, scales, and labels for polished, publication-ready graphics.
+- **Consistency**: Provides a unified framework for visualizing different types of data without requiring separate functions for each type of plot.
+- **Extensibility**: Supports advanced visualizations and easy integration with other tidyverse tools.
+
+For example, while base R may require multiple lines of code to create and customize a bar plot, `ggplot2` simplifies the process, making it both more readable and more intuitive for creating layered, reusable visualizations.
+
+To begin using `ggplot2` for data visualization in R, you need to ensure the package is installed and loaded into your R session. Follow these simple steps to get started:
+
+**1. Install the `ggplot2` Package**
+
+If you haven’t already installed `ggplot2`, you can do so using the `install.packages()` function. This only needs to be done once for your system. The command below downloads and installs the package from CRAN (the Comprehensive R Archive Network).
+
+```r
+# Install ggplot2
+install.packages("ggplot2")
+```
+
+**2. Load the `ggplot2` Package**
+
+Once installed, you need to load the package into your R session using the `library()` function. This step must be repeated each time you start a new R session and makes all the `ggplot2` functions available for use in your current R session.
+
+```r
+# Load ggplot2
+library(ggplot2)
+```
+
+**3. Exploring Help and Resources (optional)**
+
+You can access detailed documentation and examples for `ggplot2` by using the help system or exploring online resources. The `ggplot2` package has extensive documentation and a supportive community, making it easy to learn and apply its powerful tools.
+
+```r
+# Access the ggplot2 documentation
+help(package = "ggplot2")
+```
+:::
+
+## Step C2: Histograms
+
+A histogram is a fundamental tool for visualizing the distribution of a continuous variable. It provides a graphical representation of the frequency or density of data values, divided into intervals (bins). Histograms help identify patterns, such as skewness, multimodality, or outliers, and give insight into the overall shape of the data distribution.
+
+Compared to base R, `ggplot2` offers greater flexibility and customization for creating histograms. You can easily adjust the number of bins, add labels, and style the plot to make it more informative and visually appealing.
+
+### Creating a Histogram for `tpstress`**
+
+In this example, we will create a histogram for the variable `tpstress` from the `survey_data_full` dataset. This variable is continuous, making it ideal for a histogram. Run the code below and examine the output, before reading on about the variables and choices that we made here.
+
+```r
+# Create a histogram for tpstress
+histogram_tpstress <- ggplot(data = survey_data_full, aes(x = tpstress)) +
+  geom_histogram(binwidth = 5, fill = "skyblue", color = "black") +
+  labs(
+    title = "Distribution of Perceived Stress Levels",
+    x = "Perceived Stress Score (tpstress)",
+    y = "Frequency"
+  ) +
+  theme_minimal()
+
+# Show plot
+histogram_tpstress
+
+# Save plot
+ggsave("output/figures/histogram_tpstress.pdf", width = 8, height = 5)
+```
+
+**Explanation of the Code**
+
+-  `ggplot()`: Specifies the dataset (`survey_data_full`) and the mapping of variables to aesthetics (`aes()`), with `tpstress` assigned to the x-axis.
+-  `geom_histogram()`: Adds a histogram layer to the plot.
+-  `binwidth`: Sets the width of each bin (adjustable depending on the range of your data - more informationa bout this below).
+-  `fill` and `color`: Customize the fill color of the bars and the border color.
+-  `labs()`: Adds descriptive labels for the title, x-axis, and y-axis to make the plot clear.
+-  `theme_minimal()`: Applies a clean and simple theme for better aesthetics.
+
+**Adjusting Bins**
+
+The number of bins can significantly affect the visualization. For finer or coarser groupings, adjust the `binwidth` parameter. For example:
+
+-  Use a smaller `binwidth` (e.g., `binwidth = 2`) for detailed distributions.
+-  Use a larger `binwidth` (e.g., `binwidth = 10`) for a summarized view.
+
+**Interpretation of the Graphs**
+
+The histogram will display the distribution of the `tpstress` variable, showing the frequency of scores within each bin. This can help answer questions like:
+
+-  Are most participants experiencing low, moderate, or high stress?
+-  Does the data appear skewed or normally distributed?
+
+[ADD FIGURE HERE]{style="color:red;"}
+
+::: {.callout-tip collapse="false"}
+## Saving Plots with `ggsave` in `ggplot2`
+When creating visualizations in R, you often need to save your plots for reports, presentations, or further analysis. The `ggsave()` function in `ggplot2` provides an easy and flexible way to save plots to various file formats with high quality.
+
+**Overview of `ggsave`**
+
+- Automatically saves the **last plot** created in your R session, or a specified plot object.
+- Supports various file formats such as PNG, JPEG, PDF, and SVG.
+- Allows customization of file size, resolution, and aspect ratio.
+
+**Basic Syntax**
+
+```r
+ggsave(filename, plot = last_plot(), width = 20, height = 15, units = "cm", dpi = 300)
+```
+
+Where:
+
+- `filename`: The name of the file, including the desired extension (e.g., `"plot.png"` or `"plot.pdf"`).
+- `plot`: Specifies which plot to save. Defaults to the most recent plot (`last_plot()`).
+- `width` and `height`: Specify the dimensions of the plot in inches (default units).
+- `units`: supports custom units for dimensions (default is inches when not specified).
+- `dpi`: Sets the resolution of the plot (dots per inch). Higher values (e.g., 300) produce print-quality images.
+
+**Formats**
+
+We can save the histogram for `tpstress` in different formats, depending on the purpose. 
+
+**PNG:** For lossless, high-quality images suitable for both web use and presentations.
+```r
+ggsave("histogram_tpstress.png", plot = scatter_plot, width = 8, height = 6)
+```
+**PDF:** For vector-based, high-quality graphics suitable for printing.
+```r
+ggsave("histogram_tpstress.pdf", plot = scatter_plot, width = 8, height = 6)
+```
+**JPEG:** For compressed images with smaller file sizes (useful for web).
+```r
+ggsave("histogram_tpstress.pdf", plot = scatter_plot, width = 8, height = 6, dpi = 300)
+```
+**SVG:** For scalable vector graphics, ideal for interactive web applications.
+```r
+ggsave("histogram_tpstress.pdf", plot = scatter_plot, width = 8, height = 6)
+```
+::: 
+
+### Compare Groups Using Histograms**
+
+When comparing distributions between groups, it’s often useful to visualize them side by side or stacked for easier comparison. In R, this can be achieved using **facets** in `ggplot2`, which allow you to create separate subplots for different levels of a categorical variable. In this example, we compare the variable `tpstress` between males and females (grouped by `sex`) on separate histograms.
+
+**Panelled Histograms**
+
+Facets in `ggplot2` replicate the SPSS functionality of splitting graphs by groups:
+
+- **Side-by-side graphs** allow for direct visual comparison between groups.
+- **Stacked graphs** present the distributions on top of each other for easier alignment.
+
+**Code to Compare `tpstress` by `sex`**
+
+Here’s the code to create separate histograms for males and females:
+
+```r
+# Panelled histograms for tpstress by sex
+histogram_tpstress_gender <- ggplot(data = survey_data_full, aes(x = tpstress)) +
+  geom_histogram(binwidth = 5, fill = "lightblue", color = "black") +
+  facet_wrap(~ sex, ncol = 2) +  # Creates separate panels for each group
+  labs(
+    title = "Comparison of Perceived Stress Levels by Gender",
+    x = "Perceived Stress Score (tpstress)",
+    y = "Frequency"
+  ) +
+  theme_minimal()
+
+# Show plot
+histogram_tpstress_gender
+
+# Save plot
+ggsave("output/figures/histogram_tpstress_gender.pdf", width = 8, height = 5)
+```
+
+**Explanation of the Code**
+
+-  `facet_wrap(~ sex)`: Splits the histogram into separate panels for each level of the `sex` variable (`Male` and `Female`). The `ncol = 2` argument specifies that the graphs should be placed side by side.
+-  `geom_histogram()`: Creates histograms with a consistent binwidth for comparison.
+-  `labs()`: Adds clear labels to describe the plot.
+-  `theme_minimal()`: Ensures a clean and professional appearance.
+
+**Handling Missing Values**
+
+By default, `ggplot2` excludes cases with missing values in the grouping variable (`sex`) or the variable being plotted (`tpstress`). This mirrors SPSS functionality where cases with missing values are excluded on a variable-by-variable basis.
+
+To explicitly confirm exclusions, use the `na.omit()` function to clean the dataset:
+
+```r
+# Remove cases with missing values in tpstress or sex
+survey_data_filtered <- na.omit(survey_data_full[, c("tpstress", "sex")])
+```
+
+**Alternative Layout: Stacked Panels**
+
+To stack the graphs vertically instead of placing them side by side, use `facet_wrap()` with `ncol = 1`:
+
+```r
+# Stacked histograms for tpstress by sex
+histogram_tpstress_gender_stack <- ggplot(data = survey_data_full, aes(x = tpstress)) +
+  geom_histogram(binwidth = 5, fill = "lightblue", color = "black") +
+  facet_wrap(~ sex, ncol = 1) +  # Stacks panels vertically
+  labs(
+    title = "Comparison of Perceived Stress Levels by Gender (Stacked)",
+    x = "Perceived Stress Score (tpstress)",
+    y = "Frequency"
+  ) +
+  theme_minimal()
+
+# Show plot
+histogram_tpstress_gender_stack
+
+# Save plot
+ggsave("output/figures/histogram_tpstress_gender_stack.pdf", width = 8, height = 5)
+```
+
+**Interpretation of the Graphs**
+
+The panelled histograms show the distribution of perceived stress scores (`tpstress`) for males and females:
+
+-  Look for differences in the shape, spread, and center of the distributions.
+-  Identify patterns such as skewness or concentration of values in specific ranges.
+
+[ADD PANEL FIGURE HERE]{style="color:red;"}
+
+[ADD STACK FIGURE HERE]{style="color:red;"}
+
+## Step C3: Bar Charts
+
+A bar chart is one of the most basic and widely used tools for visualizing categorical data. It shows the frequencies or counts of different categories, making it ideal for identifying dominant groups, comparing categories, and providing a quick summary of data distributions. Bar charts are especially useful when you want to:
+
+- Display the distribution of a single categorical variable.
+- Compare the relative size of categories.
+- Highlight which categories are most or least common.
+
+Bar charts are most effective for categorical or ordinal variables, such as:
+
+- Demographic variables (e.g., gender, marital status, education level).
+- Grouping variables (e.g., age bands, product categories).
+- Summarizing discrete counts (e.g., survey responses, preference rankings).
+
+Bar charts are **not suitable** for continuous variables (e.g., `tpstress`) since these are better visualized using histograms or boxplots.
+
+### Creating a Simple Bar Chart
+
+In this example, we create a simple bar chart for the variable `sex`, which represents gender.
+
+```r
+# Simple bar chart for Gender
+bar_gender <- ggplot(data = survey_data_full, aes(x = sex)) +
+  geom_bar(fill = "skyblue", color = "black") +
+  labs(
+    title = "Gender Distribution",
+    x = "Gender",
+    y = "Count"
+  ) +
+  theme_minimal()
+  
+# Show plot
+bar_gender
+
+# Save plot
+ggsave("output/figures/bar_gender.pdf", width = 8, height = 5)
+```
+
+**Explanation of the Code**
+
+-  `ggplot()`: Specifies the dataset (`survey_data_full`) and maps the variable `sex` to the x-axis using `aes(x = sex)`.
+-  `geom_bar()`: Creates a bar chart. Since no `y` aesthetic is specified, `geom_bar()` automatically counts the number of occurrences of each category in `sex`. `fill` specifies the color of the bars, while `color` adds a border around each bar.
+-  `labs()`: Adds descriptive labels to the title, x-axis, and y-axis for clarity.
+-  `theme_minimal()`: Applies a clean, minimal theme for better aesthetics.
+
+**Interpretation of the Graphs**
+
+Running the above code will produce a simple bar chart showing the distribution of males and females in the dataset. The y-axis represents the count of participants in each gender category.
+
+[ADD FIGURE HERE]{style="color:red;"}
+
+### Creating a Clustered Bar Chart
+
+In this exercise, we replicate the functionality of SPSS' **Clustered Bar Chart**, where:
+
+- A categorical variable (e.g., `agegp3`) is plotted on the x-axis.
+- A grouping variable (e.g., `sex`) determines the clusters (represented by different colors).
+- A continuous variable (`tpstress`) is used to calculate the mean for each combination of the categorical variables.
+
+`ggplot2` in R provides powerful tools to create clustered bar charts with error bars to visualize group-level summaries clearly.
+
+We will create a clustered bar chart where:
+- **X-axis**: Represents categories of `agegp3` (age groups in this example).
+- **Groups**: Clusters represent `sex` (males and females), distinguished by colors.
+- **Y-axis**: Displays the mean of the continuous variable (`tpstress`) for each group.
+- **Error Bars**: Represent variability (e.g., standard errors) to give context to the mean values.
+
+**Preparing the Data in Base R**
+
+Before creating the chart, we summarize the data to calculate the mean and standard error for `tpstress` within each combination of `agegp3` and `sex`:
+
+First, we need to **calculate the group means**. The `aggregate()` function in base R allows you to compute the mean of a continuous variable (`tpstress`) for each combination of `agegp3` and `sex`.
+
+```r
+# Calculate group means using aggregate()
+group_means <- aggregate(
+  tpstress ~ agegp3 + sex,
+  data = survey_data_full,
+  FUN = mean,
+  na.rm = TRUE
+)
+
+# Display the group means
+print(group_means)
+```
+
+Here:
+
+-  `tpstress ~ agegp3 + sex` specifies the grouping variables (`agegp3` and `sex`).
+-  `FUN = mean` calculates the mean of `tpstress` for each group.
+-  `na.rm = TRUE` ensures missing values are excluded.
+
+Second, we need to **calculate group standard errors**. To compute standard errors, use `aggregate()` again for the standard deviation, then calculate the standard error manually.
+
+```r
+# Calculate group standard deviations
+group_sd <- aggregate(
+  tpstress ~ agegp3 + sex,
+  data = survey_data_full,
+  FUN = sd,
+  na.rm = TRUE
+)
+
+# Add a column for group sizes
+group_counts <- aggregate(
+  tpstress ~ agegp3 + sex,
+  data = survey_data_full,
+  FUN = length
+)
+
+# Merge the results into a single data frame
+group_stats <- merge(group_means, group_sd, by = c("agegp3", "sex"))
+group_stats <- merge(group_stats, group_counts, by = c("agegp3", "sex"))
+
+# Rename columns for clarity
+colnames(group_stats) <- c("agegp3", "sex", "mean_tpstress", "sd_tpstress", "n")
+
+# Calculate standard errors
+group_stats$se_tpstress <- group_stats$sd_tpstress / sqrt(group_stats$n)
+
+# Display the final data frame
+print(group_stats)
+```
+
+Our **final data frame** `group_stats` contains:
+
+-  `agegp3`: Age group.
+-  `sex`: Gender group.
+-  `mean_tpstress`: Mean perceived stress score.
+-  `sd_tpstress`: Standard deviation of stress scores.
+-  `n`: Number of participants in each group.
+-  `se_tpstress`: Standard error of the mean.
+
+**Creating the Clustered Bar Chart**
+
+Using the prepared `group_stats` data, you can now create the clustered bar chart with `ggplot2`.
+
+```r
+# Clustered bar chart using the prepared data
+bar_gender_age <- ggplot(data = group_stats, aes(x = agegp3, y = mean_tpstress, fill = sex)) +
+  geom_bar(stat = "identity", position = position_dodge(width = 0.8), color = "black") +
+  geom_errorbar(
+    aes(ymin = mean_tpstress - se_tpstress, ymax = mean_tpstress + se_tpstress),
+    position = position_dodge(width = 0.8),
+    width = 0.2
+  ) +
+  labs(
+    title = "Mean Perceived Stress by Age Group and Gender",
+    x = "Age Group",
+    y = "Mean Perceived Stress Score (tpstress)",
+    fill = "Gender"
+  ) +
+  theme_minimal()
+
+# Show plot
+bar_gender_age
+
+# Save plot
+ggsave("output/figures/bar_gender_age.pdf", width = 8, height = 5)
+```
+
+**Explanation of the Code**
+
+-  `ggplot()`: Specifies the dataset (`group_stats`) and defines mappings between variables and aesthetics (`aes()`). `fill = sex` Uses the `sex` variable (gender) to determine the color of the bars.
+-  `geom_bar()`: Creates the bar chart. `stat = "identity"` plots the actual values of `mean_tpstress` instead of counting occurrences (default behavior). `position = position_dodge(width = 0.8)` separates the bars into clusters by `sex`, leaving a small gap between groups. `color = "black"` adds a black border around each bar to enhance visual distinction.
+-  `geom_errorbar()`: Adds error bars to the bars. `ymin` and `ymax` define the range of the error bars (mean ± standard error). `width = 0.2` controls the width of the error bar caps.
+-  `labs()` adds a descriptive title, axis labels, and a legend title.
+-  `theme_minimal()` ensures a clean and professional look.
+
+::: {.callout-tip collapse="false"}
+## Alternative using `dplyr` package
+A simpler way to prepare the data is to use the `dplyr' package. 
+
+**Preparing the Data**
+
+Before creating the chart, we summarize the data to calculate the mean and standard error for `tpstress` within each combination of `agegp3` and `sex`:
+
+```r
+# Install dplyr
+install.packages("dplyr")
+
+# Load library
+library(dplyr)
+
+# Summarize the data
+survey_summary <- survey_data_full %>%
+  group_by(agegp3, sex) %>%
+  summarise(
+    mean_tpstress = mean(tpstress, na.rm = TRUE),
+    se_tpstress = sd(tpstress, na.rm = TRUE) / sqrt(n())
+  )
+
+# Display the summarized data
+print(survey_summary)
+```
+
+**Creating the Clustered Bar Chart**
+
+Using the summarized data, we can create a clustered bar chart with error bars:
+
+```r
+# Create a clustered bar chart with ggplot2
+bar_gender_age2 <- ggplot(data = survey_summary, aes(x = agegp3, y = mean_tpstress, fill = sex)) +
+  geom_bar(stat = "identity", position = position_dodge(width = 0.8), color = "black") +
+  geom_errorbar(aes(ymin = mean_tpstress - se_tpstress, ymax = mean_tpstress + se_tpstress),
+                position = position_dodge(width = 0.8), width = 0.2) +
+  labs(
+    title = "Mean Perceived Stress by Age Group and Gender",
+    x = "Age Group",
+    y = "Mean Perceived Stress Score (tpstress)",
+    fill = "Gender"
+  ) +
+  theme_minimal()
+
+# Show plot
+bar_gender_age2
+
+# Save plot
+ggsave("output/figures/bar_gender_age2.pdf", width = 8, height = 5)
+```
+
+**Explanation of the Code**
+
+-  The `dplyr` package is used to calculate the mean (`mean_tpstress`) and standard error (`se_tpstress`) of `tpstress` grouped by `agegp3` and `sex`.
+-  `geom_bar()`: Creates the bar chart. `stat = "identity"` specifies that the heights of the bars represent the actual values (means in this case). `position = position_dodge(width = 0.8)` separates the bars into clusters by `sex`.
+-  `geom_errorbar()`: Adds error bars to the bars. `ymin` and `ymax` define the range of the error bars (mean ± standard error). `width = 0.2` controls the width of the error bar caps.
+-  `aes(fill = sex)` assigns colors to sex groups.
+-  `labs()` adds a descriptive title, axis labels, and a legend title.
+-  `theme_minimal()` ensures a clean and professional look.
+:::
+
+**Interpretation of the Chart**
+
+The clustered bar chart allows us to compare:
+
+- Differences in mean perceived stress (`tpstress`) across age groups (`agegp3`).
+- How stress levels differ between males and females (`sex`) within each age group.
+- The size of the error bars provides insight into variability within each group.
+
+[ADD FIGURE HERE]{style="color:red;"}
+
+## Step C4: Line Graphs
+
+Line graphs are a versatile tool for visualizing trends and relationships between variables. They are particularly useful for examining how a continuous variable changes across categories or over time. In this example, we use `tpstress` (perceived stress) as the continuous variable on the y-axis and `agegp5` (age group) as the categorical variable on the x-axis. We create two versions:
+
+1. A simple line graph.
+2. A multi-line graph with separate lines for males and females (`sex`).
+
+### Creating a Simple Line Graph
+
+A simple line graph shows how the average `tpstress` score changes across age groups (`agegp5`).
+
+```r
+# Calculate the mean tpstress for each age group
+simple_line_data <- aggregate(
+  tpstress ~ agegp5,
+  data = survey_data_full,
+  FUN = mean,
+  na.rm = TRUE
+)
+
+# Create the line graph
+line_stress_age <- ggplot(data = simple_line_data, aes(x = agegp5, y = tpstress, group = 1)) +
+  geom_line(color = "blue", size = 1) +
+  geom_point(color = "blue", size = 2) +
+  labs(
+    title = "Mean Perceived Stress by Age Group",
+    x = "Age Group",
+    y = "Mean Perceived Stress Score"
+  ) +
+  theme_minimal()
+
+# Show plot
+line_stress_age
+
+# Save plot
+ggsave("output/figures/line_stress_age.pdf", width = 8, height = 5)
+```
+
+**Explanation of the Code**
+
+-  `aggregate()` calculates the mean `tpstress` for each `agegp5` group while excluding missing values (`na.rm = TRUE`).
+-  `ggplot()`: Specifies the data (`simple_line_data`) and maps `agegp5` to the x-axis and `tpstress` (mean perceived stress) to the y-axis.
+-  `geom_line()`: Creates the line connecting the points. `color = "blue"` specifies the color of the line. `size = 1` adjusts the line thickness.
+-  `geom_point()`: Adds individual points for each age group. `color = "blue"` matches the line color. `size = 2` makes the points more visible.
+-  `labs()` adds a descriptive title, axis labels, and a legend title.
+-  `theme_minimal()` ensures a clean and professional look.
+
+**Interpretation of the Graphs**
+
+In the **simple line graph**, the x-axis represents age groups (`agegp5`), and the y-axis shows the mean perceived stress scores (`tpstress`). The points connected by the line indicate how stress levels change across age groups.
+
+Key questions to consider:
+
+- **Overall Trend**: Do stress levels increase, decrease, or remain stable across age groups?
+- **Peaks and Valleys**: Are there specific age groups with notably higher or lower stress levels?
+- **Outliers**: Are there unexpected jumps or drops in the graph that may warrant further investigation?
+
+For example:
+
+- A steadily increasing line may suggest that perceived stress tends to rise with age.
+- A peak in one age group might indicate a period of heightened stress that could be explored further.
+
+[ADD FIGURE HERE]{style="color:red;"}
+
+### Creating a Multi-Line Graph
+
+To show separate lines for males and females, we include the `sex` variable as a grouping and color aesthetic.
+
+```r
+# Calculate the mean tpstress for each combination of age group and gender
+multi_line_data <- aggregate(
+  tpstress ~ agegp5 + sex,
+  data = survey_data_full,
+  FUN = mean,
+  na.rm = TRUE
+)
+
+# Create the multi-line graph
+line_stress_age_gender <- ggplot(data = multi_line_data, aes(x = agegp5, y = tpstress, color = sex, group = sex)) +
+  geom_line(size = 1) +
+  geom_point(size = 2) +
+  labs(
+    title = "Mean Perceived Stress by Age Group and Gender",
+    x = "Age Group",
+    y = "Mean Perceived Stress Score",
+    color = "Gender"
+  ) +
+  theme_minimal()
+
+# Show plot
+line_stress_age_gender
+
+# Save plot
+ggsave("output/figures/line_stress_age_gender.pdf", width = 8, height = 5)
+```
+
+**Explanation of the Code**
+
+-  `aggregate()` calculates the mean tpstress for each combination of `agegp5` and `sex`.
+-  `ggplot()`: Specifies the data (`multi_line_data`) and maps `agegp5` to the x-axis, `tpstress` (mean perceived stress) to the y-axis, `sex` to the color aesthetic for distinct line colors, and `group = sex` ensures separate lines for each gender.
+-  `geom_line()`: Creates the line connecting the points. The `color` aesthetic from `aes()` applies distinct colors to the lines. `size = 1` adjusts the line thickness.
+-  `geom_point()`: Adds individual points for each age group. `color = "blue"` matches the line color. `size = 2` makes the points more visible.
+-  `labs()` adds a descriptive title, axis labels, and a legend title.
+-  `theme_minimal()` ensures a clean and professional look.
+
+**Interpretation of the Graphs**
+
+The **multi-line graph** adds a layer of complexity by splitting the line into separate paths for males and females. Each gender has its own line, distinguished by color. This allows for a direct comparison of stress levels between genders across age groups.
+
+Key questions to consider:
+
+- **Gender Differences**: Do males and females have similar or diverging patterns of stress across age groups?
+- **Crossovers**: Do the lines for males and females intersect at any point, indicating shifts in which gender reports higher stress?
+- **Parallel Trends**: Are the lines generally parallel, suggesting consistent gender differences across age groups?
+
+For example:
+
+- If the lines for males and females remain parallel, it may indicate consistent differences in stress levels regardless of age.
+- If the lines cross, it suggests age-specific variations in gender differences.
+
+[ADD FIGURE HERE]{style="color:red;"}
+
+In general, both line graphs (simple and multi-line) are useful for identifying:
+
+1. **Patterns in Stress Levels**: Are there general trends across age groups?
+2. **Group Comparisons**: How do males and females differ in perceived stress levels?
+3. **Actionable Insights**: Insights from these graphs can inform targeted interventions or further analysis.
+
+By examining the overall shape and relationship of the lines, you can derive meaningful conclusions about the data and identify areas for further exploration.
+
+## Step C4: Scatterplots
+
+Scatterplots are essential for visualizing the relationship between two continuous variables. They help identify trends, correlations, and potential outliers. By adding categorical grouping and labeling points, scatterplots become even more informative, allowing for deeper insights into patterns within subgroups.
+
+In this exercise, we create three scatterplots using the `survey_data_full` dataset:
+
+1. A simple scatterplot with `tpstress` as the dependent variable (y-axis) and `tpcoiss` as the independent variable (x-axis).
+2. A scatterplot with color-coded points based on `sex` (categorical grouping).
+3. The same scatterplot as above, but with point labels based on the `id` variable.
+
+### Simple Scatterplot
+
+The first scatterplot shows the relationship between `tpstress` (perceived stress) and `tpcoiss` (control over internal states). 
+
+```r
+# Simple scatterplot
+scatter_stress_control <- ggplot(data = survey_data_full, aes(x = tpcoiss, y = tpstress)) +
+  geom_point(color = "blue", size = 2) +
+  labs(
+    title = "Scatterplot of Perceived Stress vs Coping Strategies",
+    x = "Coping Strategies (tpcoiss)",
+    y = "Perceived Stress (tpstress)"
+  ) +
+  theme_minimal()
+
+# Show plot
+scatter_stress_control
+
+# Save plot
+ggsave("output/figures/scatter_stress_control.pdf", width = 8, height = 5)
+```
+
+**Explanation of the Code**
+
+-  `ggplot()` specifies the dataset (`survey_data_full`) and maps `tpcoiss` to the x-axis and `tpstress` to the y-axis.
+-  `geom_point()` adds scatterplot points. `color = "blue"` sets the color of all points. `size = 2` adjusts the point size for better visibility.
+-  `labs()` adds a title, x-axis label, and y-axis label for clarity.
+-  `theme_minimal()` ensures a clean and professional appearance.
+
+**Interpretation of the Graphs**
+
+The simple scatterplot shows the relationship between `tpstress` (perceived stress) and `tpcoiss` (coping strategies) across all participants.
+
+Key points to consider:
+
+- Direction of the relationship:
+  - A **positive trend** (points sloping upward) suggests that higher coping strategies are associated with higher perceived stress.
+  - A **negative trend** (points sloping downward) suggests that higher coping strategies are associated with lower perceived stress.
+  - A **flat trend** (points scattered without a clear pattern) suggests no apparent relationship between the variables.
+
+- Strength of the relationship:
+  - Points clustered tightly along an imaginary line indicate a **strong relationship**.
+  - Points scattered widely indicate a **weaker relationship** or greater variability.
+
+- Outliers:
+  - Points far from the general trend or clustering might indicate participants with unusual scores (e.g., very high stress despite low coping strategies).
+
+[If the scatterplot shows a positive trend, this could suggest that participants reporting higher coping strategies are experiencing higher levels of stress, which might reflect maladaptive coping mechanisms.]{style="color:red;"}
+
+[ADD FIGURE HERE]{style="color:red;"}
+
+### Scatterplot with Categorical Grouping
+
+To differentiate points by gender, we map the `sex` variable to the `color` aesthetic. This helps identify potential differences in the relationship between `tpstress` and `tpcoiss` for males and females.
+
+```r
+# Scatterplot with grouping by sex
+scatter_stress_control_gender <- ggplot(data = survey_data_full, aes(x = tpcoiss, y = tpstress, color = sex)) +
+  geom_point(size = 2) +
+  labs(
+    title = "Scatterplot of Perceived Stress vs Coping Strategies by Gender",
+    x = "Coping Strategies (tpcoiss)",
+    y = "Perceived Stress (tpstress)",
+    color = "Gender"
+  ) +
+  theme_minimal()
+
+# Show plot
+scatter_stress_control_gender
+
+# Save plot
+ggsave("output/figures/scatter_stress_control_gender.pdf", width = 8, height = 5)
+```
+
+**Explanation of the Code**
+
+-  `ggplot()` specifies the dataset (`survey_data_full`) and maps `tpcoiss` to the x-axis and `tpstress` to the y-axis, `color = sex` assigns different colors to males and females.
+-  `geom_point()` adds scatterplot points. `color = "blue"` sets the color of all points. `size = 2` adjusts the point size for better visibility.
+-  `labs()` adds a title, x-axis label, and y-axis label for clarity. `color = "Gender"` labels the legend as "Gender" for clarity.
+-  `theme_minimal()` ensures a clean and professional appearance.
+
+**Interpretation of the Graphs**
+
+The grouped scatterplot adds a layer of complexity by differentiating the points based on `sex` (males and females) using color coding. This allows for subgroup comparisons.
+
+Key points to consider:
+
+- Comparing trends between groups:
+  - Look for differences in the direction, strength, or spread of points for each group.
+  - Parallel trends suggest that the relationship between `tpstress` and `tpcoiss` is consistent across genders.
+  - Diverging or crossing trends may indicate that the relationship differs between males and females.
+
+- Clustering patterns:
+  - Are males and females clustered in similar regions of the plot, or are they spread differently?
+  - For example, one group may predominantly occupy the lower `tpcoiss` range while the other spans the full range.
+
+- Group-specific outliers:
+  - Outliers can be identified separately for each group, helping to explore whether certain groups have more extreme responses.
+
+[If males show a stronger positive trend compared to females, it might suggest gender differences in how coping strategies are related to perceived stress.]{style="color:red;"}
+
+[ADD FIGURE HERE]{style="color:red;"}
+
+### Scatterplot with Point Labels
+
+Adding point labels based on the `id` variable allows us to identify individual data points in the scatterplot. This is similar to the "Point ID label" feature in SPSS.
+
+```r
+# Scatterplot with point labels
+scatter_stress_control_gender_id <- ggplot(data = survey_data_full, aes(x = tpcoiss, y = tpstress, color = sex)) +
+  geom_point(size = 2) +
+  geom_text(aes(label = id), hjust = 0, vjust = -0.5, size = 3) +
+  labs(
+    title = "Scatterplot of Perceived Stress vs Coping Strategies with Point Labels",
+    x = "Coping Strategies (tpcoiss)",
+    y = "Perceived Stress (tpstress)",
+    color = "Gender"
+  ) +
+  theme_minimal()
+
+# Show plot
+scatter_stress_control_gender_id
+
+# Save plot
+ggsave("output/figures/scatter_stress_control_gender_id.pdf", width = 8, height = 5)
+```
+
+**Explanation of the Code** (only difference to the previous code)
+
+-  `geom_text()` adds labels to each point. `aes(label = id)` specifies that each point is labeled with the `id` variable. `hjust = 0, vjust = -0.5` adjusts the position of the labels relative to the points. `size = 3` sets the text size for readability.
+-  The rest of the code is similar to the grouped scatterplot, with points color-coded by gender.
+
+**Interpretation of the Graphs**
+
+The labeled scatterplot builds on the grouped scatterplot by adding participant identifiers (`id`) as point labels. This is useful for identifying specific data points and exploring individual-level patterns.
+
+Key points to consider:
+
+- Identifying specific participants:
+  - Outliers or points of interest can now be linked to specific participants using their `id`.
+  - For example, if a participant shows very high `tpstress` despite low `tpcoiss`, their `id` can be used to investigate their survey responses further.
+
+- Label clustering:
+  - Overlapping labels can indicate regions with many participants sharing similar scores.
+  - Sparse labels suggest regions with fewer participants, highlighting gaps in the data.
+
+- Potential for follow-up:
+  - By identifying participants with unusual scores, researchers can delve deeper into qualitative responses or additional variables to better understand these cases.
+
+[If a specific participant shows extreme stress levels (`tpstress`) with high coping strategies (`tpcoiss`), their behavior might warrant further investigation to understand coping efficacy or survey anomalies.]{style="color:red;"}
+
+[ADD FIGURE HERE]{style="color:red;"}
+
+# Summary
+
+This lab introduced you to creating and loading datasets with R, manipulating data, and building basic tables and graphs (similar to the SPSS Lab 1). You can download the respective R scripts for Exercises A and B+C below, in case you created your own:
+
+-  <a href="../scripts/lab-uofg-01/Lab1_Exercise_A.R" download="Lab1_Exercise_A.R">R script for Exercise A</a>
+-  <a href="../scripts/lab-uofg-01/Lab1_Exercise_B_C.R" download="Lab1_Exercise_B_C.R">R script for Exercises B and C</a>
