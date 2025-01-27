@@ -160,13 +160,13 @@ You can use the following code to save your dataset in either format. In line wi
 
 ```r
 # Save as R data file
-saveRDS(survey_data, "data/survey_data.rds")
+saveRDS(survey_data, "data/survey_data_export.rds")
 
 # Save as .csv
-write_csv(survey_data, "data/survey_data.csv")
+write.csv(survey_data, "data/survey_data_export_rows.csv")
 
 # By default, the data is exported with row names. Now to export data without row names we simply have to pass row.names=FALSE as an argument in the write.csv() function.
-write_csv(survey_data, "survey_data.csv", row.names=FALSE)
+write.csv(survey_data, "data/survey_data_export.csv", row.names=FALSE)
 ```
 
 A **.csv file** (comma-separated values) is a plain text format commonly used for storing tabular data. Each row in the file corresponds to a row in the dataset, and columns are separated by commas. In general, .csv files are platform-independent, widely supported by software like Excel, and easily shared or imported into other programming environments.
@@ -223,6 +223,24 @@ str(survey_data)
 
 # Get basic summary statistics
 summary(survey_data)
+```
+
+The imported dataset contain only the numerical values. We will use `factor()` again transform this into categorical variables with `levels` specifying the underlying codes and `labels` providing the human-readable labels.
+
+```r
+# Assign labels for "AgeBand"
+survey_data$AgeBand <- factor(
+  survey_data$AgeBand,
+  levels = c(1, 2, 3, 4, 5),
+  labels = c("<21", "21-30", "31-40", "41-50", ">50")
+)
+
+# Assign labels for "Gender"
+survey_data$Gender <- factor(
+  survey_data$Gender,
+  levels = c(0,1,2,9),
+  labels = c("Male", "Female", "Other", "Prefer not to say")
+)
 ```
 
 ## Step A3: Modifying your Dataset
@@ -541,6 +559,13 @@ print(chi_test)
 ```
 
 The test evaluates whether there is a significant association between `AgeBand` and `Gender`. A p-value less than 0.05 suggests that the relationship is statistically significant.
+
+**Note:** R might show a warning `Chi-squared approximation may be incorrect`, which indicates that the conditions for the Chi-Square test's validity may not be fully met. Specifically, the test assumes that expected frequencies in each cell of the contingency table are sufficiently large. Typically, the rule of thumb is that each expected cell frequency should be at least 5. You can check the expected frequencies by using the `expected` attribute of the test result:
+
+```r
+# View the expected frequencies
+chi_test$expected
+```
 
 ### Summary
 

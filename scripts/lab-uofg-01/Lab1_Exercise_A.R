@@ -70,15 +70,15 @@ summary(survey_data)
 # Save the Dataset -------------------------------------------------------------
 
 # Save as R data file
-saveRDS(survey_data, "survey_data.rds")
+saveRDS(survey_data, "data/survey_data_export.rds")
 
 # Save as .csv
-write_csv(survey_data, "survey_data.csv")
+write.csv(survey_data, "data/survey_data_export_rows.csv")
 
 # By default, the data is exported with row names. Now to export data without 
 #  row names we simply have to pass row.names=FALSE as an argument in the 
 #  write.csv() function.
-write_csv(survey_data, "survey_data.csv", row.names=FALSE)
+write.csv(survey_data, "data/survey_data_export.csv", row.names=FALSE)
 
 #-------------------------------------------------------------------------------
 # Option 2: 
@@ -100,6 +100,21 @@ str(survey_data)
 # Get basic summary statistics
 summary(survey_data)
 
+# Create labels ----------------------------------------------------------------
+
+# Assign labels for "AgeBand"
+survey_data$AgeBand <- factor(
+  survey_data$AgeBand,
+  levels = c(1, 2, 3, 4, 5),
+  labels = c("<21", "21-30", "31-40", "41-50", ">50")
+)
+
+# Assign labels for "Gender"
+survey_data$Gender <- factor(
+  survey_data$Gender,
+  levels = c(0,1,2,9),
+  labels = c("Male", "Female", "Other", "Prefer not to say")
+)
 
 #===============================================================================
 # Step A3: Modifying your Dataset

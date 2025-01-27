@@ -70,15 +70,15 @@ summary(survey_data)
 # Save the Dataset -------------------------------------------------------------
 
 # Save as R data file
-saveRDS(survey_data, "survey_data.rds")
+saveRDS(survey_data, "data/survey_data_export.rds")
 
 # Save as .csv
-write_csv(survey_data, "survey_data.csv")
+write.csv(survey_data, "data/survey_data_export_rows.csv")
 
 # By default, the data is exported with row names. Now to export data without 
 #  row names we simply have to pass row.names=FALSE as an argument in the 
 #  write.csv() function.
-write_csv(survey_data, "survey_data.csv", row.names=FALSE)
+write.csv(survey_data, "data/survey_data_export.csv", row.names=FALSE)
 
 #-------------------------------------------------------------------------------
 # Option 2: 
@@ -100,6 +100,21 @@ str(survey_data)
 # Get basic summary statistics
 summary(survey_data)
 
+# Create labels ----------------------------------------------------------------
+
+# Assign labels for "AgeBand"
+survey_data$AgeBand <- factor(
+  survey_data$AgeBand,
+  levels = c(1, 2, 3, 4, 5),
+  labels = c("<21", "21-30", "31-40", "41-50", ">50")
+)
+
+# Assign labels for "Gender"
+survey_data$Gender <- factor(
+  survey_data$Gender,
+  levels = c(0,1,2,9),
+  labels = c("Male", "Female", "Other", "Prefer not to say")
+)
 
 #===============================================================================
 # Step A3: Modifying your Dataset
@@ -370,3 +385,118 @@ age_gender_prop <- prop.table(age_gender_table)
 # Convert to a data frame and save as CSV
 age_gender_prop_df <- as.data.frame(age_gender_prop)
 write.csv(age_gender_prop_df, "output/tables/age_gender_proportions.csv", row.names = FALSE)
+
+
+#===============================================================================
+# Alternatives Using R Packages
+#===============================================================================
+
+#-------------------------------------------------------------------------------
+# Beautiful, customizable tables with export options with `gt`
+#-------------------------------------------------------------------------------
+
+# Install package
+install.packages("gt")
+
+# Load janitor package
+library(gt)
+
+# Create a cross-tabulation
+age_gender_table <- table(survey_data$AgeBand, survey_data$Gender)
+
+# Convert the table to a data frame
+age_gender_df <- as.data.frame(age_gender_table)
+
+# Create a gt table
+gt_table <- gt(data = age_gender_df) %>%
+  tab_header(
+    title = "Cross-Tabulation of Age Band and Gender",
+    subtitle = "Frequency Distribution"
+  ) %>%
+  cols_label(
+    Var1 = "Age Band",
+    Var2 = "Gender",
+    Freq = "Count"
+  ) %>%
+  fmt_number(
+    columns = vars(Freq),
+    decimals = 0
+  ) %>%
+  tab_source_note(
+    source_note = "Data Source: Survey Data"
+  )
+
+# Save the table as an HTML file
+gtsave(gt_table, filename = "output/tables/age_gender_cross_tabulation.html")
+
+#-------------------------------------------------------------------------------
+# Cleaning and Tabulating Data with `janitor`
+#-------------------------------------------------------------------------------
+
+# Creating and Saving Frequency Tables -----------------------------------------
+
+# Install package
+install.packages("janitor")
+
+# Load janitor package
+library(janitor)
+
+# Frequency table for AgeBand
+age_band_freq <- survey_data %>%
+  tabyl(AgeBand)
+
+# Save as CSV
+write.csv(age_band_freq, "output/tables/age_band_frequency.csv", row.names = FALSE)
+
+# Creating and Saving Cross-Tabulation -----------------------------------------
+
+# Make sure that the package is installed and loaded
+
+# Cross-tabulation of AgeBand and Gender
+age_gender_table <- survey_data %>%
+  tabyl(AgeBand, Gender)
+
+# Save as CSV
+write.csv(age_gender_table, "output/tables/age_gender_cross_tabulation.csv", row.names = FALSE)
+
+#-------------------------------------------------------------------------------
+# Publication-Ready Tables with `gtsummary`
+#-------------------------------------------------------------------------------
+
+# Install package
+install.packages("gtsummary")
+
+# Load package
+library(gtsummary)
+
+# Create a cross-tabulation table
+age_gender_table <- survey_data %>%
+  tbl_cross(
+    row = AgeBand,
+    col = Gender
+  )
+
+# Save as a CSV or Word document
+as_gt(age_gender_table) %>%
+  gtsave("output/tables/age_gender_cross_tabulation.html")
+
+#-------------------------------------------------------------------------------
+# Customizable Table Formatting with `flextable`
+#-------------------------------------------------------------------------------
+
+# Install package
+install.packages("flextable")
+
+# Load package
+library(flextable)
+
+# Convert a cross-tabulation to a flextable
+age_gender_table <- table(survey_data$AgeBand, survey_data$Gender) %>%
+  as.data.frame()
+
+ft <- flextable(age_gender_table)
+
+# Save as Word document
+save_as_docx(ft, path = "output/tables/age_gender_cross_tabulation.docx")
+save_as_pptx(ft, path = "output/tables/age_gender_cross_tabulation.pptx")
+save_as_image(ft, path = "output/tables/age_gender_cross_tabulation.png")
