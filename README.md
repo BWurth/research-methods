@@ -22,6 +22,8 @@ This course covers all required materials and more for the University of Glasgow
 
 **Lab 1** [ [html](docs/lab-uofg-01/lab-uofg-01.html) | [pdf](docs/lab-uofg-01/lab-uofg-01.pdf) ]
 
+**Lab 2** [ [html](docs/lab-uofg-02/lab-uofg-02.html) | [pdf](docs/lab-uofg-02/lab-uofg-02.pdf) ]
+
 ## Acknowledgements
 
 This course and its materials are the culmination of many years of work and delivering a variety of classes around research methods and data science at the University of Strathclyde and the University of Glasgow. Some of the content in the earlier lessons is inspired by and adapted from teaching materials from Kate Pyper ([LinkedIn](https://www.linkedin.com/in/kate-pyper-86a50350/)) and the organisation and structure of this course have benefited from Grant McDermott's ([GitHub](https://github.com/grantmcdermott)) [EC 607 Data Science for Economists](https://github.com/uo-ec607/lectures) at the University of Oregon.
