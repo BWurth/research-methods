@@ -57,7 +57,7 @@ ResearchMethodsLab/
 │   ├── figures/
 │   └── tables/
 ├── docs/
-└── Lab1.Rproj
+└── ResearchMethodsLab.Rproj
 ```
 
 7. Create a new **R script**: Go to **File > New File > R Script**.
@@ -852,7 +852,7 @@ This exercise focuses on how to produce reports and tables from R using a larger
 
 You can continue working with the same project or working directory (depending on which option you chose in Step A1). To get started with this exercise, please do the following:
 
-1. Please <a href="../data/lab-uofg-01/lab1-survey.csv" download="lab1-survey.csv">download the dataset</a> and save it in the `data` folder within your project folder or working directory .
+1. Please <a href="../data/lab-uofg-01/lab1-survey.csv" download="lab1-survey.csv">download the dataset</a> and save it in the `data` folder within your project folder or working directory.
 2. Create a new **R script**: Go to **File > New File > R Script**.
 3. Save the script in the `scripts` folder within your project folder or working directory with an appropriate name, e.g., `Lab1_Exercise_B_C.R`. (**Note:** For simplicity, we combine Exercises B and C into one script as they are based on the same data, but you can also create separate scripts for each exercise.)
 
