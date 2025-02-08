@@ -397,9 +397,11 @@ write.csv(age_gender_prop_df, "output/tables/age_gender_proportions.csv", row.na
 
 # Install package
 install.packages("gt")
+install.packages("dplyr")
 
 # Load janitor package
 library(gt)
+library(dplyr)
 
 # Create a cross-tabulation
 age_gender_table <- table(survey_data$AgeBand, survey_data$Gender)
@@ -437,9 +439,11 @@ gtsave(gt_table, filename = "output/tables/age_gender_cross_tabulation.html")
 
 # Install package
 install.packages("janitor")
+install.packages("dplyr")
 
 # Load janitor package
 library(janitor)
+library(dplyr)
 
 # Frequency table for AgeBand
 age_band_freq <- survey_data %>%
@@ -465,9 +469,11 @@ write.csv(age_gender_table, "output/tables/age_gender_cross_tabulation.csv", row
 
 # Install package
 install.packages("gtsummary")
+install.packages("dplyr")
 
 # Load package
 library(gtsummary)
+library(dplyr)
 
 # Create a cross-tabulation table
 age_gender_table <- survey_data %>%
@@ -486,9 +492,11 @@ as_gt(age_gender_table) %>%
 
 # Install package
 install.packages("flextable")
+install.packages("dplyr")
 
 # Load package
 library(flextable)
+library(dplyr)
 
 # Convert a cross-tabulation to a flextable
 age_gender_table <- table(survey_data$AgeBand, survey_data$Gender) %>%
