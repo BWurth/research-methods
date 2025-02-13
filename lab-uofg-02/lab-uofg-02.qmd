@@ -508,7 +508,7 @@ While base R provides solid foundations for linear regression, modern R packages
 
 ```r
 # Install packages if needed
-# install.packages(c("tidyverse", "broom", "performance", "see", "ggpubr", "sjPlot"))
+install.packages(c("tidyverse", "broom", "performance", "see", "ggpubr", "sjPlot"))
 
 # Load required packages
 library(tidyverse)    # For data manipulation and visualization
@@ -793,7 +793,7 @@ We can use several R packages that provide enhanced capabilities for conducting 
 
 ```r
 # Install packages if needed
-# install.packages(c("tidyverse", "car", "rstatix", "ggpubr", "effectsize"))
+install.packages(c("tidyverse", "car", "rstatix", "ggpubr", "effectsize"))
 
 # Load required packages
 library(tidyverse)  # For data manipulation and visualization
@@ -1223,7 +1223,7 @@ Modern R packages provide enhanced capabilities for conducting and visualizing A
 
 ```r
 # Install packages if needed
-# install.packages(c("tidyverse", "car", "rstatix", "ggpubr", "effectsize", "emmeans"))
+install.packages(c("tidyverse", "car", "rstatix", "ggpubr", "effectsize", "emmeans"))
 
 # Load required packages
 library(tidyverse)  # For data manipulation and visualization
@@ -1298,7 +1298,6 @@ analysis_data %>%
 2. Homogeneity of Variances
 
 The car package provides both Levene's and Brown-Forsythe tests:
-
 
 ```r
 # Levene's test using car package
@@ -1696,8 +1695,8 @@ Modern R packages provide enhanced capabilities for conducting and visualizing C
 
 ```r
 # Install packages if needed
-# install.packages(c("tidyverse", "rstatix", "ggstatsplot", "ggsignif", 
-#                   "corrplot", "effectsize", "DescTools"))
+install.packages(c("tidyverse", "rstatix", "ggstatsplot", "ggsignif", 
+                   "corrplot", "effectsize", "DescTools"))
 
 # Load required packages
 library(tidyverse)   # For data manipulation and visualization
@@ -1914,8 +1913,8 @@ Modern R packages provide enhanced capabilities for conducting and visualizing C
 
 ```r
 # Install packages if needed
-# install.packages(c("tidyverse", "rstatix", "ggstatsplot", "ggsignif", 
-#                   "corrplot", "effectsize", "DescTools"))
+install.packages(c("tidyverse", "rstatix", "ggstatsplot", "ggsignif", 
+                   "corrplot", "effectsize", "DescTools"))
 
 # Load required packages
 library(tidyverse)   # For data manipulation and visualization
@@ -2161,13 +2160,13 @@ You can easily explore and check the basic structure of your data and get a summ
 
 ```r
 # View the first few rows using head()
-head(staff_survey_dat)
+head(staff_survey_data)
 
 # Examine the structure
-str(staff_survey_dat)
+str(staff_survey_data)
 
 # Get basic summary statistics
-summary(staff_survey_dat)
+summary(staff_survey_data)
 ```
 
 In line with the code book, we want to assign labels to the variables in the `staff_survey_data` data frame using **factors** with labeled levels. This method ensures the data remains categorical but with human-readable labels for easier interpretation and analysis.
@@ -2309,7 +2308,7 @@ We can also use R packages that work together to create comprehensive and intuit
 
 ```r
 # Install packages if needed
-# install.packages(c("tidyverse", "knitr", "kableExtra"))
+install.packages(c("tidyverse", "knitr", "kableExtra"))
 
 # Load required packages
 library(tidyverse)  # For data manipulation and visualization
@@ -2404,7 +2403,7 @@ We can also use R packages that work together to create comprehensive and intuit
 
 ```r
 # Install packages if needed
-# install.packages(c("tidyverse", "knitr", "kableExtra"))
+install.packages(c("tidyverse", "knitr", "kableExtra"))
 
 # Load required packages
 library(tidyverse)  # For data manipulation and visualization
@@ -2415,8 +2414,6 @@ library(kableExtra) # For enhanced table formatting
 Let's create a detailed histogram to understand the distribution of years of service and identify any potential outliers:
 
 ```r
-#| fig-cap: "Distribution of Years of Service"
-
 # Create histogram with density curve
 ggplot(staff_survey_data, aes(x = service)) +
   geom_histogram(aes(y = ..density..), 
@@ -2514,7 +2511,7 @@ We can also use R packages that work together to create comprehensive and intuit
 
 ```r
 # Install packages if needed
-# install.packages(c("tidyverse", "knitr", "kableExtra"))
+install.packages(c("tidyverse", "knitr", "kableExtra"))
 
 # Load required packages
 library(tidyverse)  # For data manipulation and visualization
@@ -2564,7 +2561,7 @@ How do you think total staff satisfaction (`totsatis`) is calculated? Is there a
 
 ::: {.callout-caution collapse="true"}
 ## Solution to Step H6
-To understand how total staff satisfaction (totsatis) might be calculated, let's examine its relationship with individual satisfaction items:
+To understand how total staff satisfaction (`totsatis`) might be calculated, let's examine its relationship with individual satisfaction items:
 
 ```r
 # Identify satisfaction-related variables (Q*a)
@@ -2647,7 +2644,7 @@ We can also use R packages that work together to create comprehensive and intuit
 
 ```r
 # Install packages if needed
-# install.packages(c("tidyverse", "knitr", "kableExtra"))
+install.packages(c("tidyverse", "knitr", "kableExtra"))
 
 # Load required packages
 library(tidyverse)  # For data manipulation and visualization
@@ -3003,7 +3000,7 @@ Modern R packages provide enhanced capabilities for conducting and interpreting 
 
 ```r
 # Install packages if needed
-# install.packages(c("tidyverse", "broom", "performance", "sjPlot", "marginaleffects"))
+install.packages(c("tidyverse", "broom", "performance", "sjPlot", "marginaleffects"))
 
 # Load required packages
 library(tidyverse)    # For data manipulation and visualization
@@ -3013,7 +3010,7 @@ library(sjPlot)      # For plotting odds ratios and model summaries
 library(marginaleffects)  # For calculating and plotting marginal effects
 ```
 
-**Understanding Our Data**
+**Understanding our Data**
 
 The `tidyverse` package provides powerful tools for initial data exploration:
 
