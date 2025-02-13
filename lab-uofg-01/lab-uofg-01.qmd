@@ -727,7 +727,7 @@ gt_table <- gt(data = age_gender_df) %>%
     Freq = "Count"
   ) %>%
   fmt_number(
-    columns = vars(Freq),
+    columns = c(Freq),
     decimals = 0
   ) %>%
   tab_source_note(
@@ -811,7 +811,7 @@ age_gender_table <- survey_data %>%
 
 # Save as a CSV or Word document
 as_gt(age_gender_table) %>%
-  gtsave("output/tables/age_gender_cross_tabulation.html")
+  gt::gtsave("output/tables/age_gender_cross_tabulation.html")
 ```
 
 **Advantages:**
@@ -843,7 +843,9 @@ ft <- flextable(age_gender_table)
 
 # Save as Word document
 save_as_docx(ft, path = "output/tables/age_gender_cross_tabulation.docx")
+# Save as PowerPoint document
 save_as_pptx(ft, path = "output/tables/age_gender_cross_tabulation.pptx")
+# Save as image
 save_as_image(ft, path = "output/tables/age_gender_cross_tabulation.png")
 ```
 
@@ -1255,12 +1257,12 @@ The number of bins can significantly affect the visualization. For finer or coar
 
 **Interpretation of the Graphs**
 
-The histogram will display the distribution of the `tpstress` variable, showing the frequency of scores within each bin. This can help answer questions like:
+The histogram will display the distribution of the `tpstress` variable (@fig-hist-tpstress), showing the frequency of scores within each bin. This can help answer questions like:
 
 -  Are most participants experiencing low, moderate, or high stress?
 -  Does the data appear skewed or normally distributed?
 
-[ADD FIGURE HERE]{style="color:red;"}
+![Histogram of `tpstress`](images/c2_histogram_tpstress.jpg){#fig-hist-tpstress width="80%" fig-align="center" alt="Histogram of `tpstress`"}
 
 ::: {.callout-tip collapse="false"}
 ## Saving Plots with `ggsave` in `ggplot2`
@@ -1385,14 +1387,14 @@ ggsave("output/figures/histogram_tpstress_gender_stack.pdf", width = 8, height =
 
 **Interpretation of the Graphs**
 
-The panelled histograms show the distribution of perceived stress scores (`tpstress`) for males and females:
+The panelled (@fig-hist-tpstress_gender) and stacked histograms (@fig-hist-tpstress_gender) show the distribution of perceived stress scores (`tpstress`) for males and females:
 
 -  Look for differences in the shape, spread, and center of the distributions.
 -  Identify patterns such as skewness or concentration of values in specific ranges.
 
-[ADD PANEL FIGURE HERE]{style="color:red;"}
+![Panelled histograms for `tpstress` by `sex`](images/c2_histogram_tpstress_gender.jpg){#fig-hist-tpstress_gender width="80%" fig-align="center" alt="Panelled histograms for `tpstress` by `sex`"}
 
-[ADD STACK FIGURE HERE]{style="color:red;"}
+![Stacked histograms for `tpstress` by `sex`](images/c2_histogram_tpstress_gender_stack.jpg){#fig-hist-tpstress_gender_stack width="80%" fig-align="center" alt="Stacked histograms for `tpstress` by `sex`"}
 
 ## Step C3: Bar Charts
 
@@ -1441,9 +1443,9 @@ ggsave("output/figures/bar_gender.pdf", width = 8, height = 5)
 
 **Interpretation of the Graphs**
 
-Running the above code will produce a simple bar chart showing the distribution of males and females in the dataset. The y-axis represents the count of participants in each gender category.
+Running the above code will produce a simple bar chart showing the distribution of males and females in the dataset (@fig-bar_gender). The y-axis represents the count of participants in each gender category.
 
-[ADD FIGURE HERE]{style="color:red;"}
+![Simple bar chart for `sex`](images/c3_bar_gender.jpg){#fig-bar_gender width="80%" fig-align="center" alt="Simple bar chart for `sex`"}
 
 ### Creating a Clustered Bar Chart
 
@@ -1627,13 +1629,13 @@ ggsave("output/figures/bar_gender_age2.pdf", width = 8, height = 5)
 
 **Interpretation of the Chart**
 
-The clustered bar chart allows us to compare:
+The clustered bar chart (@fig-bar_gender_age) allows us to compare:
 
 - Differences in mean perceived stress (`tpstress`) across age groups (`agegp3`).
 - How stress levels differ between males and females (`sex`) within each age group.
 - The size of the error bars provides insight into variability within each group.
 
-[ADD FIGURE HERE]{style="color:red;"}
+![Clustered bar chart for `tpstress` by `sex`](images/c3_bar_gender_age.jpg){#fig-bar_gender_age width="80%" fig-align="center" alt="Clustered bar chart for `tpstress` by `sex`"}
 
 ## Step C4: Line Graphs
 
@@ -1657,7 +1659,7 @@ simple_line_data <- aggregate(
 
 # Create the line graph
 line_stress_age <- ggplot(data = simple_line_data, aes(x = agegp5, y = tpstress, group = 1)) +
-  geom_line(color = "blue", size = 1) +
+  geom_line(color = "blue", linewidth = 1) +
   geom_point(color = "blue", size = 2) +
   labs(
     title = "Mean Perceived Stress by Age Group",
@@ -1684,7 +1686,7 @@ ggsave("output/figures/line_stress_age.pdf", width = 8, height = 5)
 
 **Interpretation of the Graphs**
 
-In the **simple line graph**, the x-axis represents age groups (`agegp5`), and the y-axis shows the mean perceived stress scores (`tpstress`). The points connected by the line indicate how stress levels change across age groups.
+In the **simple line graph** (@fig-line-stress-age), the x-axis represents age groups (`agegp5`), and the y-axis shows the mean perceived stress scores (`tpstress`). The points connected by the line indicate how stress levels change across age groups.
 
 Key questions to consider:
 
@@ -1692,12 +1694,7 @@ Key questions to consider:
 - **Peaks and Valleys**: Are there specific age groups with notably higher or lower stress levels?
 - **Outliers**: Are there unexpected jumps or drops in the graph that may warrant further investigation?
 
-For example:
-
-- A steadily increasing line may suggest that perceived stress tends to rise with age.
-- A peak in one age group might indicate a period of heightened stress that could be explored further.
-
-[ADD FIGURE HERE]{style="color:red;"}
+![Simple line graph for age groups (`agegp5`) and `tpstress`](images/c4_line_stress_age.jpg){#fig-line-stress-age width="80%" fig-align="center" alt="Simple line graph for age groups (`agegp5`) and `tpstress`"}
 
 ### Creating a Multi-Line Graph
 
@@ -1742,7 +1739,7 @@ ggsave("output/figures/line_stress_age_gender.pdf", width = 8, height = 5)
 
 **Interpretation of the Graphs**
 
-The **multi-line graph** adds a layer of complexity by splitting the line into separate paths for males and females. Each gender has its own line, distinguished by color. This allows for a direct comparison of stress levels between genders across age groups.
+The **multi-line graph** adds a layer of complexity by splitting the line into separate paths for males and females (@fig-line-stress-age-gender). Each gender has its own line, distinguished by color. This allows for a direct comparison of stress levels between genders across age groups.
 
 Key questions to consider:
 
@@ -1750,12 +1747,7 @@ Key questions to consider:
 - **Crossovers**: Do the lines for males and females intersect at any point, indicating shifts in which gender reports higher stress?
 - **Parallel Trends**: Are the lines generally parallel, suggesting consistent gender differences across age groups?
 
-For example:
-
-- If the lines for males and females remain parallel, it may indicate consistent differences in stress levels regardless of age.
-- If the lines cross, it suggests age-specific variations in gender differences.
-
-[ADD FIGURE HERE]{style="color:red;"}
+![Multi-line graph for age groups (`agegp5`) and `tpstress` grouped by `sex`](images/c4_line_stress_age_gender.jpg){#fig-line-stress-age-gender width="80%" fig-align="center" alt="Multi-line graph for age groups (`agegp5`) and `tpstress` grouped by `sex`"}
 
 In general, both line graphs (simple and multi-line) are useful for identifying:
 
@@ -1765,7 +1757,7 @@ In general, both line graphs (simple and multi-line) are useful for identifying:
 
 By examining the overall shape and relationship of the lines, you can derive meaningful conclusions about the data and identify areas for further exploration.
 
-## Step C4: Scatterplots
+## Step C5: Scatterplots
 
 Scatterplots are essential for visualizing the relationship between two continuous variables. They help identify trends, correlations, and potential outliers. By adding categorical grouping and labeling points, scatterplots become even more informative, allowing for deeper insights into patterns within subgroups.
 
@@ -1806,14 +1798,12 @@ ggsave("output/figures/scatter_stress_control.pdf", width = 8, height = 5)
 
 **Interpretation of the Graphs**
 
-The simple scatterplot shows the relationship between `tpstress` (perceived stress) and `tpcoiss` (coping strategies) across all participants.
-
-Key points to consider:
+The simple scatterplot shows the relationship between `tpstress` (perceived stress) and `tpcoiss` (coping strategies) across all participants (@fig-scatter-stress-control). When examining a scatterplot, there are a few key points to consider.
 
 - Direction of the relationship:
-  - A **positive trend** (points sloping upward) suggests that higher coping strategies are associated with higher perceived stress.
-  - A **negative trend** (points sloping downward) suggests that higher coping strategies are associated with lower perceived stress.
-  - A **flat trend** (points scattered without a clear pattern) suggests no apparent relationship between the variables.
+  - A **negative trend** (points sloping downward) as shown in @fig-scatter-stress-control suggests that higher coping strategies are associated with lower perceived stress.
+  - A **positive trend** (points sloping upward) would, alternatively, suggest that higher coping strategies are associated with higher perceived stress.
+  - A **flat trend** (points scattered without a clear pattern) would, alternatively, suggest no apparent relationship between the variables.
 
 - Strength of the relationship:
   - Points clustered tightly along an imaginary line indicate a **strong relationship**.
@@ -1822,9 +1812,7 @@ Key points to consider:
 - Outliers:
   - Points far from the general trend or clustering might indicate participants with unusual scores (e.g., very high stress despite low coping strategies).
 
-[If the scatterplot shows a positive trend, this could suggest that participants reporting higher coping strategies are experiencing higher levels of stress, which might reflect maladaptive coping mechanisms.]{style="color:red;"}
-
-[ADD FIGURE HERE]{style="color:red;"}
+![Simple scatterplot for `tpstress` and `tpcoiss`](images/c5_scatter_stress_control.jpg){#fig-scatter-stress-control width="80%" fig-align="center" alt="Simple scatterplot for `tpstress` and `tpcoiss`"}
 
 ### Scatterplot with Categorical Grouping
 
@@ -1858,9 +1846,7 @@ ggsave("output/figures/scatter_stress_control_gender.pdf", width = 8, height = 5
 
 **Interpretation of the Graphs**
 
-The grouped scatterplot adds a layer of complexity by differentiating the points based on `sex` (males and females) using color coding. This allows for subgroup comparisons.
-
-Key points to consider:
+The grouped scatterplot adds a layer of complexity by differentiating the points based on `sex` (males and females) using color coding (@fig-scatter-stress-control-gender), which allows for subgroup comparisons. When examining a grouped scatterplot, there are a few key points to consider.
 
 - Comparing trends between groups:
   - Look for differences in the direction, strength, or spread of points for each group.
@@ -1874,9 +1860,7 @@ Key points to consider:
 - Group-specific outliers:
   - Outliers can be identified separately for each group, helping to explore whether certain groups have more extreme responses.
 
-[If males show a stronger positive trend compared to females, it might suggest gender differences in how coping strategies are related to perceived stress.]{style="color:red;"}
-
-[ADD FIGURE HERE]{style="color:red;"}
+![Grouped scatterplot for `tpstress` and `tpcoiss` by `sex`](images/c5_scatter_stress_control_gender.jpg){#fig-scatter-stress-control-gender width="80%" fig-align="center" alt="Grouped scatterplot for `tpstress` and `tpcoiss` by `sex`"}
 
 ### Scatterplot with Point Labels
 
@@ -1909,9 +1893,7 @@ ggsave("output/figures/scatter_stress_control_gender_id.pdf", width = 8, height 
 
 **Interpretation of the Graphs**
 
-The labeled scatterplot builds on the grouped scatterplot by adding participant identifiers (`id`) as point labels. This is useful for identifying specific data points and exploring individual-level patterns.
-
-Key points to consider:
+The labeled scatterplot builds on the grouped scatterplot by adding participant identifiers (`id`) as point labels (@fig-scatter-stress-control-gender-id). This is useful for identifying specific data points and exploring individual-level patterns. There are a few key points to consider when analyzing labeled scatterplots.
 
 - Identifying specific participants:
   - Outliers or points of interest can now be linked to specific participants using their `id`.
@@ -1922,11 +1904,9 @@ Key points to consider:
   - Sparse labels suggest regions with fewer participants, highlighting gaps in the data.
 
 - Potential for follow-up:
-  - By identifying participants with unusual scores, researchers can delve deeper into qualitative responses or additional variables to better understand these cases.
+  - By identifying participants with unusual scores (e.g., a specific participant shows extreme stress levels `tpstress` with high coping strategies `tpcoiss`), researchers can seek qualitative responses or additional variables to better understand these cases.
 
-[If a specific participant shows extreme stress levels (`tpstress`) with high coping strategies (`tpcoiss`), their behavior might warrant further investigation to understand coping efficacy or survey anomalies.]{style="color:red;"}
-
-[ADD FIGURE HERE]{style="color:red;"}
+![Grouped scatterplot for `tpstress` and `tpcoiss` by `sex` with point labels](images/c5_scatter_stress_control_gender_id.jpg){#fig-scatter-stress-control-gender-id width="80%" fig-align="center" alt="Grouped scatterplot for `tpstress` and `tpcoiss` by `sex` with point labels"}
 
 # Summary
 

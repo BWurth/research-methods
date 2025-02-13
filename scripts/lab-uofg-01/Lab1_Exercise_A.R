@@ -241,6 +241,9 @@ print(paste("Most frequent age band:", most_frequent_age_band))
 rare_categories <- names(age_band_freq[age_band_freq <= 2])
 print(paste("Rare categories:", paste(rare_categories, collapse = ", ")))
 
+# NOTE: There are no categories with only two instances. Increase the minimum
+#       frequency above and re-run the code until you get a result.
+
 #-------------------------------------------------------------------------------
 # Handling Missing or Unexpected Values
 #-------------------------------------------------------------------------------
@@ -310,6 +313,15 @@ print(age_gender_table)
 # Perform a Chi-Square Test of Independence
 chi_test <- chisq.test(age_gender_table)
 print(chi_test)
+
+
+# NOTE: You might get a warning here that the approximation may be incorrect. 
+#       Typically, the rule of thumb is that each expected cell frequency should 
+#       be at least 5. You can check the expected frequencies by using the 
+#      `expected` attribute of the test result:
+
+# View the expected frequencies
+chi_test$expected
 
 
 #===============================================================================
@@ -421,7 +433,7 @@ gt_table <- gt(data = age_gender_df) %>%
     Freq = "Count"
   ) %>%
   fmt_number(
-    columns = vars(Freq),
+    columns = c(Freq),
     decimals = 0
   ) %>%
   tab_source_note(
@@ -484,7 +496,7 @@ age_gender_table <- survey_data %>%
 
 # Save as a CSV or Word document
 as_gt(age_gender_table) %>%
-  gtsave("output/tables/age_gender_cross_tabulation.html")
+  gt::gtsave("output/tables/age_gender_cross_tabulation.html")
 
 #-------------------------------------------------------------------------------
 # Customizable Table Formatting with `flextable`
@@ -506,5 +518,7 @@ ft <- flextable(age_gender_table)
 
 # Save as Word document
 save_as_docx(ft, path = "output/tables/age_gender_cross_tabulation.docx")
+# Save as PowerPoint document
 save_as_pptx(ft, path = "output/tables/age_gender_cross_tabulation.pptx")
+# Save as image
 save_as_image(ft, path = "output/tables/age_gender_cross_tabulation.png")

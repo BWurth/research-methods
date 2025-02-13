@@ -503,7 +503,7 @@ simple_line_data <- aggregate(
 
 # Create the line graph
 line_stress_age <- ggplot(data = simple_line_data, aes(x = agegp5, y = tpstress, group = 1)) +
-  geom_line(color = "blue", size = 1) +
+  geom_line(color = "blue", linewidth = 1) +
   geom_point(color = "blue", size = 2) +
   labs(
     title = "Mean Perceived Stress by Age Group",
@@ -549,7 +549,7 @@ line_stress_age_gender
 ggsave("output/figures/line_stress_age_gender.pdf", width = 8, height = 5)
 
 #===============================================================================
-# Step C4: Scatterplots
+# Step C5: Scatterplots
 #===============================================================================
 
 #-------------------------------------------------------------------------------

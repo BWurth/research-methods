@@ -168,7 +168,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <li><a href="#step-c2-histograms" id="toc-step-c2-histograms" class="nav-link" data-scroll-target="#step-c2-histograms"><span class="header-section-number">4.2</span> Step C2: Histograms</a></li>
   <li><a href="#step-c3-bar-charts" id="toc-step-c3-bar-charts" class="nav-link" data-scroll-target="#step-c3-bar-charts"><span class="header-section-number">4.3</span> Step C3: Bar Charts</a></li>
   <li><a href="#step-c4-line-graphs" id="toc-step-c4-line-graphs" class="nav-link" data-scroll-target="#step-c4-line-graphs"><span class="header-section-number">4.4</span> Step C4: Line Graphs</a></li>
-  <li><a href="#step-c4-scatterplots" id="toc-step-c4-scatterplots" class="nav-link" data-scroll-target="#step-c4-scatterplots"><span class="header-section-number">4.5</span> Step C4: Scatterplots</a></li>
+  <li><a href="#step-c5-scatterplots" id="toc-step-c5-scatterplots" class="nav-link" data-scroll-target="#step-c5-scatterplots"><span class="header-section-number">4.5</span> Step C5: Scatterplots</a></li>
   </ul></li>
   <li><a href="#summary-3" id="toc-summary-3" class="nav-link" data-scroll-target="#summary-3"><span class="header-section-number">5</span> Summary</a></li>
   </ul>
@@ -816,7 +816,7 @@ Beautiful, customizable tables with export options with <code>gt</code>
 <span id="cb41-24"><a href="#cb41-24" aria-hidden="true" tabindex="-1"></a>    <span class="at">Freq =</span> <span class="st">"Count"</span></span>
 <span id="cb41-25"><a href="#cb41-25" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
 <span id="cb41-26"><a href="#cb41-26" aria-hidden="true" tabindex="-1"></a>  <span class="fu">fmt_number</span>(</span>
-<span id="cb41-27"><a href="#cb41-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">vars</span>(Freq),</span>
+<span id="cb41-27"><a href="#cb41-27" aria-hidden="true" tabindex="-1"></a>    <span class="at">columns =</span> <span class="fu">c</span>(Freq),</span>
 <span id="cb41-28"><a href="#cb41-28" aria-hidden="true" tabindex="-1"></a>    <span class="at">decimals =</span> <span class="dv">0</span></span>
 <span id="cb41-29"><a href="#cb41-29" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span></span>
 <span id="cb41-30"><a href="#cb41-30" aria-hidden="true" tabindex="-1"></a>  <span class="fu">tab_source_note</span>(</span>
@@ -910,7 +910,7 @@ Publication-Ready Tables with <code>gtsummary</code>
 <span id="cb44-16"><a href="#cb44-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb44-17"><a href="#cb44-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Save as a CSV or Word document</span></span>
 <span id="cb44-18"><a href="#cb44-18" aria-hidden="true" tabindex="-1"></a><span class="fu">as_gt</span>(age_gender_table) <span class="sc">%&gt;%</span></span>
-<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">gtsave</span>(<span class="st">"output/tables/age_gender_cross_tabulation.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb44-19"><a href="#cb44-19" aria-hidden="true" tabindex="-1"></a>  gt<span class="sc">::</span><span class="fu">gtsave</span>(<span class="st">"output/tables/age_gender_cross_tabulation.html"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Advantages:</strong></p>
 <ul>
 <li>Produces beautifully formatted tables.</li>
@@ -949,8 +949,10 @@ Customizable Table Formatting with <code>flextable</code>
 <span id="cb45-14"><a href="#cb45-14" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb45-15"><a href="#cb45-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Save as Word document</span></span>
 <span id="cb45-16"><a href="#cb45-16" aria-hidden="true" tabindex="-1"></a><span class="fu">save_as_docx</span>(ft, <span class="at">path =</span> <span class="st">"output/tables/age_gender_cross_tabulation.docx"</span>)</span>
-<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a><span class="fu">save_as_pptx</span>(ft, <span class="at">path =</span> <span class="st">"output/tables/age_gender_cross_tabulation.pptx"</span>)</span>
-<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a><span class="fu">save_as_image</span>(ft, <span class="at">path =</span> <span class="st">"output/tables/age_gender_cross_tabulation.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<span id="cb45-17"><a href="#cb45-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Save as PowerPoint document</span></span>
+<span id="cb45-18"><a href="#cb45-18" aria-hidden="true" tabindex="-1"></a><span class="fu">save_as_pptx</span>(ft, <span class="at">path =</span> <span class="st">"output/tables/age_gender_cross_tabulation.pptx"</span>)</span>
+<span id="cb45-19"><a href="#cb45-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Save as image</span></span>
+<span id="cb45-20"><a href="#cb45-20" aria-hidden="true" tabindex="-1"></a><span class="fu">save_as_image</span>(ft, <span class="at">path =</span> <span class="st">"output/tables/age_gender_cross_tabulation.png"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Advantages:</strong></p>
 <ul>
 <li>Highly customizable appearance.</li>
@@ -1284,12 +1286,21 @@ Using ggplot2 for Data Visualization
 <li>Use a larger <code>binwidth</code> (e.g., <code>binwidth = 10</code>) for a summarized view.</li>
 </ul>
 <p><strong>Interpretation of the Graphs</strong></p>
-<p>The histogram will display the distribution of the <code>tpstress</code> variable, showing the frequency of scores within each bin. This can help answer questions like:</p>
+<p>The histogram will display the distribution of the <code>tpstress</code> variable (<a href="#fig-hist-tpstress" class="quarto-xref">Figure&nbsp;1</a>), showing the frequency of scores within each bin. This can help answer questions like:</p>
 <ul>
 <li>Are most participants experiencing low, moderate, or high stress?</li>
 <li>Does the data appear skewed or normally distributed?</li>
 </ul>
-<p><span style="color:red;">ADD FIGURE HERE</span></p>
+<div id="fig-hist-tpstress" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hist-tpstress-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/c2_histogram_tpstress.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hist-tpstress-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;1: Histogram of <code>tpstress</code>
+</figcaption>
+</figure>
+</div>
 <div class="callout callout-style-default callout-tip callout-titled">
 <div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-11-contents" aria-controls="callout-11" aria-expanded="true" aria-label="Toggle callout">
 <div class="callout-icon-container">
@@ -1391,13 +1402,31 @@ Saving Plots with <code>ggsave</code> in <code>ggplot2</code>
 <span id="cb72-15"><a href="#cb72-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot</span></span>
 <span id="cb72-16"><a href="#cb72-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/figures/histogram_tpstress_gender_stack.pdf"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Interpretation of the Graphs</strong></p>
-<p>The panelled histograms show the distribution of perceived stress scores (<code>tpstress</code>) for males and females:</p>
+<p>The panelled (<a href="#fig-hist-tpstress_gender" class="quarto-xref">Figure&nbsp;2</a>) and stacked histograms (<a href="#fig-hist-tpstress_gender" class="quarto-xref">Figure&nbsp;2</a>) show the distribution of perceived stress scores (<code>tpstress</code>) for males and females:</p>
 <ul>
 <li>Look for differences in the shape, spread, and center of the distributions.</li>
 <li>Identify patterns such as skewness or concentration of values in specific ranges.</li>
 </ul>
-<p><span style="color:red;">ADD PANEL FIGURE HERE</span></p>
-<p><span style="color:red;">ADD STACK FIGURE HERE</span></p>
+<div id="fig-hist-tpstress_gender" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hist-tpstress_gender-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/c2_histogram_tpstress_gender.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hist-tpstress_gender-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;2: Panelled histograms for <code>tpstress</code> by <code>sex</code>
+</figcaption>
+</figure>
+</div>
+<div id="fig-hist-tpstress_gender_stack" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-hist-tpstress_gender_stack-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/c2_histogram_tpstress_gender_stack.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-hist-tpstress_gender_stack-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;3: Stacked histograms for <code>tpstress</code> by <code>sex</code>
+</figcaption>
+</figure>
+</div>
 </section>
 </section>
 <section id="step-c3-bar-charts" class="level2" data-number="4.3">
@@ -1441,8 +1470,17 @@ Saving Plots with <code>ggsave</code> in <code>ggplot2</code>
 <li><code>theme_minimal()</code>: Applies a clean, minimal theme for better aesthetics.</li>
 </ul>
 <p><strong>Interpretation of the Graphs</strong></p>
-<p>Running the above code will produce a simple bar chart showing the distribution of males and females in the dataset. The y-axis represents the count of participants in each gender category.</p>
-<p><span style="color:red;">ADD FIGURE HERE</span></p>
+<p>Running the above code will produce a simple bar chart showing the distribution of males and females in the dataset (<a href="#fig-bar_gender" class="quarto-xref">Figure&nbsp;4</a>). The y-axis represents the count of participants in each gender category.</p>
+<div id="fig-bar_gender" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bar_gender-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/c3_bar_gender.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bar_gender-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;4: Simple bar chart for <code>sex</code>
+</figcaption>
+</figure>
+</div>
 </section>
 <section id="creating-a-clustered-bar-chart" class="level3" data-number="4.3.2">
 <h3 data-number="4.3.2" class="anchored" data-anchor-id="creating-a-clustered-bar-chart"><span class="header-section-number">4.3.2</span> Creating a Clustered Bar Chart</h3>
@@ -1605,13 +1643,22 @@ Alternative using <code>dplyr</code> package
 </div>
 </div>
 <p><strong>Interpretation of the Chart</strong></p>
-<p>The clustered bar chart allows us to compare:</p>
+<p>The clustered bar chart (<a href="#fig-bar_gender_age" class="quarto-xref">Figure&nbsp;5</a>) allows us to compare:</p>
 <ul>
 <li>Differences in mean perceived stress (<code>tpstress</code>) across age groups (<code>agegp3</code>).</li>
 <li>How stress levels differ between males and females (<code>sex</code>) within each age group.</li>
 <li>The size of the error bars provides insight into variability within each group.</li>
 </ul>
-<p><span style="color:red;">ADD FIGURE HERE</span></p>
+<div id="fig-bar_gender_age" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-bar_gender_age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/c3_bar_gender_age.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-bar_gender_age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;5: Clustered bar chart for <code>tpstress</code> by <code>sex</code>
+</figcaption>
+</figure>
+</div>
 </section>
 </section>
 <section id="step-c4-line-graphs" class="level2" data-number="4.4">
@@ -1634,7 +1681,7 @@ Alternative using <code>dplyr</code> package
 <span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the line graph</span></span>
 <span id="cb79-10"><a href="#cb79-10" aria-hidden="true" tabindex="-1"></a>line_stress_age <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> simple_line_data, <span class="fu">aes</span>(<span class="at">x =</span> agegp5, <span class="at">y =</span> tpstress, <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb79-11"><a href="#cb79-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb79-11"><a href="#cb79-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
 <span id="cb79-12"><a href="#cb79-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
 <span id="cb79-13"><a href="#cb79-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
 <span id="cb79-14"><a href="#cb79-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Mean Perceived Stress by Age Group"</span>,</span>
@@ -1658,19 +1705,23 @@ Alternative using <code>dplyr</code> package
 <li><code>theme_minimal()</code> ensures a clean and professional look.</li>
 </ul>
 <p><strong>Interpretation of the Graphs</strong></p>
-<p>In the <strong>simple line graph</strong>, the x-axis represents age groups (<code>agegp5</code>), and the y-axis shows the mean perceived stress scores (<code>tpstress</code>). The points connected by the line indicate how stress levels change across age groups.</p>
+<p>In the <strong>simple line graph</strong> (<a href="#fig-line-stress-age" class="quarto-xref">Figure&nbsp;6</a>), the x-axis represents age groups (<code>agegp5</code>), and the y-axis shows the mean perceived stress scores (<code>tpstress</code>). The points connected by the line indicate how stress levels change across age groups.</p>
 <p>Key questions to consider:</p>
 <ul>
 <li><strong>Overall Trend</strong>: Do stress levels increase, decrease, or remain stable across age groups?</li>
 <li><strong>Peaks and Valleys</strong>: Are there specific age groups with notably higher or lower stress levels?</li>
 <li><strong>Outliers</strong>: Are there unexpected jumps or drops in the graph that may warrant further investigation?</li>
 </ul>
-<p>For example:</p>
-<ul>
-<li>A steadily increasing line may suggest that perceived stress tends to rise with age.</li>
-<li>A peak in one age group might indicate a period of heightened stress that could be explored further.</li>
-</ul>
-<p><span style="color:red;">ADD FIGURE HERE</span></p>
+<div id="fig-line-stress-age" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-line-stress-age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/c4_line_stress_age.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-line-stress-age-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;6: Simple line graph for age groups (<code>agegp5</code>) and <code>tpstress</code>
+</figcaption>
+</figure>
+</div>
 </section>
 <section id="creating-a-multi-line-graph" class="level3" data-number="4.4.2">
 <h3 data-number="4.4.2" class="anchored" data-anchor-id="creating-a-multi-line-graph"><span class="header-section-number">4.4.2</span> Creating a Multi-Line Graph</h3>
@@ -1710,19 +1761,23 @@ Alternative using <code>dplyr</code> package
 <li><code>theme_minimal()</code> ensures a clean and professional look.</li>
 </ul>
 <p><strong>Interpretation of the Graphs</strong></p>
-<p>The <strong>multi-line graph</strong> adds a layer of complexity by splitting the line into separate paths for males and females. Each gender has its own line, distinguished by color. This allows for a direct comparison of stress levels between genders across age groups.</p>
+<p>The <strong>multi-line graph</strong> adds a layer of complexity by splitting the line into separate paths for males and females (<a href="#fig-line-stress-age-gender" class="quarto-xref">Figure&nbsp;7</a>). Each gender has its own line, distinguished by color. This allows for a direct comparison of stress levels between genders across age groups.</p>
 <p>Key questions to consider:</p>
 <ul>
 <li><strong>Gender Differences</strong>: Do males and females have similar or diverging patterns of stress across age groups?</li>
 <li><strong>Crossovers</strong>: Do the lines for males and females intersect at any point, indicating shifts in which gender reports higher stress?</li>
 <li><strong>Parallel Trends</strong>: Are the lines generally parallel, suggesting consistent gender differences across age groups?</li>
 </ul>
-<p>For example:</p>
-<ul>
-<li>If the lines for males and females remain parallel, it may indicate consistent differences in stress levels regardless of age.</li>
-<li>If the lines cross, it suggests age-specific variations in gender differences.</li>
-</ul>
-<p><span style="color:red;">ADD FIGURE HERE</span></p>
+<div id="fig-line-stress-age-gender" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-line-stress-age-gender-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/c4_line_stress_age_gender.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-line-stress-age-gender-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;7: Multi-line graph for age groups (<code>agegp5</code>) and <code>tpstress</code> grouped by <code>sex</code>
+</figcaption>
+</figure>
+</div>
 <p>In general, both line graphs (simple and multi-line) are useful for identifying:</p>
 <ol type="1">
 <li><strong>Patterns in Stress Levels</strong>: Are there general trends across age groups?</li>
@@ -1732,8 +1787,8 @@ Alternative using <code>dplyr</code> package
 <p>By examining the overall shape and relationship of the lines, you can derive meaningful conclusions about the data and identify areas for further exploration.</p>
 </section>
 </section>
-<section id="step-c4-scatterplots" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="step-c4-scatterplots"><span class="header-section-number">4.5</span> Step C4: Scatterplots</h2>
+<section id="step-c5-scatterplots" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="step-c5-scatterplots"><span class="header-section-number">4.5</span> Step C5: Scatterplots</h2>
 <p>Scatterplots are essential for visualizing the relationship between two continuous variables. They help identify trends, correlations, and potential outliers. By adding categorical grouping and labeling points, scatterplots become even more informative, allowing for deeper insights into patterns within subgroups.</p>
 <p>In this exercise, we create three scatterplots using the <code>survey_data_full</code> dataset:</p>
 <ol type="1">
@@ -1767,14 +1822,13 @@ Alternative using <code>dplyr</code> package
 <li><code>theme_minimal()</code> ensures a clean and professional appearance.</li>
 </ul>
 <p><strong>Interpretation of the Graphs</strong></p>
-<p>The simple scatterplot shows the relationship between <code>tpstress</code> (perceived stress) and <code>tpcoiss</code> (coping strategies) across all participants.</p>
-<p>Key points to consider:</p>
+<p>The simple scatterplot shows the relationship between <code>tpstress</code> (perceived stress) and <code>tpcoiss</code> (coping strategies) across all participants (<a href="#fig-scatter-stress-control" class="quarto-xref">Figure&nbsp;8</a>). When examining a scatterplot, there are a few key points to consider.</p>
 <ul>
 <li>Direction of the relationship:
 <ul>
-<li>A <strong>positive trend</strong> (points sloping upward) suggests that higher coping strategies are associated with higher perceived stress.</li>
-<li>A <strong>negative trend</strong> (points sloping downward) suggests that higher coping strategies are associated with lower perceived stress.</li>
-<li>A <strong>flat trend</strong> (points scattered without a clear pattern) suggests no apparent relationship between the variables.</li>
+<li>A <strong>negative trend</strong> (points sloping downward) as shown in <a href="#fig-scatter-stress-control" class="quarto-xref">Figure&nbsp;8</a> suggests that higher coping strategies are associated with lower perceived stress.</li>
+<li>A <strong>positive trend</strong> (points sloping upward) would, alternatively, suggest that higher coping strategies are associated with higher perceived stress.</li>
+<li>A <strong>flat trend</strong> (points scattered without a clear pattern) would, alternatively, suggest no apparent relationship between the variables.</li>
 </ul></li>
 <li>Strength of the relationship:
 <ul>
@@ -1786,8 +1840,16 @@ Alternative using <code>dplyr</code> package
 <li>Points far from the general trend or clustering might indicate participants with unusual scores (e.g., very high stress despite low coping strategies).</li>
 </ul></li>
 </ul>
-<p><span style="color:red;">If the scatterplot shows a positive trend, this could suggest that participants reporting higher coping strategies are experiencing higher levels of stress, which might reflect maladaptive coping mechanisms.</span></p>
-<p><span style="color:red;">ADD FIGURE HERE</span></p>
+<div id="fig-scatter-stress-control" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scatter-stress-control-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/c5_scatter_stress_control.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scatter-stress-control-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;8: Simple scatterplot for <code>tpstress</code> and <code>tpcoiss</code>
+</figcaption>
+</figure>
+</div>
 </section>
 <section id="scatterplot-with-categorical-grouping" class="level3" data-number="4.5.2">
 <h3 data-number="4.5.2" class="anchored" data-anchor-id="scatterplot-with-categorical-grouping"><span class="header-section-number">4.5.2</span> Scatterplot with Categorical Grouping</h3>
@@ -1816,8 +1878,7 @@ Alternative using <code>dplyr</code> package
 <li><code>theme_minimal()</code> ensures a clean and professional appearance.</li>
 </ul>
 <p><strong>Interpretation of the Graphs</strong></p>
-<p>The grouped scatterplot adds a layer of complexity by differentiating the points based on <code>sex</code> (males and females) using color coding. This allows for subgroup comparisons.</p>
-<p>Key points to consider:</p>
+<p>The grouped scatterplot adds a layer of complexity by differentiating the points based on <code>sex</code> (males and females) using color coding (<a href="#fig-scatter-stress-control-gender" class="quarto-xref">Figure&nbsp;9</a>), which allows for subgroup comparisons. When examining a grouped scatterplot, there are a few key points to consider.</p>
 <ul>
 <li>Comparing trends between groups:
 <ul>
@@ -1835,8 +1896,16 @@ Alternative using <code>dplyr</code> package
 <li>Outliers can be identified separately for each group, helping to explore whether certain groups have more extreme responses.</li>
 </ul></li>
 </ul>
-<p><span style="color:red;">If males show a stronger positive trend compared to females, it might suggest gender differences in how coping strategies are related to perceived stress.</span></p>
-<p><span style="color:red;">ADD FIGURE HERE</span></p>
+<div id="fig-scatter-stress-control-gender" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scatter-stress-control-gender-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/c5_scatter_stress_control_gender.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scatter-stress-control-gender-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;9: Grouped scatterplot for <code>tpstress</code> and <code>tpcoiss</code> by <code>sex</code>
+</figcaption>
+</figure>
+</div>
 </section>
 <section id="scatterplot-with-point-labels" class="level3" data-number="4.5.3">
 <h3 data-number="4.5.3" class="anchored" data-anchor-id="scatterplot-with-point-labels"><span class="header-section-number">4.5.3</span> Scatterplot with Point Labels</h3>
@@ -1864,8 +1933,7 @@ Alternative using <code>dplyr</code> package
 <li>The rest of the code is similar to the grouped scatterplot, with points color-coded by gender.</li>
 </ul>
 <p><strong>Interpretation of the Graphs</strong></p>
-<p>The labeled scatterplot builds on the grouped scatterplot by adding participant identifiers (<code>id</code>) as point labels. This is useful for identifying specific data points and exploring individual-level patterns.</p>
-<p>Key points to consider:</p>
+<p>The labeled scatterplot builds on the grouped scatterplot by adding participant identifiers (<code>id</code>) as point labels (<a href="#fig-scatter-stress-control-gender-id" class="quarto-xref">Figure&nbsp;10</a>). This is useful for identifying specific data points and exploring individual-level patterns. There are a few key points to consider when analyzing labeled scatterplots.</p>
 <ul>
 <li>Identifying specific participants:
 <ul>
@@ -1879,11 +1947,19 @@ Alternative using <code>dplyr</code> package
 </ul></li>
 <li>Potential for follow-up:
 <ul>
-<li>By identifying participants with unusual scores, researchers can delve deeper into qualitative responses or additional variables to better understand these cases.</li>
+<li>By identifying participants with unusual scores (e.g., a specific participant shows extreme stress levels <code>tpstress</code> with high coping strategies <code>tpcoiss</code>), researchers can seek qualitative responses or additional variables to better understand these cases.</li>
 </ul></li>
 </ul>
-<p><span style="color:red;">If a specific participant shows extreme stress levels (<code>tpstress</code>) with high coping strategies (<code>tpcoiss</code>), their behavior might warrant further investigation to understand coping efficacy or survey anomalies.</span></p>
-<p><span style="color:red;">ADD FIGURE HERE</span></p>
+<div id="fig-scatter-stress-control-gender-id" class="quarto-float quarto-figure quarto-figure-center anchored" data-fig-align="center">
+<figure class="quarto-float quarto-float-fig figure">
+<div aria-describedby="fig-scatter-stress-control-gender-id-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+<img src="images/c5_scatter_stress_control_gender_id.jpg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:80.0%">
+</div>
+<figcaption class="quarto-float-caption-bottom quarto-float-caption quarto-float-fig" id="fig-scatter-stress-control-gender-id-caption-0ceaefa1-69ba-4598-a22c-09a6ac19f8ca">
+Figure&nbsp;10: Grouped scatterplot for <code>tpstress</code> and <code>tpcoiss</code> by <code>sex</code> with point labels
+</figcaption>
+</figure>
+</div>
 </section>
 </section>
 </section>
