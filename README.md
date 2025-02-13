@@ -18,7 +18,9 @@ Click on the links below to access the lesson materials. Each lesson includes th
 
 ## University of Glasgow MGT4018 and MGT4090
 
-This course covers all required materials and more for the University of Glasgow's third year courses MGT4018 and MGT4090 that prepare students for their dissertations. In addition to the general lessons and exercises above, the following tutorials cover the same exercises than the SPSS tutorials. If you have never used R before, please go through **00. Getting Started** and **01. Introduction** before starting with these labs. 
+This course covers all required materials and more for the University of Glasgow's third year courses MGT4018 and MGT4090 that prepare students for their dissertations. In addition to the general lessons and exercises above, the following tutorials cover the same exercises than the SPSS tutorials. If you have never used R before, please go through **00. Getting Started** and **01. Introduction** before starting with these labs. The video below will help you get started:
+
+{{< video https://youtu.be/vXWU1X51yPA >}}
 
 **Lab 1** [ [html](docs/lab-uofg-01/lab-uofg-01.html) | [pdf](docs/lab-uofg-01/lab-uofg-01.pdf) ]
 
