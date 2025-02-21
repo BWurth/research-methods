@@ -81,7 +81,7 @@
     "href": "00-getting-started/00-getting-started.html#key-features-of-rstudio",
     "title": "0. Getting Started",
     "section": "2.3 Key features of RStudio",
-    "text": "2.3 Key features of RStudio\nRStudio’s interface is divided into four main panes (Figure 1):\n\nSource Editor: Write and save R scripts for easy reproducibility.\nConsole: Interact with R directly for quick calculations or testing code snippets.\nEnvironment/History: Displays your current workspace objects and command history and allows t.\nFiles/Plots/Packages/Help: A multi-purpose pane for file management, viewing plots, managing packages, and accessing help documentation.\n\n\n\n\n\n\n\nFigure 1: Overview of the RStudio user interface"
+    "text": "2.3 Key features of RStudio\nRStudio’s interface is divided into four main panes (Figure 1):\n\nSource Editor: Write and save R scripts for easy reproducibility.\nConsole: Interact with R directly for quick calculations or testing code snippets.\nEnvironment/History: Displays your current workspace objects, command history, and has build-in integration for Git.\nFiles/Plots/Packages/Help: A multi-purpose pane for file management, viewing plots, managing packages, and accessing help documentation.\n\n\n\n\n\n\n\nFigure 1: Overview of the RStudio user interface"
   },
   {
     "objectID": "00-getting-started/00-getting-started.html#rstudio-cloud-option",

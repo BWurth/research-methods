@@ -74,7 +74,7 @@ RStudio's interface is divided into four main panes (@fig-rstudio-ui):
 
 1.  **Source Editor**: Write and save R scripts for easy reproducibility.
 2.  **Console**: Interact with R directly for quick calculations or testing code snippets.
-3.  **Environment/History**: Displays your current workspace objects and command history and allows t.
+3.  **Environment/History**: Displays your current workspace objects, command history, and has build-in integration for Git.
 4.  **Files/Plots/Packages/Help**: A multi-purpose pane for file management, viewing plots, managing packages, and accessing help documentation.
 
 ![Overview of the RStudio user interface](images/screenshot-rstudio-edit.png){#fig-rstudio-ui width="100%" fig-align="center" alt="Screenshot of the RStudio user interface, showing the four main panes."}
