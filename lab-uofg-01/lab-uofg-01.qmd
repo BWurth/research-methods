@@ -369,7 +369,7 @@ By condensing raw data into an easy-to-read format, frequency tables simplify de
 
 ### Creating a Basic Frequency Table
 
-The `table()` function in R generates frequency counts for one or more variables. For example, to count the number of participants in each age bandn and for each gender:
+The `table()` function in R generates frequency counts for one or more variables. For example, to count the number of participants in each age band and for each gender:
 
 ```r
 # Frequency table for AgeBand
@@ -1239,6 +1239,13 @@ histogram_tpstress
 ggsave("output/figures/histogram_tpstress.pdf", width = 8, height = 5)
 ```
 
+**Note:** If you run the code above, you will get the warning message below. This warning occurs because some values in your variable are non-finite (i.e., they contain `NA`, `NaN`, or `Inf` values), and `ggplot2` automatically removes them when trying to create the histogram. If you inspect the data, the variable `tpstress` has six missing values. The warning doesn’t stop the plot from rendering, but it alerts you that data is being removed and you should investigate the reason behind the warning and decide how to handle it appropriately (e.g., filtering, replacing, or imputing missing values if necessary).
+
+```
+Warning message:
+Removed 6 rows containing non-finite outside the scale range (`stat_bin()`). 
+```
+
 **Explanation of the Code**
 
 -  `ggplot()`: Specifies the dataset (`survey_data_full`) and the mapping of variables to aesthetics (`aes()`), with `tpstress` assigned to the x-axis.
@@ -1711,7 +1718,7 @@ multi_line_data <- aggregate(
 
 # Create the multi-line graph
 line_stress_age_gender <- ggplot(data = multi_line_data, aes(x = agegp5, y = tpstress, color = sex, group = sex)) +
-  geom_line(size = 1) +
+  geom_line(linewidth = 1) +
   geom_point(size = 2) +
   labs(
     title = "Mean Perceived Stress by Age Group and Gender",

@@ -546,7 +546,7 @@ Note
 </section>
 <section id="creating-a-basic-frequency-table" class="level3" data-number="2.4.2">
 <h3 data-number="2.4.2" class="anchored" data-anchor-id="creating-a-basic-frequency-table"><span class="header-section-number">2.4.2</span> Creating a Basic Frequency Table</h3>
-<p>The <code>table()</code> function in R generates frequency counts for one or more variables. For example, to count the number of participants in each age bandn and for each gender:</p>
+<p>The <code>table()</code> function in R generates frequency counts for one or more variables. For example, to count the number of participants in each age band and for each gender:</p>
 <div class="sourceCode" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Frequency table for AgeBand</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>age_band_freq <span class="ot">&lt;-</span> <span class="fu">table</span>(survey_data<span class="sc">$</span>AgeBand)</span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -1270,6 +1270,9 @@ Using ggplot2 for Data Visualization
 <span id="cb64-13"><a href="#cb64-13" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb64-14"><a href="#cb64-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot</span></span>
 <span id="cb64-15"><a href="#cb64-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/figures/histogram_tpstress.pdf"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<p><strong>Note:</strong> If you run the code above, you will get the warning message below. This warning occurs because some values in your variable are non-finite (i.e., they contain <code>NA</code>, <code>NaN</code>, or <code>Inf</code> values), and <code>ggplot2</code> automatically removes them when trying to create the histogram. If you inspect the data, the variable <code>tpstress</code> has six missing values. The warning doesn’t stop the plot from rendering, but it alerts you that data is being removed and you should investigate the reason behind the warning and decide how to handle it appropriately (e.g., filtering, replacing, or imputing missing values if necessary).</p>
+<pre><code>Warning message:
+Removed 6 rows containing non-finite outside the scale range (`stat_bin()`). </code></pre>
 <p><strong>Explanation of the Code</strong></p>
 <ul>
 <li><code>ggplot()</code>: Specifies the dataset (<code>survey_data_full</code>) and the mapping of variables to aesthetics (<code>aes()</code>), with <code>tpstress</code> assigned to the x-axis.</li>
@@ -1321,7 +1324,7 @@ Saving Plots with <code>ggsave</code> in <code>ggplot2</code>
 <li>Allows customization of file size, resolution, and aspect ratio.</li>
 </ul>
 <p><strong>Basic Syntax</strong></p>
-<div class="sourceCode" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(filename, <span class="at">plot =</span> <span class="fu">last_plot</span>(), <span class="at">width =</span> <span class="dv">20</span>, <span class="at">height =</span> <span class="dv">15</span>, <span class="at">units =</span> <span class="st">"cm"</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(filename, <span class="at">plot =</span> <span class="fu">last_plot</span>(), <span class="at">width =</span> <span class="dv">20</span>, <span class="at">height =</span> <span class="dv">15</span>, <span class="at">units =</span> <span class="st">"cm"</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Where:</p>
 <ul>
 <li><code>filename</code>: The name of the file, including the desired extension (e.g., <code>"plot.png"</code> or <code>"plot.pdf"</code>).</li>
@@ -1333,13 +1336,13 @@ Saving Plots with <code>ggsave</code> in <code>ggplot2</code>
 <p><strong>Formats</strong></p>
 <p>We can save the histogram for <code>tpstress</code> in different formats, depending on the purpose.</p>
 <p><strong>PNG:</strong> For lossless, high-quality images suitable for both web use and presentations.</p>
-<div class="sourceCode" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"histogram_tpstress.png"</span>, <span class="at">plot =</span> scatter_plot, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"histogram_tpstress.png"</span>, <span class="at">plot =</span> scatter_plot, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>PDF:</strong> For vector-based, high-quality graphics suitable for printing.</p>
-<div class="sourceCode" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"histogram_tpstress.pdf"</span>, <span class="at">plot =</span> scatter_plot, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"histogram_tpstress.pdf"</span>, <span class="at">plot =</span> scatter_plot, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>JPEG:</strong> For compressed images with smaller file sizes (useful for web).</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"histogram_tpstress.pdf"</span>, <span class="at">plot =</span> scatter_plot, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">6</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"histogram_tpstress.pdf"</span>, <span class="at">plot =</span> scatter_plot, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">6</span>, <span class="at">dpi =</span> <span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>SVG:</strong> For scalable vector graphics, ideal for interactive web applications.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb69-1"><a href="#cb69-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"histogram_tpstress.pdf"</span>, <span class="at">plot =</span> scatter_plot, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"histogram_tpstress.pdf"</span>, <span class="at">plot =</span> scatter_plot, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </div>
 </div>
@@ -1355,22 +1358,22 @@ Saving Plots with <code>ggsave</code> in <code>ggplot2</code>
 </ul>
 <p><strong>Code to Compare <code>tpstress</code> by <code>sex</code></strong></p>
 <p>Here’s the code to create separate histograms for males and females:</p>
-<div class="sourceCode" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Panelled histograms for tpstress by sex</span></span>
-<span id="cb70-2"><a href="#cb70-2" aria-hidden="true" tabindex="-1"></a>histogram_tpstress_gender <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> survey_data_full, <span class="fu">aes</span>(<span class="at">x =</span> tpstress)) <span class="sc">+</span></span>
-<span id="cb70-3"><a href="#cb70-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb70-4"><a href="#cb70-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> sex, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span>  <span class="co"># Creates separate panels for each group</span></span>
-<span id="cb70-5"><a href="#cb70-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb70-6"><a href="#cb70-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Comparison of Perceived Stress Levels by Gender"</span>,</span>
-<span id="cb70-7"><a href="#cb70-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Perceived Stress Score (tpstress)"</span>,</span>
-<span id="cb70-8"><a href="#cb70-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frequency"</span></span>
-<span id="cb70-9"><a href="#cb70-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb70-10"><a href="#cb70-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb70-11"><a href="#cb70-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-12"><a href="#cb70-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
-<span id="cb70-13"><a href="#cb70-13" aria-hidden="true" tabindex="-1"></a>histogram_tpstress_gender</span>
-<span id="cb70-14"><a href="#cb70-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb70-15"><a href="#cb70-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot</span></span>
-<span id="cb70-16"><a href="#cb70-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/figures/histogram_tpstress_gender.pdf"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Panelled histograms for tpstress by sex</span></span>
+<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>histogram_tpstress_gender <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> survey_data_full, <span class="fu">aes</span>(<span class="at">x =</span> tpstress)) <span class="sc">+</span></span>
+<span id="cb71-3"><a href="#cb71-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb71-4"><a href="#cb71-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> sex, <span class="at">ncol =</span> <span class="dv">2</span>) <span class="sc">+</span>  <span class="co"># Creates separate panels for each group</span></span>
+<span id="cb71-5"><a href="#cb71-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb71-6"><a href="#cb71-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Comparison of Perceived Stress Levels by Gender"</span>,</span>
+<span id="cb71-7"><a href="#cb71-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Perceived Stress Score (tpstress)"</span>,</span>
+<span id="cb71-8"><a href="#cb71-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frequency"</span></span>
+<span id="cb71-9"><a href="#cb71-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb71-10"><a href="#cb71-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb71-11"><a href="#cb71-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-12"><a href="#cb71-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
+<span id="cb71-13"><a href="#cb71-13" aria-hidden="true" tabindex="-1"></a>histogram_tpstress_gender</span>
+<span id="cb71-14"><a href="#cb71-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb71-15"><a href="#cb71-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot</span></span>
+<span id="cb71-16"><a href="#cb71-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/figures/histogram_tpstress_gender.pdf"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Explanation of the Code</strong></p>
 <ul>
 <li><code>facet_wrap(~ sex)</code>: Splits the histogram into separate panels for each level of the <code>sex</code> variable (<code>Male</code> and <code>Female</code>). The <code>ncol = 2</code> argument specifies that the graphs should be placed side by side.</li>
@@ -1381,26 +1384,26 @@ Saving Plots with <code>ggsave</code> in <code>ggplot2</code>
 <p><strong>Handling Missing Values</strong></p>
 <p>By default, <code>ggplot2</code> excludes cases with missing values in the grouping variable (<code>sex</code>) or the variable being plotted (<code>tpstress</code>). This mirrors SPSS functionality where cases with missing values are excluded on a variable-by-variable basis.</p>
 <p>To explicitly confirm exclusions, use the <code>na.omit()</code> function to clean the dataset:</p>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb71-1"><a href="#cb71-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove cases with missing values in tpstress or sex</span></span>
-<span id="cb71-2"><a href="#cb71-2" aria-hidden="true" tabindex="-1"></a>survey_data_filtered <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(survey_data_full[, <span class="fu">c</span>(<span class="st">"tpstress"</span>, <span class="st">"sex"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Remove cases with missing values in tpstress or sex</span></span>
+<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>survey_data_filtered <span class="ot">&lt;-</span> <span class="fu">na.omit</span>(survey_data_full[, <span class="fu">c</span>(<span class="st">"tpstress"</span>, <span class="st">"sex"</span>)])</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Alternative Layout: Stacked Panels</strong></p>
 <p>To stack the graphs vertically instead of placing them side by side, use <code>facet_wrap()</code> with <code>ncol = 1</code>:</p>
-<div class="sourceCode" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stacked histograms for tpstress by sex</span></span>
-<span id="cb72-2"><a href="#cb72-2" aria-hidden="true" tabindex="-1"></a>histogram_tpstress_gender_stack <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> survey_data_full, <span class="fu">aes</span>(<span class="at">x =</span> tpstress)) <span class="sc">+</span></span>
-<span id="cb72-3"><a href="#cb72-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb72-4"><a href="#cb72-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> sex, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span>  <span class="co"># Stacks panels vertically</span></span>
-<span id="cb72-5"><a href="#cb72-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb72-6"><a href="#cb72-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Comparison of Perceived Stress Levels by Gender (Stacked)"</span>,</span>
-<span id="cb72-7"><a href="#cb72-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Perceived Stress Score (tpstress)"</span>,</span>
-<span id="cb72-8"><a href="#cb72-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frequency"</span></span>
-<span id="cb72-9"><a href="#cb72-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb72-10"><a href="#cb72-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb72-11"><a href="#cb72-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-12"><a href="#cb72-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
-<span id="cb72-13"><a href="#cb72-13" aria-hidden="true" tabindex="-1"></a>histogram_tpstress_gender_stack</span>
-<span id="cb72-14"><a href="#cb72-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb72-15"><a href="#cb72-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot</span></span>
-<span id="cb72-16"><a href="#cb72-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/figures/histogram_tpstress_gender_stack.pdf"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Stacked histograms for tpstress by sex</span></span>
+<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>histogram_tpstress_gender_stack <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> survey_data_full, <span class="fu">aes</span>(<span class="at">x =</span> tpstress)) <span class="sc">+</span></span>
+<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="dv">5</span>, <span class="at">fill =</span> <span class="st">"lightblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">facet_wrap</span>(<span class="sc">~</span> sex, <span class="at">ncol =</span> <span class="dv">1</span>) <span class="sc">+</span>  <span class="co"># Stacks panels vertically</span></span>
+<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Comparison of Perceived Stress Levels by Gender (Stacked)"</span>,</span>
+<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Perceived Stress Score (tpstress)"</span>,</span>
+<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Frequency"</span></span>
+<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-12"><a href="#cb73-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
+<span id="cb73-13"><a href="#cb73-13" aria-hidden="true" tabindex="-1"></a>histogram_tpstress_gender_stack</span>
+<span id="cb73-14"><a href="#cb73-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb73-15"><a href="#cb73-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot</span></span>
+<span id="cb73-16"><a href="#cb73-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/figures/histogram_tpstress_gender_stack.pdf"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Interpretation of the Graphs</strong></p>
 <p>The panelled (<a href="#fig-hist-tpstress_gender" class="quarto-xref">Figure&nbsp;2</a>) and stacked histograms (<a href="#fig-hist-tpstress_gender" class="quarto-xref">Figure&nbsp;2</a>) show the distribution of perceived stress scores (<code>tpstress</code>) for males and females:</p>
 <ul>
@@ -1447,21 +1450,21 @@ Figure&nbsp;3: Stacked histograms for <code>tpstress</code> by <code>sex</code>
 <section id="creating-a-simple-bar-chart" class="level3" data-number="4.3.1">
 <h3 data-number="4.3.1" class="anchored" data-anchor-id="creating-a-simple-bar-chart"><span class="header-section-number">4.3.1</span> Creating a Simple Bar Chart</h3>
 <p>In this example, we create a simple bar chart for the variable <code>sex</code>, which represents gender.</p>
-<div class="sourceCode" id="cb73"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb73-1"><a href="#cb73-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simple bar chart for Gender</span></span>
-<span id="cb73-2"><a href="#cb73-2" aria-hidden="true" tabindex="-1"></a>bar_gender <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> survey_data_full, <span class="fu">aes</span>(<span class="at">x =</span> sex)) <span class="sc">+</span></span>
-<span id="cb73-3"><a href="#cb73-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"skyblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb73-4"><a href="#cb73-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb73-5"><a href="#cb73-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Gender Distribution"</span>,</span>
-<span id="cb73-6"><a href="#cb73-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Gender"</span>,</span>
-<span id="cb73-7"><a href="#cb73-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span></span>
-<span id="cb73-8"><a href="#cb73-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb73-9"><a href="#cb73-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb73-10"><a href="#cb73-10" aria-hidden="true" tabindex="-1"></a>  </span>
-<span id="cb73-11"><a href="#cb73-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
-<span id="cb73-12"><a href="#cb73-12" aria-hidden="true" tabindex="-1"></a>bar_gender</span>
-<span id="cb73-13"><a href="#cb73-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb73-14"><a href="#cb73-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot</span></span>
-<span id="cb73-15"><a href="#cb73-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/figures/bar_gender.pdf"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simple bar chart for Gender</span></span>
+<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>bar_gender <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> survey_data_full, <span class="fu">aes</span>(<span class="at">x =</span> sex)) <span class="sc">+</span></span>
+<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">fill =</span> <span class="st">"skyblue"</span>, <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Gender Distribution"</span>,</span>
+<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Gender"</span>,</span>
+<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Count"</span></span>
+<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb74-11"><a href="#cb74-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
+<span id="cb74-12"><a href="#cb74-12" aria-hidden="true" tabindex="-1"></a>bar_gender</span>
+<span id="cb74-13"><a href="#cb74-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb74-14"><a href="#cb74-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot</span></span>
+<span id="cb74-15"><a href="#cb74-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/figures/bar_gender.pdf"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Explanation of the Code</strong></p>
 <ul>
 <li><code>ggplot()</code>: Specifies the dataset (<code>survey_data_full</code>) and maps the variable <code>sex</code> to the x-axis using <code>aes(x = sex)</code>.</li>
@@ -1495,16 +1498,16 @@ Figure&nbsp;4: Simple bar chart for <code>sex</code>
 <p><strong>Preparing the Data in Base R</strong></p>
 <p>Before creating the chart, we summarize the data to calculate the mean and standard error for <code>tpstress</code> within each combination of <code>agegp3</code> and <code>sex</code>:</p>
 <p>First, we need to <strong>calculate the group means</strong>. The <code>aggregate()</code> function in base R allows you to compute the mean of a continuous variable (<code>tpstress</code>) for each combination of <code>agegp3</code> and <code>sex</code>.</p>
-<div class="sourceCode" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate group means using aggregate()</span></span>
-<span id="cb74-2"><a href="#cb74-2" aria-hidden="true" tabindex="-1"></a>group_means <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
-<span id="cb74-3"><a href="#cb74-3" aria-hidden="true" tabindex="-1"></a>  tpstress <span class="sc">~</span> agegp3 <span class="sc">+</span> sex,</span>
-<span id="cb74-4"><a href="#cb74-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> survey_data_full,</span>
-<span id="cb74-5"><a href="#cb74-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">FUN =</span> mean,</span>
-<span id="cb74-6"><a href="#cb74-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
-<span id="cb74-7"><a href="#cb74-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb74-8"><a href="#cb74-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb74-9"><a href="#cb74-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the group means</span></span>
-<span id="cb74-10"><a href="#cb74-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(group_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate group means using aggregate()</span></span>
+<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>group_means <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
+<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>  tpstress <span class="sc">~</span> agegp3 <span class="sc">+</span> sex,</span>
+<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> survey_data_full,</span>
+<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">FUN =</span> mean,</span>
+<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
+<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb75-8"><a href="#cb75-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb75-9"><a href="#cb75-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the group means</span></span>
+<span id="cb75-10"><a href="#cb75-10" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(group_means)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Here:</p>
 <ul>
 <li><code>tpstress ~ agegp3 + sex</code> specifies the grouping variables (<code>agegp3</code> and <code>sex</code>).</li>
@@ -1512,33 +1515,33 @@ Figure&nbsp;4: Simple bar chart for <code>sex</code>
 <li><code>na.rm = TRUE</code> ensures missing values are excluded.</li>
 </ul>
 <p>Second, we need to <strong>calculate group standard errors</strong>. To compute standard errors, use <code>aggregate()</code> again for the standard deviation, then calculate the standard error manually.</p>
-<div class="sourceCode" id="cb75"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb75-1"><a href="#cb75-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate group standard deviations</span></span>
-<span id="cb75-2"><a href="#cb75-2" aria-hidden="true" tabindex="-1"></a>group_sd <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
-<span id="cb75-3"><a href="#cb75-3" aria-hidden="true" tabindex="-1"></a>  tpstress <span class="sc">~</span> agegp3 <span class="sc">+</span> sex,</span>
-<span id="cb75-4"><a href="#cb75-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> survey_data_full,</span>
-<span id="cb75-5"><a href="#cb75-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">FUN =</span> sd,</span>
-<span id="cb75-6"><a href="#cb75-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
-<span id="cb75-7"><a href="#cb75-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb75-8"><a href="#cb75-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-9"><a href="#cb75-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a column for group sizes</span></span>
-<span id="cb75-10"><a href="#cb75-10" aria-hidden="true" tabindex="-1"></a>group_counts <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
-<span id="cb75-11"><a href="#cb75-11" aria-hidden="true" tabindex="-1"></a>  tpstress <span class="sc">~</span> agegp3 <span class="sc">+</span> sex,</span>
-<span id="cb75-12"><a href="#cb75-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> survey_data_full,</span>
-<span id="cb75-13"><a href="#cb75-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">FUN =</span> length</span>
-<span id="cb75-14"><a href="#cb75-14" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb75-15"><a href="#cb75-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-16"><a href="#cb75-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the results into a single data frame</span></span>
-<span id="cb75-17"><a href="#cb75-17" aria-hidden="true" tabindex="-1"></a>group_stats <span class="ot">&lt;-</span> <span class="fu">merge</span>(group_means, group_sd, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"agegp3"</span>, <span class="st">"sex"</span>))</span>
-<span id="cb75-18"><a href="#cb75-18" aria-hidden="true" tabindex="-1"></a>group_stats <span class="ot">&lt;-</span> <span class="fu">merge</span>(group_stats, group_counts, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"agegp3"</span>, <span class="st">"sex"</span>))</span>
-<span id="cb75-19"><a href="#cb75-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-20"><a href="#cb75-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename columns for clarity</span></span>
-<span id="cb75-21"><a href="#cb75-21" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(group_stats) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"agegp3"</span>, <span class="st">"sex"</span>, <span class="st">"mean_tpstress"</span>, <span class="st">"sd_tpstress"</span>, <span class="st">"n"</span>)</span>
-<span id="cb75-22"><a href="#cb75-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-23"><a href="#cb75-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate standard errors</span></span>
-<span id="cb75-24"><a href="#cb75-24" aria-hidden="true" tabindex="-1"></a>group_stats<span class="sc">$</span>se_tpstress <span class="ot">&lt;-</span> group_stats<span class="sc">$</span>sd_tpstress <span class="sc">/</span> <span class="fu">sqrt</span>(group_stats<span class="sc">$</span>n)</span>
-<span id="cb75-25"><a href="#cb75-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb75-26"><a href="#cb75-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the final data frame</span></span>
-<span id="cb75-27"><a href="#cb75-27" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(group_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate group standard deviations</span></span>
+<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>group_sd <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
+<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>  tpstress <span class="sc">~</span> agegp3 <span class="sc">+</span> sex,</span>
+<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> survey_data_full,</span>
+<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">FUN =</span> sd,</span>
+<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
+<span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb76-8"><a href="#cb76-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-9"><a href="#cb76-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Add a column for group sizes</span></span>
+<span id="cb76-10"><a href="#cb76-10" aria-hidden="true" tabindex="-1"></a>group_counts <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
+<span id="cb76-11"><a href="#cb76-11" aria-hidden="true" tabindex="-1"></a>  tpstress <span class="sc">~</span> agegp3 <span class="sc">+</span> sex,</span>
+<span id="cb76-12"><a href="#cb76-12" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> survey_data_full,</span>
+<span id="cb76-13"><a href="#cb76-13" aria-hidden="true" tabindex="-1"></a>  <span class="at">FUN =</span> length</span>
+<span id="cb76-14"><a href="#cb76-14" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb76-15"><a href="#cb76-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-16"><a href="#cb76-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Merge the results into a single data frame</span></span>
+<span id="cb76-17"><a href="#cb76-17" aria-hidden="true" tabindex="-1"></a>group_stats <span class="ot">&lt;-</span> <span class="fu">merge</span>(group_means, group_sd, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"agegp3"</span>, <span class="st">"sex"</span>))</span>
+<span id="cb76-18"><a href="#cb76-18" aria-hidden="true" tabindex="-1"></a>group_stats <span class="ot">&lt;-</span> <span class="fu">merge</span>(group_stats, group_counts, <span class="at">by =</span> <span class="fu">c</span>(<span class="st">"agegp3"</span>, <span class="st">"sex"</span>))</span>
+<span id="cb76-19"><a href="#cb76-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-20"><a href="#cb76-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Rename columns for clarity</span></span>
+<span id="cb76-21"><a href="#cb76-21" aria-hidden="true" tabindex="-1"></a><span class="fu">colnames</span>(group_stats) <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">"agegp3"</span>, <span class="st">"sex"</span>, <span class="st">"mean_tpstress"</span>, <span class="st">"sd_tpstress"</span>, <span class="st">"n"</span>)</span>
+<span id="cb76-22"><a href="#cb76-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-23"><a href="#cb76-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate standard errors</span></span>
+<span id="cb76-24"><a href="#cb76-24" aria-hidden="true" tabindex="-1"></a>group_stats<span class="sc">$</span>se_tpstress <span class="ot">&lt;-</span> group_stats<span class="sc">$</span>sd_tpstress <span class="sc">/</span> <span class="fu">sqrt</span>(group_stats<span class="sc">$</span>n)</span>
+<span id="cb76-25"><a href="#cb76-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb76-26"><a href="#cb76-26" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the final data frame</span></span>
+<span id="cb76-27"><a href="#cb76-27" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(group_stats)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p>Our <strong>final data frame</strong> <code>group_stats</code> contains:</p>
 <ul>
 <li><code>agegp3</code>: Age group.</li>
@@ -1550,27 +1553,27 @@ Figure&nbsp;4: Simple bar chart for <code>sex</code>
 </ul>
 <p><strong>Creating the Clustered Bar Chart</strong></p>
 <p>Using the prepared <code>group_stats</code> data, you can now create the clustered bar chart with <code>ggplot2</code>.</p>
-<div class="sourceCode" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clustered bar chart using the prepared data</span></span>
-<span id="cb76-2"><a href="#cb76-2" aria-hidden="true" tabindex="-1"></a>bar_gender_age <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> group_stats, <span class="fu">aes</span>(<span class="at">x =</span> agegp3, <span class="at">y =</span> mean_tpstress, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
-<span id="cb76-3"><a href="#cb76-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.8</span>), <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb76-4"><a href="#cb76-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(</span>
-<span id="cb76-5"><a href="#cb76-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">ymin =</span> mean_tpstress <span class="sc">-</span> se_tpstress, <span class="at">ymax =</span> mean_tpstress <span class="sc">+</span> se_tpstress),</span>
-<span id="cb76-6"><a href="#cb76-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.8</span>),</span>
-<span id="cb76-7"><a href="#cb76-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="fl">0.2</span></span>
-<span id="cb76-8"><a href="#cb76-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb76-9"><a href="#cb76-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb76-10"><a href="#cb76-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Mean Perceived Stress by Age Group and Gender"</span>,</span>
-<span id="cb76-11"><a href="#cb76-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Age Group"</span>,</span>
-<span id="cb76-12"><a href="#cb76-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Mean Perceived Stress Score (tpstress)"</span>,</span>
-<span id="cb76-13"><a href="#cb76-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Gender"</span></span>
-<span id="cb76-14"><a href="#cb76-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb76-15"><a href="#cb76-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb76-16"><a href="#cb76-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb76-17"><a href="#cb76-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
-<span id="cb76-18"><a href="#cb76-18" aria-hidden="true" tabindex="-1"></a>bar_gender_age</span>
-<span id="cb76-19"><a href="#cb76-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb76-20"><a href="#cb76-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot</span></span>
-<span id="cb76-21"><a href="#cb76-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/figures/bar_gender_age.pdf"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Clustered bar chart using the prepared data</span></span>
+<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a>bar_gender_age <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> group_stats, <span class="fu">aes</span>(<span class="at">x =</span> agegp3, <span class="at">y =</span> mean_tpstress, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.8</span>), <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(</span>
+<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a>    <span class="fu">aes</span>(<span class="at">ymin =</span> mean_tpstress <span class="sc">-</span> se_tpstress, <span class="at">ymax =</span> mean_tpstress <span class="sc">+</span> se_tpstress),</span>
+<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.8</span>),</span>
+<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">width =</span> <span class="fl">0.2</span></span>
+<span id="cb77-8"><a href="#cb77-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb77-9"><a href="#cb77-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb77-10"><a href="#cb77-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Mean Perceived Stress by Age Group and Gender"</span>,</span>
+<span id="cb77-11"><a href="#cb77-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Age Group"</span>,</span>
+<span id="cb77-12"><a href="#cb77-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Mean Perceived Stress Score (tpstress)"</span>,</span>
+<span id="cb77-13"><a href="#cb77-13" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Gender"</span></span>
+<span id="cb77-14"><a href="#cb77-14" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb77-15"><a href="#cb77-15" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb77-16"><a href="#cb77-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-17"><a href="#cb77-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
+<span id="cb77-18"><a href="#cb77-18" aria-hidden="true" tabindex="-1"></a>bar_gender_age</span>
+<span id="cb77-19"><a href="#cb77-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb77-20"><a href="#cb77-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot</span></span>
+<span id="cb77-21"><a href="#cb77-21" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/figures/bar_gender_age.pdf"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Explanation of the Code</strong></p>
 <ul>
 <li><code>ggplot()</code>: Specifies the dataset (<code>group_stats</code>) and defines mappings between variables and aesthetics (<code>aes()</code>). <code>fill = sex</code> Uses the <code>sex</code> variable (gender) to determine the color of the bars.</li>
@@ -1594,42 +1597,42 @@ Alternative using <code>dplyr</code> package
 <p>A simpler way to prepare the data is to use the `dplyr’ package.</p>
 <p><strong>Preparing the Data</strong></p>
 <p>Before creating the chart, we summarize the data to calculate the mean and standard error for <code>tpstress</code> within each combination of <code>agegp3</code> and <code>sex</code>:</p>
-<div class="sourceCode" id="cb77"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb77-1"><a href="#cb77-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install dplyr</span></span>
-<span id="cb77-2"><a href="#cb77-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span>
-<span id="cb77-3"><a href="#cb77-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-4"><a href="#cb77-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load library</span></span>
-<span id="cb77-5"><a href="#cb77-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb77-6"><a href="#cb77-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-7"><a href="#cb77-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize the data</span></span>
-<span id="cb77-8"><a href="#cb77-8" aria-hidden="true" tabindex="-1"></a>survey_summary <span class="ot">&lt;-</span> survey_data_full <span class="sc">%&gt;%</span></span>
-<span id="cb77-9"><a href="#cb77-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(agegp3, sex) <span class="sc">%&gt;%</span></span>
-<span id="cb77-10"><a href="#cb77-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
-<span id="cb77-11"><a href="#cb77-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_tpstress =</span> <span class="fu">mean</span>(tpstress, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
-<span id="cb77-12"><a href="#cb77-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">se_tpstress =</span> <span class="fu">sd</span>(tpstress, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">n</span>())</span>
-<span id="cb77-13"><a href="#cb77-13" aria-hidden="true" tabindex="-1"></a>  )</span>
-<span id="cb77-14"><a href="#cb77-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb77-15"><a href="#cb77-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the summarized data</span></span>
-<span id="cb77-16"><a href="#cb77-16" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(survey_summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Install dplyr</span></span>
+<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a><span class="fu">install.packages</span>(<span class="st">"dplyr"</span>)</span>
+<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Load library</span></span>
+<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Summarize the data</span></span>
+<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a>survey_summary <span class="ot">&lt;-</span> survey_data_full <span class="sc">%&gt;%</span></span>
+<span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(agegp3, sex) <span class="sc">%&gt;%</span></span>
+<span id="cb78-10"><a href="#cb78-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(</span>
+<span id="cb78-11"><a href="#cb78-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">mean_tpstress =</span> <span class="fu">mean</span>(tpstress, <span class="at">na.rm =</span> <span class="cn">TRUE</span>),</span>
+<span id="cb78-12"><a href="#cb78-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">se_tpstress =</span> <span class="fu">sd</span>(tpstress, <span class="at">na.rm =</span> <span class="cn">TRUE</span>) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">n</span>())</span>
+<span id="cb78-13"><a href="#cb78-13" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb78-14"><a href="#cb78-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb78-15"><a href="#cb78-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Display the summarized data</span></span>
+<span id="cb78-16"><a href="#cb78-16" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(survey_summary)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Creating the Clustered Bar Chart</strong></p>
 <p>Using the summarized data, we can create a clustered bar chart with error bars:</p>
-<div class="sourceCode" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a clustered bar chart with ggplot2</span></span>
-<span id="cb78-2"><a href="#cb78-2" aria-hidden="true" tabindex="-1"></a>bar_gender_age2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> survey_summary, <span class="fu">aes</span>(<span class="at">x =</span> agegp3, <span class="at">y =</span> mean_tpstress, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
-<span id="cb78-3"><a href="#cb78-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.8</span>), <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
-<span id="cb78-4"><a href="#cb78-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean_tpstress <span class="sc">-</span> se_tpstress, <span class="at">ymax =</span> mean_tpstress <span class="sc">+</span> se_tpstress),</span>
-<span id="cb78-5"><a href="#cb78-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.8</span>), <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
-<span id="cb78-6"><a href="#cb78-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb78-7"><a href="#cb78-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Mean Perceived Stress by Age Group and Gender"</span>,</span>
-<span id="cb78-8"><a href="#cb78-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Age Group"</span>,</span>
-<span id="cb78-9"><a href="#cb78-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Mean Perceived Stress Score (tpstress)"</span>,</span>
-<span id="cb78-10"><a href="#cb78-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Gender"</span></span>
-<span id="cb78-11"><a href="#cb78-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb78-12"><a href="#cb78-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb78-13"><a href="#cb78-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-14"><a href="#cb78-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
-<span id="cb78-15"><a href="#cb78-15" aria-hidden="true" tabindex="-1"></a>bar_gender_age2</span>
-<span id="cb78-16"><a href="#cb78-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb78-17"><a href="#cb78-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot</span></span>
-<span id="cb78-18"><a href="#cb78-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/figures/bar_gender_age2.pdf"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create a clustered bar chart with ggplot2</span></span>
+<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>bar_gender_age2 <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> survey_summary, <span class="fu">aes</span>(<span class="at">x =</span> agegp3, <span class="at">y =</span> mean_tpstress, <span class="at">fill =</span> sex)) <span class="sc">+</span></span>
+<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="at">stat =</span> <span class="st">"identity"</span>, <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.8</span>), <span class="at">color =</span> <span class="st">"black"</span>) <span class="sc">+</span></span>
+<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_errorbar</span>(<span class="fu">aes</span>(<span class="at">ymin =</span> mean_tpstress <span class="sc">-</span> se_tpstress, <span class="at">ymax =</span> mean_tpstress <span class="sc">+</span> se_tpstress),</span>
+<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>                <span class="at">position =</span> <span class="fu">position_dodge</span>(<span class="at">width =</span> <span class="fl">0.8</span>), <span class="at">width =</span> <span class="fl">0.2</span>) <span class="sc">+</span></span>
+<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Mean Perceived Stress by Age Group and Gender"</span>,</span>
+<span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Age Group"</span>,</span>
+<span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Mean Perceived Stress Score (tpstress)"</span>,</span>
+<span id="cb79-10"><a href="#cb79-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">fill =</span> <span class="st">"Gender"</span></span>
+<span id="cb79-11"><a href="#cb79-11" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb79-12"><a href="#cb79-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb79-13"><a href="#cb79-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-14"><a href="#cb79-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
+<span id="cb79-15"><a href="#cb79-15" aria-hidden="true" tabindex="-1"></a>bar_gender_age2</span>
+<span id="cb79-16"><a href="#cb79-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb79-17"><a href="#cb79-17" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot</span></span>
+<span id="cb79-18"><a href="#cb79-18" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/figures/bar_gender_age2.pdf"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Explanation of the Code</strong></p>
 <ul>
 <li>The <code>dplyr</code> package is used to calculate the mean (<code>mean_tpstress</code>) and standard error (<code>se_tpstress</code>) of <code>tpstress</code> grouped by <code>agegp3</code> and <code>sex</code>.</li>
@@ -1671,30 +1674,30 @@ Figure&nbsp;5: Clustered bar chart for <code>tpstress</code> by <code>sex</code>
 <section id="creating-a-simple-line-graph" class="level3" data-number="4.4.1">
 <h3 data-number="4.4.1" class="anchored" data-anchor-id="creating-a-simple-line-graph"><span class="header-section-number">4.4.1</span> Creating a Simple Line Graph</h3>
 <p>A simple line graph shows how the average <code>tpstress</code> score changes across age groups (<code>agegp5</code>).</p>
-<div class="sourceCode" id="cb79"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb79-1"><a href="#cb79-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean tpstress for each age group</span></span>
-<span id="cb79-2"><a href="#cb79-2" aria-hidden="true" tabindex="-1"></a>simple_line_data <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
-<span id="cb79-3"><a href="#cb79-3" aria-hidden="true" tabindex="-1"></a>  tpstress <span class="sc">~</span> agegp5,</span>
-<span id="cb79-4"><a href="#cb79-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> survey_data_full,</span>
-<span id="cb79-5"><a href="#cb79-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">FUN =</span> mean,</span>
-<span id="cb79-6"><a href="#cb79-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
-<span id="cb79-7"><a href="#cb79-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb79-8"><a href="#cb79-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-9"><a href="#cb79-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the line graph</span></span>
-<span id="cb79-10"><a href="#cb79-10" aria-hidden="true" tabindex="-1"></a>line_stress_age <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> simple_line_data, <span class="fu">aes</span>(<span class="at">x =</span> agegp5, <span class="at">y =</span> tpstress, <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
-<span id="cb79-11"><a href="#cb79-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb79-12"><a href="#cb79-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb79-13"><a href="#cb79-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb79-14"><a href="#cb79-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Mean Perceived Stress by Age Group"</span>,</span>
-<span id="cb79-15"><a href="#cb79-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Age Group"</span>,</span>
-<span id="cb79-16"><a href="#cb79-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Mean Perceived Stress Score"</span></span>
-<span id="cb79-17"><a href="#cb79-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb79-18"><a href="#cb79-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb79-19"><a href="#cb79-19" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-20"><a href="#cb79-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
-<span id="cb79-21"><a href="#cb79-21" aria-hidden="true" tabindex="-1"></a>line_stress_age</span>
-<span id="cb79-22"><a href="#cb79-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb79-23"><a href="#cb79-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot</span></span>
-<span id="cb79-24"><a href="#cb79-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/figures/line_stress_age.pdf"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean tpstress for each age group</span></span>
+<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>simple_line_data <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
+<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>  tpstress <span class="sc">~</span> agegp5,</span>
+<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> survey_data_full,</span>
+<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">FUN =</span> mean,</span>
+<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
+<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb80-8"><a href="#cb80-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-9"><a href="#cb80-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the line graph</span></span>
+<span id="cb80-10"><a href="#cb80-10" aria-hidden="true" tabindex="-1"></a>line_stress_age <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> simple_line_data, <span class="fu">aes</span>(<span class="at">x =</span> agegp5, <span class="at">y =</span> tpstress, <span class="at">group =</span> <span class="dv">1</span>)) <span class="sc">+</span></span>
+<span id="cb80-11"><a href="#cb80-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb80-12"><a href="#cb80-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb80-13"><a href="#cb80-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb80-14"><a href="#cb80-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Mean Perceived Stress by Age Group"</span>,</span>
+<span id="cb80-15"><a href="#cb80-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Age Group"</span>,</span>
+<span id="cb80-16"><a href="#cb80-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Mean Perceived Stress Score"</span></span>
+<span id="cb80-17"><a href="#cb80-17" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb80-18"><a href="#cb80-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb80-19"><a href="#cb80-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-20"><a href="#cb80-20" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
+<span id="cb80-21"><a href="#cb80-21" aria-hidden="true" tabindex="-1"></a>line_stress_age</span>
+<span id="cb80-22"><a href="#cb80-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb80-23"><a href="#cb80-23" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot</span></span>
+<span id="cb80-24"><a href="#cb80-24" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/figures/line_stress_age.pdf"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Explanation of the Code</strong></p>
 <ul>
 <li><code>aggregate()</code> calculates the mean <code>tpstress</code> for each <code>agegp5</code> group while excluding missing values (<code>na.rm = TRUE</code>).</li>
@@ -1726,31 +1729,31 @@ Figure&nbsp;6: Simple line graph for age groups (<code>agegp5</code>) and <code>
 <section id="creating-a-multi-line-graph" class="level3" data-number="4.4.2">
 <h3 data-number="4.4.2" class="anchored" data-anchor-id="creating-a-multi-line-graph"><span class="header-section-number">4.4.2</span> Creating a Multi-Line Graph</h3>
 <p>To show separate lines for males and females, we include the <code>sex</code> variable as a grouping and color aesthetic.</p>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean tpstress for each combination of age group and gender</span></span>
-<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a>multi_line_data <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
-<span id="cb80-3"><a href="#cb80-3" aria-hidden="true" tabindex="-1"></a>  tpstress <span class="sc">~</span> agegp5 <span class="sc">+</span> sex,</span>
-<span id="cb80-4"><a href="#cb80-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> survey_data_full,</span>
-<span id="cb80-5"><a href="#cb80-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">FUN =</span> mean,</span>
-<span id="cb80-6"><a href="#cb80-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
-<span id="cb80-7"><a href="#cb80-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb80-8"><a href="#cb80-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-9"><a href="#cb80-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the multi-line graph</span></span>
-<span id="cb80-10"><a href="#cb80-10" aria-hidden="true" tabindex="-1"></a>line_stress_age_gender <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> multi_line_data, <span class="fu">aes</span>(<span class="at">x =</span> agegp5, <span class="at">y =</span> tpstress, <span class="at">color =</span> sex, <span class="at">group =</span> sex)) <span class="sc">+</span></span>
-<span id="cb80-11"><a href="#cb80-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">size =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
-<span id="cb80-12"><a href="#cb80-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb80-13"><a href="#cb80-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb80-14"><a href="#cb80-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Mean Perceived Stress by Age Group and Gender"</span>,</span>
-<span id="cb80-15"><a href="#cb80-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Age Group"</span>,</span>
-<span id="cb80-16"><a href="#cb80-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Mean Perceived Stress Score"</span>,</span>
-<span id="cb80-17"><a href="#cb80-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Gender"</span></span>
-<span id="cb80-18"><a href="#cb80-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb80-19"><a href="#cb80-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb80-20"><a href="#cb80-20" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-21"><a href="#cb80-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
-<span id="cb80-22"><a href="#cb80-22" aria-hidden="true" tabindex="-1"></a>line_stress_age_gender</span>
-<span id="cb80-23"><a href="#cb80-23" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb80-24"><a href="#cb80-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot</span></span>
-<span id="cb80-25"><a href="#cb80-25" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/figures/line_stress_age_gender.pdf"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Calculate the mean tpstress for each combination of age group and gender</span></span>
+<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>multi_line_data <span class="ot">&lt;-</span> <span class="fu">aggregate</span>(</span>
+<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>  tpstress <span class="sc">~</span> agegp5 <span class="sc">+</span> sex,</span>
+<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">data =</span> survey_data_full,</span>
+<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">FUN =</span> mean,</span>
+<span id="cb81-6"><a href="#cb81-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">na.rm =</span> <span class="cn">TRUE</span></span>
+<span id="cb81-7"><a href="#cb81-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb81-8"><a href="#cb81-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-9"><a href="#cb81-9" aria-hidden="true" tabindex="-1"></a><span class="co"># Create the multi-line graph</span></span>
+<span id="cb81-10"><a href="#cb81-10" aria-hidden="true" tabindex="-1"></a>line_stress_age_gender <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> multi_line_data, <span class="fu">aes</span>(<span class="at">x =</span> agegp5, <span class="at">y =</span> tpstress, <span class="at">color =</span> sex, <span class="at">group =</span> sex)) <span class="sc">+</span></span>
+<span id="cb81-11"><a href="#cb81-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb81-12"><a href="#cb81-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb81-13"><a href="#cb81-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb81-14"><a href="#cb81-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Mean Perceived Stress by Age Group and Gender"</span>,</span>
+<span id="cb81-15"><a href="#cb81-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Age Group"</span>,</span>
+<span id="cb81-16"><a href="#cb81-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Mean Perceived Stress Score"</span>,</span>
+<span id="cb81-17"><a href="#cb81-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Gender"</span></span>
+<span id="cb81-18"><a href="#cb81-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb81-19"><a href="#cb81-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb81-20"><a href="#cb81-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-21"><a href="#cb81-21" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
+<span id="cb81-22"><a href="#cb81-22" aria-hidden="true" tabindex="-1"></a>line_stress_age_gender</span>
+<span id="cb81-23"><a href="#cb81-23" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb81-24"><a href="#cb81-24" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot</span></span>
+<span id="cb81-25"><a href="#cb81-25" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/figures/line_stress_age_gender.pdf"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Explanation of the Code</strong></p>
 <ul>
 <li><code>aggregate()</code> calculates the mean tpstress for each combination of <code>agegp5</code> and <code>sex</code>.</li>
@@ -1799,21 +1802,21 @@ Figure&nbsp;7: Multi-line graph for age groups (<code>agegp5</code>) and <code>t
 <section id="simple-scatterplot" class="level3" data-number="4.5.1">
 <h3 data-number="4.5.1" class="anchored" data-anchor-id="simple-scatterplot"><span class="header-section-number">4.5.1</span> Simple Scatterplot</h3>
 <p>The first scatterplot shows the relationship between <code>tpstress</code> (perceived stress) and <code>tpcoiss</code> (control over internal states).</p>
-<div class="sourceCode" id="cb81"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb81-1"><a href="#cb81-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simple scatterplot</span></span>
-<span id="cb81-2"><a href="#cb81-2" aria-hidden="true" tabindex="-1"></a>scatter_stress_control <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> survey_data_full, <span class="fu">aes</span>(<span class="at">x =</span> tpcoiss, <span class="at">y =</span> tpstress)) <span class="sc">+</span></span>
-<span id="cb81-3"><a href="#cb81-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb81-4"><a href="#cb81-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb81-5"><a href="#cb81-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Scatterplot of Perceived Stress vs Coping Strategies"</span>,</span>
-<span id="cb81-6"><a href="#cb81-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Coping Strategies (tpcoiss)"</span>,</span>
-<span id="cb81-7"><a href="#cb81-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Perceived Stress (tpstress)"</span></span>
-<span id="cb81-8"><a href="#cb81-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb81-9"><a href="#cb81-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb81-10"><a href="#cb81-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-11"><a href="#cb81-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
-<span id="cb81-12"><a href="#cb81-12" aria-hidden="true" tabindex="-1"></a>scatter_stress_control</span>
-<span id="cb81-13"><a href="#cb81-13" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb81-14"><a href="#cb81-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot</span></span>
-<span id="cb81-15"><a href="#cb81-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/figures/scatter_stress_control.pdf"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simple scatterplot</span></span>
+<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>scatter_stress_control <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> survey_data_full, <span class="fu">aes</span>(<span class="at">x =</span> tpcoiss, <span class="at">y =</span> tpstress)) <span class="sc">+</span></span>
+<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">color =</span> <span class="st">"blue"</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Scatterplot of Perceived Stress vs Coping Strategies"</span>,</span>
+<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Coping Strategies (tpcoiss)"</span>,</span>
+<span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Perceived Stress (tpstress)"</span></span>
+<span id="cb82-8"><a href="#cb82-8" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb82-9"><a href="#cb82-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb82-10"><a href="#cb82-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-11"><a href="#cb82-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
+<span id="cb82-12"><a href="#cb82-12" aria-hidden="true" tabindex="-1"></a>scatter_stress_control</span>
+<span id="cb82-13"><a href="#cb82-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb82-14"><a href="#cb82-14" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot</span></span>
+<span id="cb82-15"><a href="#cb82-15" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/figures/scatter_stress_control.pdf"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Explanation of the Code</strong></p>
 <ul>
 <li><code>ggplot()</code> specifies the dataset (<code>survey_data_full</code>) and maps <code>tpcoiss</code> to the x-axis and <code>tpstress</code> to the y-axis.</li>
@@ -1854,22 +1857,22 @@ Figure&nbsp;8: Simple scatterplot for <code>tpstress</code> and <code>tpcoiss</c
 <section id="scatterplot-with-categorical-grouping" class="level3" data-number="4.5.2">
 <h3 data-number="4.5.2" class="anchored" data-anchor-id="scatterplot-with-categorical-grouping"><span class="header-section-number">4.5.2</span> Scatterplot with Categorical Grouping</h3>
 <p>To differentiate points by gender, we map the <code>sex</code> variable to the <code>color</code> aesthetic. This helps identify potential differences in the relationship between <code>tpstress</code> and <code>tpcoiss</code> for males and females.</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot with grouping by sex</span></span>
-<span id="cb82-2"><a href="#cb82-2" aria-hidden="true" tabindex="-1"></a>scatter_stress_control_gender <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> survey_data_full, <span class="fu">aes</span>(<span class="at">x =</span> tpcoiss, <span class="at">y =</span> tpstress, <span class="at">color =</span> sex)) <span class="sc">+</span></span>
-<span id="cb82-3"><a href="#cb82-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb82-4"><a href="#cb82-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb82-5"><a href="#cb82-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Scatterplot of Perceived Stress vs Coping Strategies by Gender"</span>,</span>
-<span id="cb82-6"><a href="#cb82-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Coping Strategies (tpcoiss)"</span>,</span>
-<span id="cb82-7"><a href="#cb82-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Perceived Stress (tpstress)"</span>,</span>
-<span id="cb82-8"><a href="#cb82-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Gender"</span></span>
-<span id="cb82-9"><a href="#cb82-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb82-10"><a href="#cb82-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb82-11"><a href="#cb82-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-12"><a href="#cb82-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
-<span id="cb82-13"><a href="#cb82-13" aria-hidden="true" tabindex="-1"></a>scatter_stress_control_gender</span>
-<span id="cb82-14"><a href="#cb82-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb82-15"><a href="#cb82-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot</span></span>
-<span id="cb82-16"><a href="#cb82-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/figures/scatter_stress_control_gender.pdf"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot with grouping by sex</span></span>
+<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>scatter_stress_control_gender <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> survey_data_full, <span class="fu">aes</span>(<span class="at">x =</span> tpcoiss, <span class="at">y =</span> tpstress, <span class="at">color =</span> sex)) <span class="sc">+</span></span>
+<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Scatterplot of Perceived Stress vs Coping Strategies by Gender"</span>,</span>
+<span id="cb83-6"><a href="#cb83-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Coping Strategies (tpcoiss)"</span>,</span>
+<span id="cb83-7"><a href="#cb83-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Perceived Stress (tpstress)"</span>,</span>
+<span id="cb83-8"><a href="#cb83-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Gender"</span></span>
+<span id="cb83-9"><a href="#cb83-9" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb83-10"><a href="#cb83-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb83-11"><a href="#cb83-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-12"><a href="#cb83-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
+<span id="cb83-13"><a href="#cb83-13" aria-hidden="true" tabindex="-1"></a>scatter_stress_control_gender</span>
+<span id="cb83-14"><a href="#cb83-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb83-15"><a href="#cb83-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot</span></span>
+<span id="cb83-16"><a href="#cb83-16" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/figures/scatter_stress_control_gender.pdf"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Explanation of the Code</strong></p>
 <ul>
 <li><code>ggplot()</code> specifies the dataset (<code>survey_data_full</code>) and maps <code>tpcoiss</code> to the x-axis and <code>tpstress</code> to the y-axis, <code>color = sex</code> assigns different colors to males and females.</li>
@@ -1910,23 +1913,23 @@ Figure&nbsp;9: Grouped scatterplot for <code>tpstress</code> and <code>tpcoiss</
 <section id="scatterplot-with-point-labels" class="level3" data-number="4.5.3">
 <h3 data-number="4.5.3" class="anchored" data-anchor-id="scatterplot-with-point-labels"><span class="header-section-number">4.5.3</span> Scatterplot with Point Labels</h3>
 <p>Adding point labels based on the <code>id</code> variable allows us to identify individual data points in the scatterplot. This is similar to the “Point ID label” feature in SPSS.</p>
-<div class="sourceCode" id="cb83"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb83-1"><a href="#cb83-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot with point labels</span></span>
-<span id="cb83-2"><a href="#cb83-2" aria-hidden="true" tabindex="-1"></a>scatter_stress_control_gender_id <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> survey_data_full, <span class="fu">aes</span>(<span class="at">x =</span> tpcoiss, <span class="at">y =</span> tpstress, <span class="at">color =</span> sex)) <span class="sc">+</span></span>
-<span id="cb83-3"><a href="#cb83-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb83-4"><a href="#cb83-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> id), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
-<span id="cb83-5"><a href="#cb83-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb83-6"><a href="#cb83-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Scatterplot of Perceived Stress vs Coping Strategies with Point Labels"</span>,</span>
-<span id="cb83-7"><a href="#cb83-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Coping Strategies (tpcoiss)"</span>,</span>
-<span id="cb83-8"><a href="#cb83-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Perceived Stress (tpstress)"</span>,</span>
-<span id="cb83-9"><a href="#cb83-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Gender"</span></span>
-<span id="cb83-10"><a href="#cb83-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb83-11"><a href="#cb83-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
-<span id="cb83-12"><a href="#cb83-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-13"><a href="#cb83-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
-<span id="cb83-14"><a href="#cb83-14" aria-hidden="true" tabindex="-1"></a>scatter_stress_control_gender_id</span>
-<span id="cb83-15"><a href="#cb83-15" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb83-16"><a href="#cb83-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot</span></span>
-<span id="cb83-17"><a href="#cb83-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/figures/scatter_stress_control_gender_id.pdf"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scatterplot with point labels</span></span>
+<span id="cb84-2"><a href="#cb84-2" aria-hidden="true" tabindex="-1"></a>scatter_stress_control_gender_id <span class="ot">&lt;-</span> <span class="fu">ggplot</span>(<span class="at">data =</span> survey_data_full, <span class="fu">aes</span>(<span class="at">x =</span> tpcoiss, <span class="at">y =</span> tpstress, <span class="at">color =</span> sex)) <span class="sc">+</span></span>
+<span id="cb84-3"><a href="#cb84-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
+<span id="cb84-4"><a href="#cb84-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_text</span>(<span class="fu">aes</span>(<span class="at">label =</span> id), <span class="at">hjust =</span> <span class="dv">0</span>, <span class="at">vjust =</span> <span class="sc">-</span><span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">3</span>) <span class="sc">+</span></span>
+<span id="cb84-5"><a href="#cb84-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
+<span id="cb84-6"><a href="#cb84-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"Scatterplot of Perceived Stress vs Coping Strategies with Point Labels"</span>,</span>
+<span id="cb84-7"><a href="#cb84-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="st">"Coping Strategies (tpcoiss)"</span>,</span>
+<span id="cb84-8"><a href="#cb84-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"Perceived Stress (tpstress)"</span>,</span>
+<span id="cb84-9"><a href="#cb84-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">color =</span> <span class="st">"Gender"</span></span>
+<span id="cb84-10"><a href="#cb84-10" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
+<span id="cb84-11"><a href="#cb84-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span>
+<span id="cb84-12"><a href="#cb84-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-13"><a href="#cb84-13" aria-hidden="true" tabindex="-1"></a><span class="co"># Show plot</span></span>
+<span id="cb84-14"><a href="#cb84-14" aria-hidden="true" tabindex="-1"></a>scatter_stress_control_gender_id</span>
+<span id="cb84-15"><a href="#cb84-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb84-16"><a href="#cb84-16" aria-hidden="true" tabindex="-1"></a><span class="co"># Save plot</span></span>
+<span id="cb84-17"><a href="#cb84-17" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsave</span>(<span class="st">"output/figures/scatter_stress_control_gender_id.pdf"</span>, <span class="at">width =</span> <span class="dv">8</span>, <span class="at">height =</span> <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <p><strong>Explanation of the Code</strong> (only difference to the previous code)</p>
 <ul>
 <li><code>geom_text()</code> adds labels to each point. <code>aes(label = id)</code> specifies that each point is labeled with the <code>id</code> variable. <code>hjust = 0, vjust = -0.5</code> adjusts the position of the labels relative to the points. <code>size = 3</code> sets the text size for readability.</li>
