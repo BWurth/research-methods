@@ -161,6 +161,8 @@ character_value <- as.character(numeric_value)
 typeof(character_value)  # Output: "character"
 ```
 
+Converting values is important when working with mixed data (e.g., reading in text files, user inputs, categorical data). The function `as.character(numeric_value)` converts a numeric value `123` into a character string "123". R will now treat this number as text and you will not be able to use this variable for calculations. This can be useful or appropriate when numbers are used as labels (e.g., phone numbers, IDs) rather than mathematical values or when using functions that require specific data types (e.g., `paste()` expects characters), among others.
+
 ::: {.callout-note}
 In R, `class()` and `typeof()` are both used to inspect the properties of an object, but they serve different purposes. 
 
@@ -387,13 +389,32 @@ B <- matrix(c(5, 6, 7, 8), nrow = 2, ncol = 2)
 # Element-wise multiplication
 C <- A * B
 print(C)
+
 # Output:
 #      [,1] [,2]
 # [1,]    5   21
 # [2,]   12   32
 ```
 
-You can apply operations **across rows or columns** using functions like `apply()` or `colSums()`/`rowSums()`.
+In the example above, the vector `c(1, 2, 3, 4)` is filled **column-wise** by default into a 2 × 2 matrix. This results in:
+
+```
+A =
+     [,1] [,2]
+[1,]    1    3
+[2,]    2    4
+```
+
+The expression `C <- A * B` performs element-wise multiplication, meaning each corresponding element in `A` and `B` is multiplied together.
+
+```
+C =
+     [,1] [,2]
+[1,]  1*5  3*7  =>  [1,]   5   21
+[2,]  2*6  4*8  =>  [2,]  12   32
+```
+
+You can also apply operations **across rows or columns** using functions like `apply()` or `colSums()`/`rowSums()`.
 
 ```r
 # Create a matrix
@@ -407,7 +428,7 @@ print(row_totals)
 # Sum across columns
 col_totals <- colSums(M)
 print(col_totals)
-# Output: [1]  6  8 10
+# Output: [1]  3  7 11
 ```
 
 **Transposition** swaps rows and columns of a matrix. Use the `t()` function for this operation.
@@ -415,12 +436,20 @@ print(col_totals)
 ```r
 # Transpose a matrix
 M <- matrix(c(1, 2, 3, 4), nrow = 2, ncol = 2)
-transposed <- t(M)
-print(transposed)
+print(M)
+
 # Output:
 #      [,1] [,2]
 # [1,]    1    3
 # [2,]    2    4
+
+transposed <- t(M)
+print(transposed)
+
+# Output:
+#      [,1] [,2]
+# [1,]    1    2
+# [2,]    3    4
 ```
 
 **Matrix multiplication** (dot product) is performed using the `%*%` operator. This is different from element-wise multiplication and follows the rules of linear algebra.
@@ -433,10 +462,11 @@ B <- matrix(c(5, 6, 7, 8), nrow = 2, ncol = 2)
 # Matrix multiplication
 C <- A %*% B
 print(C)
+
 # Output:
 #      [,1] [,2]
-# [1,]   19   22
-# [2,]   43   50
+# [1,]   23   31
+# [2,]   34   46
 ```
 
 There are further advanced operations, including the **determinant** of a square matrix, which can be calculated using `det()`.
@@ -574,13 +604,14 @@ R provides many functions for manipulating data:
 # Assuming we're using the 'df' data frame from earlier
 
 # Selecting a column
-df$name
+df$Product
 
 # Filtering rows
-df[df$age > 25, ]
+df[df$Price > 600, ]
 
-# Adding a new column
-df$is_adult <- df$age >= 18
+# Adding a new column and printing the new dataset
+df$HighEndt <- df$Price >= 999
+print(df)
 
 # Summarizing data
 summary(df)
