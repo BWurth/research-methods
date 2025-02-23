@@ -129,11 +129,27 @@ scatter_stress_control
 # Single Correlation
 #-------------------------------------------------------------------------------
 
+# Handle Missing Values in `cor()` With `use` ----------------------------------
+
 # Calculate correlation between tpcoiss and tpstress
-cor(survey_data_full$tpcoiss, survey_data_full$tpstress)
+cor(survey_data_full$tpcoiss, survey_data_full$tpstress, use = "complete.obs")
 
 # Specify the method (default is Pearson)
-cor(survey_data_full$tpcoiss, survey_data_full$tpstress, method = "pearson")
+cor(survey_data_full$tpcoiss, survey_data_full$tpstress, use = "complete.obs", 
+    method = "pearson")
+
+# Alternative: Remove or Replace Missing Values Beforehand ---------------------
+
+# Filter the dataset to remove missing values before calculation
+clean_data <- na.omit(survey_data_full[, c("tpcoiss", "tpstress")])
+cor(clean_data$tpcoiss, clean_data$tpstress)
+
+# Or you can replace missing values (e.g., using the mean).
+modified_data <- survey_data_full
+modified_data$tpcoiss[is.na(modified_data$tpcoiss)] <- mean(modified_data$tpcoiss, na.rm = TRUE)
+modified_data$tpstress[is.na(modified_data$tpstress)] <- mean(modified_data$tpstress, na.rm = TRUE)
+
+cor(modified_data$tpcoiss, modified_data$tpstress)
 
 #-------------------------------------------------------------------------------
 # Correlation Matrix
@@ -155,7 +171,7 @@ head(survey_data_small)
 # Correlation Matrix -----------------------------------------------------------
 
 # Calculate correlation matrix
-correlation_matrix <- cor(survey_data_small)
+correlation_matrix <- cor(survey_data_small, use = "pairwise.complete.obs")
 
 # Round to 3 decimal places for clarity
 round(correlation_matrix, 3)
@@ -165,7 +181,9 @@ round(correlation_matrix, 3)
 #-------------------------------------------------------------------------------
 
 # Perform correlation test
-correlation_test <- cor.test(x, y1)
+correlation_test <- cor.test(survey_data_full$tpcoiss, 
+                             survey_data_full$tpstress, 
+                             use = "complete.obs")
 
 # View complete results
 print(correlation_test)
@@ -179,20 +197,18 @@ print(correlation_test)
 # Creating Our Linear Regression Model
 #-------------------------------------------------------------------------------
 
-# Visualizing the Data ---------------------------------------------------------
+# Visualizing the Relationship Using `ggplot2` ---------------------------------
 
-# First, let's create a scatterplot to visualize the relationship
-plot(survey_data_full$tpcoiss, survey_data_full$tpstress,
-     main = "Relationship between Stress and Control",
-     xlab = "Sense of Control (PCOISS)",
-     ylab = "Perceived Stress",
-     pch = 16,
-     col = "darkblue")
-
-# Add our regression line
-abline(lm(tpstress ~ tpcoiss, data = survey_data_full), 
-       col = "red", 
-       lwd = 2)
+# Create Scatterplot
+ggplot(survey_data_full, aes(x = tpcoiss, y = tpstress)) +
+  geom_point(color = "darkblue", alpha = 0.7) +  # Scatterplot points
+  geom_smooth(method = "lm", color = "red", se = FALSE, linewidth = 1.5) +  # Regression line
+  labs(
+    title = "Relationship between Stress and Control",
+    x = "Sense of Control (tpcoiss)",
+    y = "Perceived Stress (tpstress)"
+  ) +
+  theme_minimal()
 
 # Create our Regression Model --------------------------------------------------
 
@@ -264,15 +280,18 @@ plot(stress_model)
 # Install and Load Packages ----------------------------------------------------
 
 # Install packages if needed
-install.packages(c("tidyverse", "broom", "performance", "see", "ggpubr", "sjPlot"))
+install.packages(c("tidyverse", "broom", "performance", "see", "ggpubr", 
+                   "sjPlot", "sjmisc", "sjlabelled"))
 
 # Load required packages
 library(tidyverse)    # For data manipulation and visualization
 library(broom)        # For tidying statistical objects
 library(performance)  # For model performance metrics
 library(see)          # For model visualization
-library(ggpubr)      # For publication-ready plots
-library(sjPlot)      # For model visualization and tables
+library(ggpubr)       # For publication-ready plots
+library(sjPlot)       # For model visualization and tables
+library(sjmisc)       # For model visualization and tables
+library(sjlabelled)   # For model visualization and tables
 
 # Data Preparation -------------------------------------------------------------
 
@@ -293,8 +312,8 @@ ggplot(analysis_data, aes(x = tpcoiss, y = tpstress)) +
   labs(
     title = "Relationship between Stress and Control",
     subtitle = "With linear regression line and 95% confidence interval",
-    x = "Sense of Control (PCOISS)",
-    y = "Perceived Stress Level"
+    x = "Sense of Control (tpcoiss)",
+    y = "Perceived Stress Level (tpstress)"
   ) +
   theme_minimal() +
   theme(
@@ -322,13 +341,17 @@ check_model(model)
 # Model performance metrics
 model_performance(model)
 
-# Creating Publication-Ready Tables with `sjPlot` ------------------------------
+# Creating Publication-Ready Tables with `sjPlot`, `sjmisc`, `sjlabelled` ------
 
 # Create regression table
 tab_model(model,
           title = "Linear Regression Results",
           dv.labels = "Perceived Stress",
           pred.labels = c("(Intercept)", "Sense of Control"))
+
+# Export tables in html or Word format
+tab_model(model, file = "output/tables/regression_table.html")
+tab_model(model, file = "output/tables/regression_table.doc")
 
 # Visualizing Effects with `ggeffects` -----------------------------------------
 
@@ -361,28 +384,25 @@ p2 <- ggplot(model_data, aes(sample = .std.resid)) +
   theme_minimal()
 
 # Arrange plots side by side
-ggarrange(p1, p2, ncol = 2)
+diagnostic_plots <- ggarrange(p1, p2, ncol = 2)
+
+# Show combined plot
+diagnostic_plots
+
+# Save combined plot as a pdf (change file ending for other formats)
+ggsave("output/figures/diagnostic_plots.pdf", plot = diagnostic_plots, width = 8, height = 5)
 
 # Making Predictions -----------------------------------------------------------
 
-# Create new data for predictions
-new_data %
-bind_cols(predict(model, newdata = ., interval = "confidence"))
+# Create new control values
+new_control <- tibble(tpcoiss = c(20, 30, 40))
 
-# Plot predictions
-ggplot(predictions, aes(x = tpcoiss)) +
-  geom_ribbon(aes(ymin = lwr, ymax = upr),
-              alpha = 0.2, fill = "blue") +
-  geom_line(aes(y = fit), color = "blue") +
-  geom_point(data = analysis_data,
-             aes(y = tpstress),
-             alpha = 0.5) +
-  labs(
-    title = "Regression Line with Confidence Interval",
-    x = "Sense of Control",
-    y = "Stress Level"
-  ) +
-  theme_minimal()
+# Make predictions and bind results
+predictions <- new_control %>%
+  mutate(Predicted_Stress = predict(stress_model, newdata = .) %>% round(2))
+
+# Display predictions
+print(predictions)
 
 # Interactive Model Summary ----------------------------------------------------
 
@@ -410,23 +430,31 @@ knitr::kable(summary_stats,
 # First, let's see what our data looks like
 head(survey_data_full[c("sex", "tslfest", "tpcoiss")])
 
-# Create visualization of self-esteem by gender
-boxplot(tslfest ~ sex, 
-        data = survey_data_full,
-        main = "Self-esteem Levels by Gender",
-        xlab = "Gender (1 = Male, 2 = Female)",
-        ylab = "Total Self-esteem Score",
-        col = c("lightblue", "lightpink"))
+# Create boxplot with jittered points of self-esteem by gender
+ggplot(survey_data_full, aes(x = factor(sex), y = tslfest)) +
+  geom_boxplot(aes(fill = factor(sex)), outlier.shape = NA) +  # Boxplot without default outliers
+  geom_jitter(width = 0.2, alpha = 0.5, color = "darkgray") +  # Individual points (jittered)
+  scale_fill_manual(values = c("lightblue", "lightpink")) +
+  labs(
+    title = "Distribution of Self-esteem by Gender",
+    x = "Gender",
+    y = "Total Self-esteem Score"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")  # Remove legend since colors only represent gender
 
-# Add individual points for better visualization
-stripchart(tslfest ~ sex, 
-           data = survey_data_full,
-           vertical = TRUE,
-           method = "jitter",
-           add = TRUE,
-           pch = 20,
-           col = "darkgray")
-
+# Create violin plot with a small boxplot inside
+ggplot(survey_data_full, aes(x = factor(sex), y = tslfest, fill = factor(sex))) +
+  geom_violin(trim = FALSE, alpha = 0.5) +  # Violin plot with full density curve
+  geom_boxplot(width = 0.2, fill = "white", outlier.shape = NA) +  # Add a small boxplot inside
+  scale_fill_manual(values = c("lightblue", "lightpink")) + 
+  labs(
+    title = "Distribution of Self-esteem by Gender",
+    x = "Gender",
+    y = "Total Self-esteem Score"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")  # Remove legend since colors only represent gender
 
 #===============================================================================
 # Step E2: Performing the T-Test (Self-esteem by Gender)
@@ -458,17 +486,29 @@ print(t_test_result)
 # Effect Size ------------------------------------------------------------------
 
 # Calculate Cohen's d
-group1 <- survey_data_full$tslfest[survey_data_full$sex == 1]
-group2 <- survey_data_full$tslfest[survey_data_full$sex == 2]
+group1 <- survey_data_full$tslfest[survey_data_full$sex == "Male"]
+group2 <- survey_data_full$tslfest[survey_data_full$sex == "Female"]
 
-cohens_d <- function(x, y) {
+calc_cohens_d <- function(x, y) {
+  # Remove NA values
+  x <- x[!is.na(x)]
+  y <- y[!is.na(y)]
+  
   nx <- length(x)
   ny <- length(y)
+  
+  # Ensure non-empty groups
+  if (nx < 2 || ny < 2) {
+    return(NA)  # Return NA if a group has fewer than 2 values
+  }
+  
   pooled_sd <- sqrt(((nx-1)*var(x) + (ny-1)*var(y))/(nx+ny-2))
   abs(mean(x) - mean(y))/pooled_sd
+  
+  return(abs(mean(x) - mean(y)) / pooled_sd)
 }
 
-effect_size <- cohens_d(group1, group2)
+effect_size <- calc_cohens_d(group1, group2)
 cat("Cohen's d effect size:", round(effect_size, 3))
 
 #-------------------------------------------------------------------------------
@@ -489,33 +529,45 @@ library(effectsize) # For effect size calculations
 
 # Data Preparation -------------------------------------------------------------
 
-# Convert sex to a factor with meaningful labels
-analysis_data <- survey_data_full %>%
-  mutate(sex = factor(sex, 
-                      levels = c(1, 2),
-                      labels = c("Male", "Female"))) %>%
-  select(sex, tslfest, tpcoiss)
+# Create a small dataframe with relevant variables only
+analysis_data <- survey_data_full %>% select(sex, tslfest, tpcoiss)
 
 # Display the structure of our prepared data
 str(analysis_data)
 
 # Visual Exploration -----------------------------------------------------------
 
-# Create boxplot with individual points
-ggboxplot(analysis_data, 
-          x = "sex", 
-          y = "tslfest",
-          color = "sex",
-          add = "jitter",
-          title = "Self-esteem Levels by Gender") +
+# Create boxplot with jittered points of self-esteem by gender
+ggplot(analysis_data, aes(x = factor(sex), y = tslfest)) +
+  geom_boxplot(aes(fill = factor(sex)), outlier.shape = NA) +  # Boxplot without default outliers
+  geom_jitter(width = 0.2, alpha = 0.5, color = "darkgray") +  # Individual points (jittered)
+  scale_fill_manual(values = c("lightblue", "lightpink")) +
+  labs(
+    title = "Distribution of Self-esteem by Gender",
+    x = "Gender",
+    y = "Total Self-esteem Score"
+  ) +
   theme_minimal() +
-  labs(y = "Total Self-esteem Score",
-       x = "Gender")
+  theme(legend.position = "none")  # Remove legend since colors only represent gender
+
+# Alternative: Create violin plot with a small boxplot inside
+ggplot(analysis_data, aes(x = factor(sex), y = tslfest, fill = factor(sex))) +
+  geom_violin(trim = FALSE, alpha = 0.5) +  # Violin plot with full density curve
+  geom_boxplot(width = 0.2, fill = "white", outlier.shape = NA) +  # Add a small boxplot inside
+  scale_fill_manual(values = c("lightblue", "lightpink")) + 
+  labs(
+    title = "Distribution of Self-esteem by Gender",
+    x = "Gender",
+    y = "Total Self-esteem Score"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")  # Remove legend since colors only represent gender
 
 # Add descriptive statistics
-desc_stats %
-group_by(sex) %>%
+desc_stats <- analysis_data %>%
+  group_by(sex) %>%
   get_summary_stats(tslfest, type = "common")
+
 print(desc_stats)
 
 # Checking Assumptions ---------------------------------------------------------
@@ -547,25 +599,31 @@ t_test_results
 
 # Effect Size Calculation ------------------------------------------------------
 
-# Calculate Cohen's d
-cohens_d <- cohens_d(tslfest ~ sex, data = analysis_data)
-print(cohens_d)
+# Calculate Cohen's d (using `rstatix` package)
+cohens_result <- cohens_d(tslfest ~ sex, data = analysis_data)
+print(cohens_result)
 
-# Interpret effect size
-interpret_cohens_d(cohens_d$Cohens_d)
+# Interpret Cohen's d effect size with the `effectsize` package
+interpretation <- interpret_cohens_d(cohens_result$Cohens_d)
+
+# Print interpretation
+print(interpretation)
 
 # Complete Analysis for Control Levels -----------------------------------------
 
 # Visualization
-ggboxplot(analysis_data, 
-          x = "sex", 
-          y = "tpcoiss",
-          color = "sex",
-          add = "jitter",
-          title = "Control Levels by Gender") +
+# Create boxplot with jittered points of perceived control by gender
+ggplot(analysis_data, aes(x = factor(sex), y = tpcoiss)) +
+  geom_boxplot(aes(fill = factor(sex)), outlier.shape = NA) +  # Boxplot without default outliers
+  geom_jitter(width = 0.2, alpha = 0.5, color = "darkgray") +  # Individual points (jittered)
+  scale_fill_manual(values = c("lightblue", "lightpink")) +
+  labs(
+    title = "Distribution of Perceived Control by Gender",
+    x = "Gender",
+    y = "Perceived Control"
+  ) +
   theme_minimal() +
-  labs(y = "Total Control Score",
-       x = "Gender")
+  theme(legend.position = "none")  # Remove legend since colors only represent gender
 
 # Check assumptions
 # 1. Normality
@@ -664,30 +722,109 @@ report_results(self_esteem_analysis)
 # Base R Solution
 #-------------------------------------------------------------------------------
 
-# Visualize control levels by gender
-boxplot(tpcoiss ~ sex, 
-        data = survey_data_full,
-        main = "Control Levels by Gender",
-        xlab = "Gender (1 = Male, 2 = Female)",
-        ylab = "Total Control Score",
-        col = c("lightblue", "lightpink"))
+# Visualize Control Levels by Gender -------------------------------------------
 
-stripchart(tpcoiss ~ sex, 
-           data = survey_data_full,
-           vertical = TRUE,
-           method = "jitter",
-           add = TRUE,
-           pch = 20,
-           col = "darkgray")
+# Create boxplot with jittered points of perceived control by gender
+ggplot(analysis_data, aes(x = factor(sex), y = tpcoiss)) +
+  geom_boxplot(aes(fill = factor(sex)), outlier.shape = NA) +  # Boxplot without default outliers
+  geom_jitter(width = 0.2, alpha = 0.5, color = "darkgray") +  # Individual points (jittered)
+  scale_fill_manual(values = c("lightblue", "lightpink")) +
+  labs(
+    title = "Distribution of Perceived Control by Gender",
+    x = "Gender",
+    y = "Perceived Control"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")  # Remove legend since colors only represent gender
 
-# Perform the analysis
-var_test_control  0.05)
-print("\nt-test results for control:")
-print(t_test_control)
+# Perform the Analysis ---------------------------------------------------------
+
+# Check basic descriptive statistics
+tapply(survey_data_full$tslfest, 
+       survey_data_full$sex, 
+       function(x) c(mean = mean(x, na.rm = TRUE), 
+                     sd = sd(x, na.rm = TRUE),
+                     n = sum(!is.na(x))))
+
+# Perform Levene's test for equality of variances
+var_test <- var.test(tslfest ~ sex, data = survey_data_full)
+print("Levene's test results:")
+print(var_test)
+
+# Perform t-test based on Levene's test result
+t_test_result <- t.test(tslfest ~ sex, 
+                        data = survey_data_full,
+                        var.equal = var_test$p.value > 0.05)  # true if p > 0.05
+print("\nt-test results:")
+print(t_test_result)
 
 # Effect Size ------------------------------------------------------------------
 
+# Calculate Cohen's d
+group1 <- survey_data_full$tslfest[survey_data_full$sex == "Male"]
+group2 <- survey_data_full$tslfest[survey_data_full$sex == "Female"]
 
+# We defined our function `calc_cohens_d()` earlier.
+
+effect_size <- calc_cohens_d(group1, group2)
+cat("Cohen's d effect size:", round(effect_size, 3))
+
+#-------------------------------------------------------------------------------
+# Solution with R Packages
+#-------------------------------------------------------------------------------
+
+# Install and Load Packages ----------------------------------------------------
+
+# NOTE: We are using the same packages as in Step E2, so if you completed that 
+#       step (including the alternative with R packages), you can skip this.
+
+#Install packages if needed
+install.packages(c("tidyverse", "car", "rstatix", "ggpubr", "effectsize"))
+
+# Load required packages
+library(tidyverse)  # For data manipulation and visualization
+library(car)        # For Levene's test and additional diagnostics
+library(rstatix)    # For statistical analysis
+library(ggpubr)     # For publication-ready plots
+library(effectsize) # For effect size calculations
+
+# Complete Analysis for Control Levels -----------------------------------------
+
+# Create boxplot with jittered points of perceived control by gender
+ggplot(analysis_data, aes(x = factor(sex), y = tpcoiss)) +
+  geom_boxplot(aes(fill = factor(sex)), outlier.shape = NA) +  # Boxplot without default outliers
+  geom_jitter(width = 0.2, alpha = 0.5, color = "darkgray") +  # Individual points (jittered)
+  scale_fill_manual(values = c("lightblue", "lightpink")) +
+  labs(
+    title = "Distribution of Perceived Control by Gender",
+    x = "Gender",
+    y = "Perceived Control"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")  # Remove legend since colors only represent gender
+
+# Check assumptions
+# 1. Normality
+analysis_data %>%
+  group_by(sex) %>%
+  shapiro_test(tpcoiss)
+
+# 2. Homogeneity of variance
+leveneTest(tpcoiss ~ sex, data = analysis_data)
+
+# Perform t-test
+control_t_test <- analysis_data %>%
+  t_test(tpcoiss ~ sex) %>%
+  add_significance()
+
+# Calculate effect size
+control_effect <- cohens_d(tpcoiss ~ sex, data = analysis_data)
+
+# Display comprehensive results
+list(
+  "T-test Results" = control_t_test,
+  "Effect Size" = control_effect
+)
 
 #===============================================================================
 # Step F1: Understanding One-way ANOVA
