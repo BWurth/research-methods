@@ -237,7 +237,7 @@ The `cor()` function returns `NA` if any of the input values are missing, as it 
    cor(x, y1, method = "kendall")
    ```
 
-4. Deal with missing values appropritelt.
+4. Deal with missing values appropriately.
 
    - Option A: Handle missing values in `cor()` with different options for `use`:
    
@@ -270,7 +270,7 @@ The `cor()` function returns `NA` if any of the input values are missing, as it 
 
 **Correlation Matrix**
 
-We can calculate correlations for multiple variables variables at once. 
+We can calculate correlations for multiple variables at once. 
 
 First, let's create a smaller data frame with only continuous variables. We can do this in base R using the following code:
 
@@ -279,6 +279,8 @@ survey_data_small <- survey_data_full[, c("tpcoiss", "tpstress", "toptim",
                                    "tposaff", "tnegaff", "tlifesat", 
                                    "tslfest", "tmarlow")]
 ```
+
+**Note:** When subsetting the data above, we use `survey_data_full[, c("tpcoiss", ...`. The comma `,` in the square brackets explicitly indicates that you are subsetting columns from a data frame. This clarity can help prevent unintended behaviors when working with more complex subsetting tasks (e.g., selecting rows and columns simultaneously) and makes the code more readable to others. Although `survey_data_full[c("tpcoiss", ...` (without the comma `,`) often produces the same output when subsetting columns by name, using the comma notation adheres to standard R conventions for data frame indexing.
 
 You can verify the structure of your new data frame using:
 
@@ -1249,22 +1251,19 @@ survey_data_full$agegp3 <- factor(survey_data_full$agegp3,
                                  levels = c(1, 2, 3),
                                  labels = c("18-29", "30-44", "45+"))
 
-# Create an informative boxplot
-boxplot(toptim ~ agegp3, 
-        data = survey_data_full,
-        main = "Optimism Levels by Age Group",
-        xlab = "Age Group",
-        ylab = "Total Optimism Score",
-        col = c("lightblue", "lightgreen", "lightpink"))
-
-# Add individual points for better visualization
-stripchart(toptim ~ agegp3, 
-           data = survey_data_full,
-           vertical = TRUE,
-           method = "jitter",
-           add = TRUE,
-           pch = 20,
-           col = "darkgray")
+# Create boxplot with jittered points of optimism levels by age group
+ggplot(survey_data_full, aes(x = factor(agegp3), y = toptim)) +
+  geom_boxplot(aes(fill = factor(agegp3)), outlier.shape = NA) +  # Boxplot without default outliers
+#  geom_boxplot(aes(fill = factor(sex)), outlier.shape = NA) +  # Boxplot without default outliers
+  geom_jitter(width = 0.2, alpha = 0.5, color = "darkgray") +  # Individual points (jittered)
+  scale_fill_manual(values = c("lightblue", "lightgreen", "lightpink")) +
+  labs(
+    title = "Optimism Levels by Age Group",
+    x = "Age Group",
+    y = "Total Optimism Score"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")  # Remove legend since colors only represent gender
 ```
 
 ## Step F2: Performing the One-Way ANOVA (Optimism Across Age Groups)
@@ -1289,22 +1288,31 @@ print("Descriptive Statistics:")
 print(descriptives)
 ```
 
-Just as t-tests have assumptions, ANOVA requires certain conditions to be met:
+Just as t-tests have assumptions, ANOVA requires certain conditions to be met. Levene's test is often performed before an ANOVA to ensure the validity of the ANOVA results by verifying that the variances across groups are similar (the "homogeneity of variance" assumption). However, Levene’s test uses the mean for deviations, making it appropriate if the data are normally distributed. We can perform the Shapiro-Wilk test, and if `p > 0.05`, the data are approximately normally distributed and we can use Levene’s test.
+
+```r
+# Normality test (Shapiro-Wilk test)
+shapiro.test(survey_data_full$toptim)
+```
 
 ```r
 # Levene's test for homogeneity of variance
 levene_test <- function(y, group) {
     group <- factor(group)
-    meds <- tapply(y, group, median, na.rm = TRUE)
-    abs_dev <- abs(y - meds[group])
+    means <- tapply(y, group, mean, na.rm = TRUE)
+    abs_dev <- abs(y - means[group])
     anova(lm(abs_dev ~ group))[1, "Pr(>F)"]
 }
 
 # Perform Levene's test
 levene_p <- levene_test(survey_data_full$toptim, survey_data_full$agegp3)
 cat("Levene's test p-value:", levene_p, "\n")
+```
 
-# Brown-Forsythe test for a more robust check
+If `p > 0.05` from the Shapiro-Wilk test, the data are not normally distributed and the Brown-Forsythe test, which uses the median for deviations, is more appropriate.
+
+```r
+# Brown-Forsythe test (more robust to non-normality)
 bf_test <- function(y, group) {
     group <- factor(group)
     meds <- tapply(y, group, median, na.rm = TRUE)
@@ -1332,7 +1340,7 @@ print("\nWelch's ANOVA results:")
 print(welch_result)
 ```
 
-If we find significant differences, we need to know which groups differ from each other:
+When conducting an ANOVA test, a significant result indicates that at least one group mean differs from the others. However, ANOVA does not tell us which specific groups differ. To determine where these differences exist, we use Tukey’s Honest Significant Difference (HSD) test, which compares each pair of groups while controlling for multiple comparisons.
 
 ```r
 # Tukey's HSD test for pairwise comparisons
@@ -1344,7 +1352,13 @@ print(tukey_result)
 plot(tukey_result)
 ```
 
-Let's calculate eta-squared to understand the practical significance:
+Following the steps below, we can confidently interpret the results of Tukey’s HSD test and understand which groups significantly differ from each other:
+
+1. Check the p-value (`p adj`): If it is less than `0.05`, the difference is statistically significant.
+2. Look at the confidence interval (`lwr` and `upr`): If the interval does not include `0`, there is a meaningful difference.
+3. Examine the mean difference (`diff`): Determine whether one group has a higher or lower mean compared to another.
+
+Let's calculate eta-squared to understand the practical significance. Statistical significance (i.e., a small p-value) does not tell us how important or meaningful the difference is in real-world terms. This is where effect size measures like eta-squared (η²) come in. 
 
 ```r
 # Calculate eta-squared
@@ -1352,6 +1366,12 @@ aov_summary <- summary(anova_result)
 eta_squared <- aov_summary[[1]]$"Sum Sq"[1] / sum(aov_summary[[1]]$"Sum Sq")
 cat("Eta-squared:", round(eta_squared, 3))
 ```
+
+Cohen (1988) provides general guidelines for interpreting eta-squared in the context of ANOVA:
+
+- 0.01 (1%): The independent variable explains a **small** amount of variance (small effect).
+- 0.06 (6%): The independent variable explains a **moderate** amount of variance (medium effect).
+- 0.14+ (14% or more): The independent variable explains a **large** amount of variance (strong effect).
 
 ::: {.callout-tip collapse="true"}
 ## ANOVA with R Packages
@@ -1375,13 +1395,8 @@ library(emmeans)    # For estimated marginal means and post-hoc tests
 First, let's prepare our data and ensure it's in the right format for analysis:
 
 ```r
-# Convert age groups to a factor with meaningful labels
 analysis_data <- survey_data_full %>%
-  mutate(age_group = factor(agegp3, 
-                           levels = c(1, 2, 3),
-                           labels = c("18-29", "30-44", "45+")),
-         education = factor(educrec)) %>%
-  select(age_group, education, toptim, tpstress)
+  select(agegp3, educ, toptim, tpstress)
 
 # Display the structure of our prepared data
 glimpse(analysis_data)

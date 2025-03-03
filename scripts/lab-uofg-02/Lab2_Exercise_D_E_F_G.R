@@ -835,22 +835,19 @@ survey_data_full$agegp3 <- factor(survey_data_full$agegp3,
                                   levels = c(1, 2, 3),
                                   labels = c("18-29", "30-44", "45+"))
 
-# Create an informative boxplot
-boxplot(toptim ~ agegp3, 
-        data = survey_data_full,
-        main = "Optimism Levels by Age Group",
-        xlab = "Age Group",
-        ylab = "Total Optimism Score",
-        col = c("lightblue", "lightgreen", "lightpink"))
-
-# Add individual points for better visualization
-stripchart(toptim ~ agegp3, 
-           data = survey_data_full,
-           vertical = TRUE,
-           method = "jitter",
-           add = TRUE,
-           pch = 20,
-           col = "darkgray")
+# Create boxplot with jittered points of optimism levels by age group
+ggplot(survey_data_full, aes(x = factor(agegp3), y = toptim)) +
+  geom_boxplot(aes(fill = factor(agegp3)), outlier.shape = NA) +  # Boxplot without default outliers
+  #  geom_boxplot(aes(fill = factor(sex)), outlier.shape = NA) +  # Boxplot without default outliers
+  geom_jitter(width = 0.2, alpha = 0.5, color = "darkgray") +  # Individual points (jittered)
+  scale_fill_manual(values = c("lightblue", "lightgreen", "lightpink")) +
+  labs(
+    title = "Optimism Levels by Age Group",
+    x = "Age Group",
+    y = "Total Optimism Score"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")  # Remove legend since colors only represent gender
 
 
 #===============================================================================
@@ -881,11 +878,18 @@ print(descriptives)
 
 # Check Assumptions ------------------------------------------------------------
 
+# Normality test (Shapiro-Wilk test)
+shapiro.test(survey_data_full$toptim)
+
+# Interpreation of Shapiro-Wilk test:
+# - If p > 0.05 → Data is approximately normal → Levene’s Test
+# - If p < 0.05 → Data is not normal → Brown-Forsythe Test
+
 # Levene's test for homogeneity of variance
 levene_test <- function(y, group) {
   group <- factor(group)
-  meds <- tapply(y, group, median, na.rm = TRUE)
-  abs_dev <- abs(y - meds[group])
+  means <- tapply(y, group, mean, na.rm = TRUE)
+  abs_dev <- abs(y - means[group])
   anova(lm(abs_dev ~ group))[1, "Pr(>F)"]
 }
 
@@ -893,7 +897,7 @@ levene_test <- function(y, group) {
 levene_p <- levene_test(survey_data_full$toptim, survey_data_full$agegp3)
 cat("Levene's test p-value:", levene_p, "\n")
 
-# Brown-Forsythe test for a more robust check
+# Brown-Forsythe test (more robust to non-normality)
 bf_test <- function(y, group) {
   group <- factor(group)
   meds <- tapply(y, group, median, na.rm = TRUE)
@@ -959,11 +963,7 @@ library(emmeans)    # For estimated marginal means and post-hoc tests
 
 # Convert age groups to a factor with meaningful labels
 analysis_data <- survey_data_full %>%
-  mutate(age_group = factor(agegp3, 
-                            levels = c(1, 2, 3),
-                            labels = c("18-29", "30-44", "45+")),
-         education = factor(educrec)) %>%
-  select(age_group, education, toptim, tpstress)
+  select(agegp3, educ, toptim, tpstress)
 
 # Display the structure of our prepared data
 glimpse(analysis_data)
