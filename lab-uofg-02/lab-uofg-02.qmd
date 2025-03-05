@@ -1254,7 +1254,6 @@ survey_data_full$agegp3 <- factor(survey_data_full$agegp3,
 # Create boxplot with jittered points of optimism levels by age group
 ggplot(survey_data_full, aes(x = factor(agegp3), y = toptim)) +
   geom_boxplot(aes(fill = factor(agegp3)), outlier.shape = NA) +  # Boxplot without default outliers
-#  geom_boxplot(aes(fill = factor(sex)), outlier.shape = NA) +  # Boxplot without default outliers
   geom_jitter(width = 0.2, alpha = 0.5, color = "darkgray") +  # Individual points (jittered)
   scale_fill_manual(values = c("lightblue", "lightgreen", "lightpink")) +
   labs(
@@ -1266,7 +1265,7 @@ ggplot(survey_data_full, aes(x = factor(agegp3), y = toptim)) +
   theme(legend.position = "none")  # Remove legend since colors only represent gender
 ```
 
-## Step F2: Performing the One-Way ANOVA (Optimism Across Age Groups)
+## Step F2: Performing the One-Way ANOVA (Optimism across Age Groups)
 
 Before diving into the ANOVA, let's examine our data descriptively:
 
@@ -1374,7 +1373,7 @@ Cohen (1988) provides general guidelines for interpreting eta-squared in the con
 - 0.14+ (14% or more): The independent variable explains a **large** amount of variance (strong effect).
 
 ::: {.callout-tip collapse="true"}
-## ANOVA with R Packages
+## ANOVA with R Packages (Optimism across Age Groups)
 Modern R packages provide enhanced capabilities for conducting and visualizing Analysis of Variance (ANOVA). We'll use several powerful packages that work together to create a comprehensive analysis:
 
 ```r
@@ -1509,76 +1508,6 @@ print(eta_squared)
 interpret_eta_squared(eta_squared$Eta2)
 ```
 
-**Complete Analysis: Stress Levels Across Age Groups**
-
-Let's apply the same comprehensive analysis to perceived stress levels:
-
-```r
-# Visualization
-ggviolin(analysis_data, 
-         x = "age_group", 
-         y = "tpstress",
-         fill = "age_group",
-         add = "boxplot",
-         add.params = list(fill = "white")) +
-  geom_jitter(width = 0.2, alpha = 0.5) +
-  theme_minimal() +
-  labs(title = "Stress Levels by Age Group",
-       y = "Total Perceived Stress Score",
-       x = "Age Group") +
-  theme(legend.position = "none")
-
-# Function for comprehensive ANOVA analysis
-analyze_group_differences <- function(data, dv, group_var) {
-  # Descriptive statistics
-  desc <- data %>%
-    group_by(!!sym(group_var)) %>%
-    get_summary_stats(!!sym(dv), type = "common")
-  
-  # Assumption checks
-  normality <- data %>%
-    group_by(!!sym(group_var)) %>%
-    shapiro_test(!!sym(dv))
-  
-  # Levene's test
-  homogeneity <- leveneTest(as.formula(paste(dv, "~", group_var)), data = data)
-  
-  # ANOVA
-  anova <- anova_test(data = data, as.formula(paste(dv, "~", group_var)))
-  
-  # Welch's ANOVA
-  welch <- welch_anova_test(data = data, as.formula(paste(dv, "~", group_var)))
-  
-  # Post-hoc tests
-  posthoc <- games_howell_test(data = data, as.formula(paste(dv, "~", group_var)))
-  
-  # Effect size
-  model <- aov(as.formula(paste(dv, "~", group_var)), data = data)
-  effect <- effectsize::eta_squared(model)
-  
-  # Return results
-  list(
-    descriptives = desc,
-    normality_test = normality,
-    variance_test = homogeneity,
-    anova_test = anova,
-    welch_test = welch,
-    posthoc = posthoc,
-    effect_size = effect
-  )
-}
-
-# Run complete analysis
-stress_analysis <- analyze_group_differences(
-  analysis_data, 
-  "toptim", 
-  "age_group"
-)
-
-# Display results
-print(stress_analysis)
-```
-
 **Creating Powerful Visualizations**
 
 We can create publication-ready plots that combine statistical information:
@@ -1641,77 +1570,54 @@ report_anova_results(stress_analysis)
 ```
 :::
 
-## Step F3: Performing the One-Way ANOVA (Stress Levels Across Age Groups)
+## Step F3: Performing the One-Way ANOVA (Stress Levels across Age Groups)
 
-Let's apply what we've learned to analyze stress levels (`tpstress`) across age groups. First, we create some helpful visualizations:
+Let's apply what we've learned to analyze stress levels (`tpstress`) across age groups (`agegp3`). First, we create some helpful visualizations:
 
 ```r
-# Create an informative boxplot
-boxplot(tpstress ~ agegp3, 
-        data = survey_data_full,
-        main = "Total Perceived Stress by Age Group",
-        xlab = "Age Group",
-        ylab = "Total Perceived Stress",
-        col = c("lightblue", "lightgreen", "lightpink"))
-
-# Add individual points for better visualization
-stripchart(tpstress ~ agegp3, 
-           data = survey_data_full,
-           vertical = TRUE,
-           method = "jitter",
-           add = TRUE,
-           pch = 20,
-           col = "darkgray")
+# Create boxplot with jittered points of stress levels by age group
+ggplot(survey_data_full, aes(x = factor(agegp3), y = tpstress)) +
+  geom_boxplot(aes(fill = factor(agegp3)), outlier.shape = NA) +  # Boxplot without default outliers
+  geom_jitter(width = 0.2, alpha = 0.5, color = "darkgray") +  # Individual points (jittered)
+  scale_fill_manual(values = c("lightblue", "lightgreen", "lightpink")) +
+  labs(
+    title = "Stress Levels by Age Group",
+    x = "Age Group",
+    y = "Total Stress Score"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")  # Remove legend since colors only represent age group
 ```
 
 Before diving into the ANOVA, let's examine our data descriptively:
 
 ```r
-# Create comprehensive descriptive statistics
-get_descriptives <- function(dv, group) {
-    tapply(dv, group, function(x) {
-        c(n = sum(!is.na(x)),
-          mean = mean(x, na.rm = TRUE),
-          sd = sd(x, na.rm = TRUE),
-          se = sd(x, na.rm = TRUE) / sqrt(sum(!is.na(x))))
-    })
-}
-
 # Get descriptives for total perceived stress by age group
+# The function `get_descriptives()` was created in Step F2
 descriptives <- get_descriptives(survey_data_full$tpstress, 
                                survey_data_full$agegp3)
 print("Descriptive Statistics:")
 print(descriptives)
 ```
 
-Just as t-tests have assumptions, ANOVA requires certain conditions to be met:
+Before conducting our ANOVA, let's test whether our data meets the requirements. We can perform the Shapiro-Wilk test, and if `p > 0.05`, the data are approximately normally distributed and we can use Levene’s test, otherwise we should use the Brown-Forsythe test.
 
 ```r
-# Levene's test for homogeneity of variance
-levene_test <- function(y, group) {
-    group <- factor(group)
-    meds <- tapply(y, group, median, na.rm = TRUE)
-    abs_dev <- abs(y - meds[group])
-    anova(lm(abs_dev ~ group))[1, "Pr(>F)"]
-}
+# Normality test (Shapiro-Wilk test)
+shapiro.test(survey_data_full$tpstress)
 
-# Perform Levene's test
+# Perform Levene's test (if p > 0.05 from Shapiro-Wilk test)
+# The function `get_descriptives()` was created in Step F2
 levene_p <- levene_test(survey_data_full$tpstress, survey_data_full$agegp3)
 cat("Levene's test p-value:", levene_p, "\n")
 
-# Brown-Forsythe test for a more robust check
-bf_test <- function(y, group) {
-    group <- factor(group)
-    meds <- tapply(y, group, median, na.rm = TRUE)
-    abs_dev <- abs(y - meds[group])
-    anova(lm(abs_dev ~ group))[1, "Pr(>F)"]
-}
-
+# Brown-Forsythe test (if p < 0.05 from Shapiro-Wilk test)
+# The function `get_descriptives()` was created in Step F2
 bf_p <- bf_test(survey_data_full$tpstress, survey_data_full$agegp3)
 cat("Brown-Forsythe test p-value:", bf_p, "\n")
 ```
 
-Now we'll perform both standard ANOVA and its robust alternative:
+Now we'll perform either the standard ANOVA or its robust alternative:
 
 ```r
 # Standard one-way ANOVA
@@ -1747,6 +1653,131 @@ aov_summary <- summary(anova_result)
 eta_squared <- aov_summary[[1]]$"Sum Sq"[1] / sum(aov_summary[[1]]$"Sum Sq")
 cat("Eta-squared:", round(eta_squared, 3))
 ```
+
+::: {.callout-tip collapse="true"}
+## ANOVA with R Packages (Stress Levels across Age Groups)
+Similar to the one-way ANOVA for total optimism `toptim` across age groups `agegp3`, we can use R packages to conduct a one-way ANOVA for stress levels `tpstress` across age groups `agegp3`.
+
+**Complete and Comprehensive Analysis**
+
+```r
+# Install packages if needed
+install.packages(c("tidyverse", "car", "rstatix", "ggpubr", "effectsize", "emmeans"))
+
+# Load required packages
+library(tidyverse)  # For data manipulation and visualization
+library(car)        # For Levene's test and additional diagnostics
+library(rstatix)    # For statistical analysis
+library(ggpubr)    # For publication-ready plots
+library(effectsize) # For effect size calculations
+library(emmeans)    # For estimated marginal means and post-hoc tests
+
+# Create boxplot with jittered points of stress levels by age group
+ggplot(survey_data_full, aes(x = factor(agegp3), y = tpstress)) +
+  geom_boxplot(aes(fill = factor(agegp3)), outlier.shape = NA) +  # Boxplot without default outliers
+  geom_jitter(width = 0.2, alpha = 0.5, color = "darkgray") +  # Individual points (jittered)
+  scale_fill_manual(values = c("lightblue", "lightgreen", "lightpink")) +
+  labs(
+    title = "Stress Levels by Age Group",
+    x = "Age Group",
+    y = "Total Stress Score"
+  ) +
+  theme_minimal() +
+  theme(legend.position = "none")  # Remove legend since colors only represent age group
+
+# Function for comprehensive ANOVA analysis
+analyze_group_differences <- function(data, dv, group_var) {
+  # Descriptive statistics
+  desc <- data %>%
+    group_by(!!sym(group_var)) %>%
+    get_summary_stats(!!sym(dv), type = "common")
+  
+  # Assumption checks
+  normality <- data %>%
+    group_by(!!sym(group_var)) %>%
+    shapiro_test(!!sym(dv))
+  
+  # Levene's test
+  homogeneity <- leveneTest(as.formula(paste(dv, "~", group_var)), data = data)
+  
+  # ANOVA
+  anova <- anova_test(data = data, as.formula(paste(dv, "~", group_var)))
+  
+  # Welch's ANOVA
+  welch <- welch_anova_test(data = data, as.formula(paste(dv, "~", group_var)))
+  
+  # Post-hoc tests
+  posthoc <- games_howell_test(data = data, as.formula(paste(dv, "~", group_var)))
+  
+  # Effect size
+  model <- aov(as.formula(paste(dv, "~", group_var)), data = data)
+  effect <- effectsize::eta_squared(model)
+  
+  # Return results
+  list(
+    descriptives = desc,
+    normality_test = normality,
+    variance_test = homogeneity,
+    anova_test = anova,
+    welch_test = welch,
+    posthoc = posthoc,
+    effect_size = effect
+  )
+}
+
+# Run complete analysis
+stress_analysis <- analyze_group_differences(
+  survey_data_full, 
+  "tpstress", 
+  "agegp3"
+)
+
+# Display results
+print(stress_analysis)
+```
+
+**Creating Powerful Visualizations**
+
+We can create publication-ready plots that combine statistical information:
+
+```r
+# Create plot with statistical annotations
+ggboxplot(survey_data_full, 
+          x = "agegp3", 
+          y = "tpstress",
+          color = "agegp3") +
+  stat_compare_means(method = "anova") +
+  geom_jitter(width = 0.2, alpha = 0.5) +
+  theme_minimal() +
+  labs(title = "Optimism Levels by Age Group with ANOVA Results",
+       y = "Total Stress Score",
+       x = "Age Group") +
+  theme(legend.position = "none")
+```
+
+**Writing Up Results**
+
+Here's how to write up the results in APA format:
+
+```r
+# Function to create formatted output
+report_anova_results <- function(analysis) {
+  with(analysis, {
+    cat("Results:\n")
+    cat("\nDescriptive Statistics:\n")
+    print(descriptives)
+    cat("\nANOVA Results:\n")
+    print(anova_test)
+    cat("\nEffect Size:\n")
+    print(effect_size)
+    cat("\nPost-hoc Analysis:\n")
+    print(posthoc)
+  })
+}
+
+report_anova_results(stress_analysis)
+```
+:::
 
 ## Step F4: A Step-by-Step Guide to Interpreting Results
 
